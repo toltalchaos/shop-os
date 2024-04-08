@@ -23,7 +23,7 @@
   
     // Calculate total cost of items in the cart
     onMount(() => {
-      total = items.reduce((acc, item) => acc + item.price, 0);
+      total = items.reduce((previousValue, item) => previousValue + item.price, 0);
       
     });
   

@@ -1,3 +1,11 @@
+
+// This page handles the cart items and provides a writable store for them.
+// To use this store, assign the desired cart items to the 'cartItems' variable.
+// The 'writable' function creates a writable store that can be subscribed to and updated.
+// The 'storedItems' variable should contain the initial cart items to be stored.
+// Example usage: cartItems = writable(storedItems);
+
+
 // @ts-nocheck
 import { writable } from 'svelte/store';
 
@@ -15,6 +23,7 @@ if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
   }
 } else {
   // localStorage is not available
+  console.error('localStorage is not available');
 }
 
 const cartItems = writable(storedItems);

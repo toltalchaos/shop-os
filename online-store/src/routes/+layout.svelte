@@ -4,7 +4,7 @@
 	import { onMount } from 'svelte';
 	import Footer from '../components/footer.svelte';
 	import Header from '../components/header.svelte';
-	import allItems from '../global/allItems';
+	import StoreItems from '../global/allItems';
 	import productData from '../static/socks.json';
 
 	function initSocks() {
@@ -19,7 +19,10 @@
 		//   .catch(error => {
 		//     console.error(error);
 		//   });
-		allItems.update(items => [...items, ...products]);
+
+
+		// Update the store with the new products data from the JSON file or API
+		StoreItems.update(items => [...items, ...products]);
 	}
 
 	onMount(initSocks());

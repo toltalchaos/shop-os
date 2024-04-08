@@ -1,5 +1,8 @@
 # todo:
 
+- add logic for no shipping (pickup option)
+- dynamically adjust tax rate in components>invoice.svelte
+- dynamically adjust shipping rate in components>invoice.svelte
 - convert the invintory to not use a static json file
 - add count capabilities for the items available and in the cart
 - add payment/checkout flow

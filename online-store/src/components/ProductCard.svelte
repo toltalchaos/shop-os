@@ -21,13 +21,16 @@
   <img src={product.image} alt={product.name} />
   <h2>{product.name}</h2>
   <p style="color: {$siteData.textColor};" >${product.price}</p>
-  <p>{editable}</p>
-<!-- form here to update the card as needed -->
-  <button 
-    class:disabled={$cartItems.some(item => item.id === product.id)}
-    on:click={addToCart}>
-    {$cartItems.some(item => item.id === product.id) ? 'Already in Cart' : 'Add to Cart'}
-  </button>
+    {#if editable}
+      <!-- Form code here -->
+      <p>EDITABLE FORM WILL GO HERE</p>
+    {:else}
+      <button 
+        class:disabled={$cartItems.some(item => item.id === product.id)}
+        on:click={addToCart}>
+        {$cartItems.some(item => item.id === product.id) ? 'Already in Cart' : 'Add to Cart'}
+      </button>
+    {/if}
 </div>
 
 <style>

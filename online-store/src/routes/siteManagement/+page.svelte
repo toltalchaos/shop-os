@@ -1,8 +1,15 @@
 <script>
     	// @ts-nocheck
+        import ProductCard from '../../components/ProductCard.svelte';
+        import allSocks from '../../global/allItems';
+        import { getContext } from 'svelte';
+        const siteData = getContext('siteData');
+        let products = [];
 
-      import { getContext } from 'svelte';
-    const siteData = getContext('siteData');
+        allSocks.subscribe(value => {
+            products = value;
+        });
+
 
     let title = siteData.title;
     let description = siteData.description;
@@ -82,7 +89,7 @@
 
     <!-- form to manage products -->
     <h2>Products</h2>
-    <form on:submit={handleProductSubmit} class="new-product-form">
+    <form on:submit|preventDefault={handleProductSubmit} class="new-product-form">
         <div>
             <label for="productName">Product Name:</label>
             <input type="text" id="productName" bind:value={productName} />
@@ -107,6 +114,13 @@
         <button type="submit">Add Product</button>
     </form>
 
+    <div class="product-list">
+        {#each products as product}
+       
+
+        <ProductCard product={product} editable={true}/>
+        {/each}
+    </div>
 </main>
 
 <style>
@@ -129,5 +143,13 @@
         flex-direction: column;
         gap: 1rem;
     }
+    .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
 
 </style>

@@ -33,7 +33,7 @@
 	// fetch the site information including colours, titles, descriptions, etc
 	// from firestore document
 
-	// if no firestore exists, use the following default values
+	// if no firestore exists, use the default values
 	const siteData = writable({
 		title: title,
 		description: description,

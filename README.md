@@ -22,9 +22,7 @@
                 - photo
                 - quantity
         - new page for store management -> update firestore document
-            - update descriptions
-            - update titles
-            - update colours
+            - add firestore functionality
 
     - utilize external DB for item management? - photos, invintory, ect...
         - user account

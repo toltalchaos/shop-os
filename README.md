@@ -3,7 +3,7 @@
     - sub-directory in managment screens
     - order statuses
     - order number lookup for end-user
-    
+
 - utilize external DB (firestore?) -> the update readme with setup instructions
     - convert the invintory to not use a static json file (firebase firestore)
         - rtdb?
@@ -40,6 +40,9 @@
     - add payment/checkout flow
 
 - ADD OAUTH firebase allows features for this on the backend. will need front end implementation
+
+- data/sales anylitics in the management directories
+    - use firebase queries to run analytics and pump the data into visuialization tools/components
 ---
 # setup
 

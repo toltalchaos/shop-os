@@ -3,7 +3,6 @@
 
   import { getContext } from 'svelte';
   const siteData = getContext('siteData');
-  console.log(siteData);
   	// @ts-nocheck
     const navigationItems = [
       { name: "Home", path: "/" },

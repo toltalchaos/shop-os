@@ -2,6 +2,13 @@
     let username = '';
     let password = '';
 
+
+    function validateLogin() {
+        // Perform login logic here
+        console.log('Logging in...');
+        return true;
+    }
+
     function handleLogin() {
         // Perform login logic here
         console.log('Logging in...');
@@ -9,8 +16,19 @@
         console.log('Password:', password);
         // authenticate and save data to local storage
         localStorage.setItem('username', username);
-        //redirect to siteManagement page
-        window.location.href = '/siteManagement';
+        localStorage.setItem('password', password);//this is insecure and needs to be removed in production
+
+        if (validateLogin()) {
+            //redirect to siteManagement page if login is valid
+            window.location.href = '/siteManagement';
+        }
+        else {
+            // show an alert if login is invalid
+            alert('Invalid login credentials');
+            username = '';
+            password = '';
+        }
+        
     }
 </script>
 

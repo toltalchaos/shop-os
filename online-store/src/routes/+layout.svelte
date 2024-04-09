@@ -9,10 +9,10 @@
 	import StoreItems from '../global/allItems';
 	import productData from '../static/socks.json';
 
-	//if no firestore exists, use the following default values
-	const default_settings = {
+	//if no firestore data exists, use the following default values
+	const default_settings = {//keeping this seperate in case we need to change the default values or move them
 		title: 'SHOP_OS',
-		description: 'Welcome to the future of e-commerce',
+		description: 'Welcome to the future of e-commerce for small business',
 		backgroundColor: 'white',
 		primaryColor: 'tan',
 		secondaryColor: 'grey',
@@ -20,18 +20,20 @@
 		textColor: 'white',
 		contactInfo: 'stuff'
 	};
-	let title = default_settings.title;
-	let description = default_settings.description;
-	let backgroundColor = default_settings.backgroundColor; //main background
-	let primaryColor = default_settings.primaryColor; // header background
-	let secondaryColor = default_settings.secondaryColor; // hero background
-	let tirciaryColor = default_settings.tirciaryColor; // product card background
-	let textColor = default_settings.textColor; // text color
-	let contactInfo = default_settings.contactInfo;
 
-	console.log('initializing the site settings');
+	let {
+		title,
+		description,
+		backgroundColor,
+		primaryColor,
+		secondaryColor,
+		tirciaryColor,
+		textColor,
+		contactInfo
+	} = default_settings;
+
 	// fetch the site information including colours, titles, descriptions, etc
-	// from firestore document
+	// from firestore document docs here https://firebase.google.com/docs/firestore/quickstart
 
 	// if no firestore exists, use the default values
 	const siteData = writable({
@@ -44,14 +46,12 @@
 		textColor: textColor,
 		contactInfo: contactInfo
 	});
-	console.log('created writable store for site data');
 
 	setContext('siteData', siteData);
-	console.log('set site data context');
 
-	console.log('initializing invintory');
+	//use firebase to get the data from the RTDB or Firestore in json format (images may need special attention)
 	const products = productData.socks;
-	// Update the store with the new products data from the JSON file or API
+	
 	StoreItems.update((items) => [...items, ...products]);
 </script>
 

@@ -6,10 +6,8 @@
         - use .env auth stuff for the item calls
     - modularize things to dynamically populate the names, colours, photos
         - use firestore document for site settings
-        - from commented out API call
-    - add user account for item management login (probably in the footer?)
-        - allow the user to set the credentials in firebase to login properly? 
-        - login window component
+        - from commented out API call - https://firebase.google.com/docs/firestore/quickstart#node.js_2
+    - add user account for item management login - https://firebase.google.com/docs/auth/web/password-auth
         - store credentials (localstorage)
         - new page for item management (use localstorage for creds NOT .env)
             - list of existing items -> edit button
@@ -36,6 +34,8 @@
         - dynamically adjust tax rate in components>invoice.svelte
         - dynamically adjust shipping rate in components>invoice.svelte
     - add payment/checkout flow
+
+- ADD OAUTH firebase allows features for this on the backend. will need front end implementation
 ---
 # setup
 

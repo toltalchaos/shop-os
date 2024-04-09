@@ -6,47 +6,45 @@
   import { getContext } from 'svelte';
   const siteData = getContext('siteData');
   let products = [];
-
   allSocks.subscribe(value => {
     products = value;
   });
+  
+  let searchValue = '';
+  let displayedProducts = products;
+  
+  function handleSearch(event) {
+    searchValue = event.target.value.toLowerCase();
+    displayedProducts = filterProducts(products);
+  }
+
+  function filterProducts(products) {
+    return products.filter(product => {
+      const productName = product.name.toLowerCase().includes(searchValue);
+      return productName;
+    });
+  }
 </script>
 
 <div class="container">
+  <!-- search bar -->
+  <input type="text" placeholder="Search products" on:input={handleSearch} />
+
   <div class="product-list">
-    {#each products as product}
+    {#each displayedProducts as product} 
     <ProductCard product={product} />
     {/each}
   </div>
 </div>
 
 <style>
-  :root {
-    --primary-color: #5cb5ff;
-    --secondary-color: #7d7d7d;
-    --bg-color: #2c2c2c;
-  }
-
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  html,
-  body {
-    height: 100%;
-    background-color: var(--bg-color);
-    color: white;
-    font-family: 'Roboto', sans-serif;
-  }
 
   .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 1rem;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
   }
 

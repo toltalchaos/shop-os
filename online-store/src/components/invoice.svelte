@@ -55,8 +55,6 @@
   
   <style>
     .invoice-page {
-      background-color: #171717;
-      color: #fff;
       padding: 20px;
     }
     
@@ -96,6 +94,7 @@
     }
     
     tbody tr:nth-child(odd) {
-      background-color: #333333;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
+
   </style>

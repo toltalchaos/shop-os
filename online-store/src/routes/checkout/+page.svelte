@@ -3,6 +3,8 @@
     import { onMount } from 'svelte';
 	import Invoice from '../../components/invoice.svelte';
     import cartItems from '../../global/cartItems';
+    import { getContext } from 'svelte';
+  const siteData = getContext('siteData');
   
     let items = [];
   
@@ -79,7 +81,7 @@
   }
 </script>
   
-  <div class="checkout-page">
+  <div class="checkout-page" style= "background-color: {$siteData.backgroundColor};">
 
     <h2>Checkout</h2>
     <Invoice {items}></Invoice>
@@ -122,8 +124,6 @@
   
 <style>
 .checkout-page {
-  background-color: #111;
-  color: #fff;
   padding: 2rem;
   border-radius: 1rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
@@ -143,11 +143,8 @@ label {
 input[type="text"],
 textarea,
 input[type="email"] {
-  background-color: #222;
-  border: none;
   border-radius: 0.5rem;
   padding: 0.5rem;
-  color: #fff;
   font-size: 1.2rem;
   margin-top: 0.5rem;
 }
@@ -156,7 +153,6 @@ input[type="text"]:focus,
 textarea:focus,
 input[type="email"]:focus {
   outline: none;
-  box-shadow: 0 0 0.5rem #fff;
 }
 
 button[type="submit"] {

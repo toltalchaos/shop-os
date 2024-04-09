@@ -15,9 +15,9 @@
 		description: 'Welcome to the future of e-commerce for small business',
 		backgroundColor: 'white',
 		primaryColor: 'tan',
-		secondaryColor: 'grey',
-		tirciaryColor: 'grey',
-		textColor: 'white',
+		secondaryColor: 'cornsilk',
+		tirciaryColor: '#A9A9',
+		textColor: 'brown',
 		contactInfo: 'stuff'
 	};
 

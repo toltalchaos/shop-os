@@ -1,14 +1,26 @@
 # todo:
 
-- add logic for no shipping (pickup option)
-- dynamically adjust tax rate in components>invoice.svelte
-- dynamically adjust shipping rate in components>invoice.svelte
-- convert the invintory to not use a static json file
-- add count capabilities for the items available and in the cart
-- add payment/checkout flow
-- modularize things to dynamically populate the names, colours, photos
-- utilize external DB for item management? - photos, invintory, ect...
+- add footer for Copywright and contact information (shopOs specific)
+    - create email stuff for shopOS
 
+- utilize external DB (firestore? AWS? custom API and DB?)
+    - convert the invintory to not use a static json file
+    - modularize things to dynamically populate the names, colours, photos
+        - from commented out API call
+    - utilize external DB for item management? - photos, invintory, ect...
+        - user account
+        - photos
+        - invintory management
+    - add user account for item management login (probably in the footer)
+
+- cart/checkout
+    - add count capabilities for the items available and in the cart
+    - shipping
+        - add logic for no shipping (pickup option)
+        - dynamically adjust tax rate in components>invoice.svelte
+        - dynamically adjust shipping rate in components>invoice.svelte
+    - add payment/checkout flow
+---
 ## Sock City
 Sock City is a web application for an online sock store built using the Svelte framework.
 

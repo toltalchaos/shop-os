@@ -1,15 +1,17 @@
 # todo:
 
-- utilize external DB (firestore? AWS? custom API and DB?)
-    - convert the invintory to not use a static json file
+- utilize external DB (firestore?) -> the update readme with setup instructions
+    - convert the invintory to not use a static json file (firebase firestore)
+        - rtdb?
+        - use .env auth stuff for the item calls
     - modularize things to dynamically populate the names, colours, photos
+        - use firestore document for site settings
         - from commented out API call
     - add user account for item management login (probably in the footer?)
+        - allow the user to set the credentials in firebase to login properly? 
         - login window component
-        
-        - store credentials (localstorage for now?)
-
-        - new page for item management
+        - store credentials (localstorage)
+        - new page for item management (use localstorage for creds NOT .env)
             - list of existing items -> edit button
                 - adjust counts on items
                 - adjust text/photos/prices on items
@@ -19,6 +21,10 @@
                 - desc
                 - photo
                 - quantity
+        - new page for store management -> update firestore document
+            - update descriptions
+            - update titles
+            - update colours
 
     - utilize external DB for item management? - photos, invintory, ect...
         - user account
@@ -33,6 +39,12 @@
         - dynamically adjust shipping rate in components>invoice.svelte
     - add payment/checkout flow
 ---
+# setup
+
+- create firebase acct
+- create users, 1 for the site to use and 1 for the site manager to use
+
+--- 
 ## Sock City
 Sock City is a web application for an online sock store built using the Svelte framework.
 

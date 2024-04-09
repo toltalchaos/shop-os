@@ -63,7 +63,7 @@
     h2 {
       font-size: 24px;
       margin-bottom: 20px;
-      border-bottom: 2px solid #fff;
+      border-bottom: 2px solid;
       padding-bottom: 10px;
     }
     

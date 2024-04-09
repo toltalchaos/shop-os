@@ -3,7 +3,8 @@
   
     import { onMount } from 'svelte';
     import cartItems from '../global/cartItems';
-  
+    import { getContext } from 'svelte';
+    const siteData = getContext('siteData');
     export let product;
   
     // Remove the product from the cart on button click
@@ -13,6 +14,7 @@
   </script>
   
   <div class="checkout-item">
+    <hr>
     <div class="checkout-item-image">
       <img src={product.image} alt={product.name} />
     </div>
@@ -20,7 +22,7 @@
       <h2>{product.name}</h2>
       <p>${product.price}</p>
     </div>
-    <div class="checkout-item-remove">
+    <div class="checkout-item-remove" >
       <button on:click={removeFromCart}>Remove</button>
     </div>
   </div>
@@ -29,7 +31,7 @@
     .checkout-item {
       display: flex;
       align-items: center;
-      margin-bottom: 1rem;
+      margin: 1rem;
     }
   
     .checkout-item-image {
@@ -51,23 +53,16 @@
       margin-bottom: 0.5rem;
     }
   
-    .checkout-item-details p {
-      font-size: 1.2rem;
-      color: #999;
-      margin-bottom: 0.5rem;
-    }
-  
     .checkout-item-remove {
       width: 5rem;
     }
   
     .checkout-item-remove button {
-      width: 100%;
       font-size: 1rem;
       padding: 0.5rem;
       background-color: #fff;
       color: #333;
-      border: 1px solid #333;
+      border: 1px solid; 
       border-radius: 0.5rem;
       cursor: pointer;
       transition: background-color 0.2s ease-in-out;

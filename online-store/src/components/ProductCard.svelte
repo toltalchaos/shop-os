@@ -3,7 +3,8 @@
 
   import { onMount } from 'svelte';
   import cartItems from '../global/cartItems';
-
+  import { getContext } from 'svelte';
+  const siteData = getContext('siteData');
   export let product;
 
   // Add the product to the cart on button click
@@ -15,10 +16,10 @@
   }
 </script>
 
-<div class="product-card">
+<div class="product-card" style= "background-color: {$siteData.tirciaryColor}; ">
   <img src={product.image} alt={product.name} />
   <h2>{product.name}</h2>
-  <p>${product.price}</p>
+  <p style="color: {$siteData.textColor};" >${product.price}</p>
   <button 
     class:disabled={$cartItems.some(item => item.id === product.id)}
     on:click={addToCart}>

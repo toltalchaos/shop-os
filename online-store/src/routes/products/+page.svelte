@@ -3,7 +3,8 @@
 
   import ProductCard from '../../components/ProductCard.svelte';
   import allSocks from '../../global/allItems';
-
+  import { getContext } from 'svelte';
+  const siteData = getContext('siteData');
   let products = [];
 
   allSocks.subscribe(value => {

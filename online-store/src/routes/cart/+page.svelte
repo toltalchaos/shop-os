@@ -3,7 +3,9 @@
   import { navigate } from "svelte-routing";
   import Checkoutitem from "../../components/checkoutitem.svelte";
   import cartItems from "../../global/cartItems";
-
+  import { getContext } from 'svelte';
+  const siteData = getContext('siteData');
+  
   let items = [];
 
   // Subscribe to the cartItems store and update the `items` variable

@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
 
-  // Initialize an empty array to store cart items
+  // Initialize an empty array to store shop items
   const StoreItems = writable([]);
 
   // Export the complete store for other components to subscribe to and update

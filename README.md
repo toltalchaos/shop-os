@@ -1,5 +1,9 @@
 # todo:
-
+- sort out order management/tracking
+    - sub-directory in managment screens
+    - order statuses
+    - order number lookup for end-user
+    
 - utilize external DB (firestore?) -> the update readme with setup instructions
     - convert the invintory to not use a static json file (firebase firestore)
         - rtdb?

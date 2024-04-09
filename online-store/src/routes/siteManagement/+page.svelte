@@ -126,6 +126,7 @@
 		</div>
 		<button type="submit">Add Product</button>
 	</form>
+    <hr>
 	<!-- search bar -->
 	<input type="text" placeholder="Search products" on:input={handleSearch} />
 	<div class="product-list">
@@ -144,15 +145,21 @@
 	}
 	.site-form {
 		margin-bottom: 2rem;
+        padding: 2rem;
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
+        border: 2px solid black;
+        border-radius: 0.5rem;
 	}
 	.new-product-form {
 		margin-bottom: 2rem;
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
+        padding: 2rem;
+        border: 2px solid black;
+        border-radius: 0.5rem;
 	}
 	.product-list {
 		display: flex;

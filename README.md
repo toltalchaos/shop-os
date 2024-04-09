@@ -1,17 +1,29 @@
 # todo:
 
-- add footer for Copywright and contact information (shopOs specific)
-    - create email stuff for shopOS
-
 - utilize external DB (firestore? AWS? custom API and DB?)
     - convert the invintory to not use a static json file
     - modularize things to dynamically populate the names, colours, photos
         - from commented out API call
+    - add user account for item management login (probably in the footer?)
+        - login window component
+        
+        - store credentials (localstorage for now?)
+
+        - new page for item management
+            - list of existing items -> edit button
+                - adjust counts on items
+                - adjust text/photos/prices on items
+            - +new item button+ (accordion?)
+                - price
+                - featured
+                - desc
+                - photo
+                - quantity
+
     - utilize external DB for item management? - photos, invintory, ect...
         - user account
         - photos
         - invintory management
-    - add user account for item management login (probably in the footer)
 
 - cart/checkout
     - add count capabilities for the items available and in the cart

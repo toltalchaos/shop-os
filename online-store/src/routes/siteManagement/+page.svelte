@@ -11,14 +11,14 @@
         });
 
 
-    let title = siteData.title;
-    let description = siteData.description;
-    let primaryColor = siteData.primaryColor;
-    let secondaryColor = siteData.secondaryColor;
-    let tirciaryColor = siteData.tirciaryColor;
-    let backgroundColor = siteData.backgroundColor;
-    let contactInfo = siteData.contactInfo;
-    let textColor = siteData.textColor;
+    let title = $siteData.title;
+    let description = $siteData.description;
+    let primaryColor = $siteData.primaryColor;
+    let secondaryColor = $siteData.secondaryColor;
+    let tirciaryColor = $siteData.tirciaryColor;
+    let backgroundColor = $siteData.backgroundColor;
+    let contactInfo = $siteData.contactInfo;
+    let textColor = $siteData.textColor;
     
     function handleSiteManagmentSubmit() {
         // Handle form submission here

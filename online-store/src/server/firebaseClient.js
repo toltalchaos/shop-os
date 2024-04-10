@@ -32,6 +32,14 @@ async function get_all_products(){
     // get order status
 async function get_order_status(){
     console.log('getting order status')
+    return {
+        "order_id": 1,
+        "status": "shipped",
+        "tracking_number": "1234567890",
+        "shipping_carrier": "USPS",
+        "shipping_date": "2021-01-01",
+        "link": "https://www.usps.com/1234567890"
+    }
 }
 
     // update site data

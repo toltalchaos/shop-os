@@ -1,5 +1,6 @@
 <script>
 // @ts-nocheck
+	import OrderStatus from '../../components/orderStatus.svelte';
 import { get_order_status } from '../../server/firebaseClient';
     let orderData = null;
     let orderNumber = '';
@@ -22,10 +23,7 @@ import { get_order_status } from '../../server/firebaseClient';
     </form>
 
     {#if orderData}
-        <div>
-            <h2>Order Status:</h2>
-            <p>{orderData}</p>
-        </div>
+        <OrderStatus order={orderData}/>
     {/if}
 </main>
 

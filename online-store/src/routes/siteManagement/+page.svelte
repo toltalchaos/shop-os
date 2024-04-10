@@ -63,6 +63,7 @@
 
 <main>
 	<h1>Site Management</h1>
+	<a href="/siteManagement/manageorders">Manage Orders</a>
 	<!-- form to manage basic site settings -->
 	<form on:submit|preventDefault={handleSiteManagmentSubmit} class="site-form">
 		<label for="title">Title:</label>

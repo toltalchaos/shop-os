@@ -7,8 +7,6 @@ v0.0.0-beta-1 and very much WIP
 # TODO:
 
 - product enhancements
-    - item categories field 
-        - nested product cards within category
         - category tags on edit forms (read all existing tags to highlight and select and additional new-tag field)
     -category image => carousel component of inner-product images
 

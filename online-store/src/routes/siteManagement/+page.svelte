@@ -1,8 +1,10 @@
 <script>
 	// @ts-nocheck
 	import ProductCard from '../../components/ProductCard.svelte';
+	import CategoryEditDdl from '../../components/categoryEditDDL.svelte';
 	import allSocks from '../../global/allItems';
 	import { getContext } from 'svelte';
+	import { writable } from 'svelte/store';
 	const siteData = getContext('siteData');
 	let products = [];
 
@@ -60,10 +62,14 @@
 	let productPrice = '';
 	let productImage = '';
 	let featured = false;
+	let productCategory = writable([]);
+	
 
 	function handleProductSubmit() {
 		// Handle form submission here
 		// You can access the updated values using the variables above
+		console.log('Adding new product...');
+		console.log(productCategory, $productCategory);
 	}
 </script>
 
@@ -123,6 +129,10 @@
 		<div>
 			<label for="featured">Featured:</label>
 			<input type="checkbox" id="featured" bind:checked={featured} />
+		</div>
+		<div>
+			<label for="productCategory">Product Category:</label>
+			<CategoryEditDdl bind:categoryArray={productCategory} />
 		</div>
 		<button type="submit">Add Product</button>
 	</form>

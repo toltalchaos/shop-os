@@ -1,35 +1,18 @@
-# todo:
-- sort out order management/tracking
-    - sub-directory in managment screens
-    - order statuses
-    - order number lookup for end-user
+# TODO:
 
-- utilize external DB (firestore?) -> the update readme with setup instructions
-    - convert the invintory to not use a static json file (firebase firestore)
-        - rtdb?
-        - use .env auth stuff for the item calls
-    - modularize things to dynamically populate the names, colours, photos
-        - use firestore document for site settings
-        - from commented out API call - https://firebase.google.com/docs/firestore/quickstart#node.js_2
-    - add user account for item management login - https://firebase.google.com/docs/auth/web/password-auth
-        - store credentials (localstorage)
-        - new page for item management (use localstorage for creds NOT .env)
-            - list of existing items -> edit button
-                - adjust counts on items
-                - adjust text/photos/prices on items
-            - +new item button+ (accordion?)
-                - price
-                - featured
-                - desc
-                - photo
-                - quantity
-        - new page for store management -> update firestore document
-            - add firestore functionality
+- item categories field 
+    - nested product cards
 
-    - utilize external DB for item management? - photos, invintory, ect...
-        - user account
-        - photos
-        - invintory management
+- init firestore client + .env settings
+
+- use firestore for required data in the application
+    - user account management
+    - product data
+    - website data
+    - order data/status
+
+- add user account for management pages login
+    - store credentials -> or atleast the authenticated boolean
 
 - cart/checkout
     - add count capabilities for the items available and in the cart
@@ -38,11 +21,20 @@
         - dynamically adjust tax rate in components>invoice.svelte
         - dynamically adjust shipping rate in components>invoice.svelte
     - add payment/checkout flow
+        - different payment types
+        - e-transfer option 
+    - order status flow
+    - sort out order management/tracking
+        - sub-directory in managment screens
+        - order statuses
+        - order number lookup for end-user
 
 - ADD OAUTH firebase allows features for this on the backend. will need front end implementation
 
 - data/sales anylitics in the management directories
     - use firebase queries to run analytics and pump the data into visuialization tools/components
+
+
 ---
 # setup
 

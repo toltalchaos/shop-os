@@ -6,6 +6,13 @@ v0.0.0-beta-1 and very much WIP
 ---
 
 # TODO:
+- add count capabilities for the items available and in the cart
+
+- +order status flow
+- sort out order management/tracking
+    - sub-directory in managment screens
+    - order statuses
+    - order number lookup for end-user
 
 - init firestore client + .env settings
 
@@ -20,7 +27,6 @@ v0.0.0-beta-1 and very much WIP
     - store credentials -> or atleast the authenticated boolean
 
 - cart/checkout
-    - add count capabilities for the items available and in the cart
     - shipping
         - add logic for no shipping (pickup option)
         - dynamically adjust tax rate in components>invoice.svelte
@@ -28,11 +34,7 @@ v0.0.0-beta-1 and very much WIP
     - add payment/checkout flow
         - different payment types
         - e-transfer option 
-    - order status flow
-    - sort out order management/tracking
-        - sub-directory in managment screens
-        - order statuses
-        - order number lookup for end-user
+
 
 - ADD OAUTH firebase allows features for this on the backend. will need front end implementation
 

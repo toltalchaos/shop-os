@@ -1,6 +1,6 @@
 <script>
-
     import { authenticate_user } from '../../server/firebaseClient';
+	import { goto } from '$app/navigation';
     let username = '';
     let password = '';
 
@@ -27,7 +27,7 @@
         const isValid = await validateLogin();
         if (isValid) {
             //redirect to siteManagement page if login is valid
-            window.location.href = '/siteManagement';
+            goto('/siteManagement');
         }
         else {
             // show an alert if login is invalid

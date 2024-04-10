@@ -30,6 +30,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"svelte-routing": "^1.6.0"
+		"svelte-routing": "^1.11.0"
 	}
 }

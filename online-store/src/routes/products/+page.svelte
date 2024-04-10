@@ -4,6 +4,7 @@
   import ProductCard from '../../components/ProductCard.svelte';
 	import CategoryCard from '../../components/categoryCard.svelte';
   import allSocks from '../../global/allItems';
+  import { writable } from 'svelte/store';
   import { getContext } from 'svelte';
   const siteData = getContext('siteData');
   let products = [];
@@ -15,9 +16,10 @@
   let displayedProducts = products;
   
   function handleSearch(event) {
-    searchValue = event.target.value.toLowerCase();
-    displayedProducts = filterProducts(products);
-  }
+      searchValue = event.target.value.toLowerCase();
+      displayedProducts=filterProducts(products);
+    }
+  
 
   function filterProducts(products) {
     return products.filter(product => {
@@ -30,7 +32,7 @@
 <div class="container">
   <!-- search bar -->
   <input type="text" placeholder="Search products" on:input={handleSearch} />
-  <CategoryCard products={displayedProducts}/>
+  <CategoryCard bind:products={displayedProducts}/>
   <hr>
   <h3>All Products</h3>
   <div class="product-list">

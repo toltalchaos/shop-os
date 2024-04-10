@@ -6,7 +6,7 @@
 	export let products;
 
 	let categoryFilter = '';
-	let displayedProducts = products;
+    let displayedProducts = products;
 
 	function checkArrayItems(accArray, categoryArray) {
 		//if the accumulator array is empty, return the category array
@@ -68,12 +68,15 @@
 				<h2>{category}</h2>
 			</button>
 		{/each}
+      
 	</div>
+    {#if categoryFilter}
 	<div class="product-list">
 		{#each displayedProducts as product}
 			<ProductCard {product} />
 		{/each}
 	</div>
+    {/if}
 </div>
 
 <style>
@@ -81,14 +84,14 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
+        width: 100%;
+        height: 100%;
     }
     .category-buttons button{
         width: 100%;
     }
 	.container {
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 1rem;
+        margin-top: 1rem;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;

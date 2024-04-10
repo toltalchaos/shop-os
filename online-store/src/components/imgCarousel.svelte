@@ -33,7 +33,7 @@
 <div>
     <!-- would like to add functionality to click through the images -->
     {#if images.length > 1}
-        <img src={images[currentIndex]} alt="rotating Carousel product images" class="carousel-image"/>
+        <img src={images[currentIndex]} alt="rotating Carousel product images" class="carousel-image" style="animation-duration: {interval}ms;"/>
         {:else}
         <img src={images[currentIndex]} alt="rotating Carousel product images"/>
     {/if}
@@ -48,11 +48,11 @@
             95% {
             opacity: 1;
             }
-            99% {
-            opacity: 0.5;
+            98% {
+            opacity: 0.8;
             }
             100% {
-            opacity: 1;
+            opacity: 0;
             }
         }
 
@@ -60,8 +60,7 @@
         width: 100%;
         height: 100%;
         object-fit: contain;
-        animation: fadeOut 5s ease-out infinite;
-     
+        animation: fadeOut 5s ease-in-out infinite;
     }
     div {
         width: 100%;

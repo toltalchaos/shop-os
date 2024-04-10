@@ -31,10 +31,10 @@
 
 <div class="container">
   <!-- search bar -->
-  <input type="text" placeholder="Search products" on:input={handleSearch} />
   <CategoryCard bind:products={displayedProducts}/>
   <hr>
   <h3>All Products</h3>
+  <input type="text" placeholder="Search all products" on:input={handleSearch} />
   <div class="product-list">
     {#each displayedProducts as product} 
     <ProductCard product={product} />

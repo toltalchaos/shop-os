@@ -6,18 +6,13 @@ v0.0.0-beta-1 and very much WIP
 ---
 
 # TODO:
-- +order status flow
-- sort out order management/tracking
-    - sub-directory in managment screens
-    - order statuses
-    - order number lookup for end-user
 
 - init firestore client + .env settings
 
 - use firestore for required data in the application
     - user account management
     - product data
-        - IMAGE storage
+        - IMAGE storage !!! this is a big one !!!
     - website data
     - order data/status
 
@@ -29,6 +24,9 @@ v0.0.0-beta-1 and very much WIP
     - add payment/checkout flow
         - different payment types
         - e-transfer option 
+    - order number issuing
+
+- refine order tracking
 
 
 - ADD OAUTH firebase allows features for this on the backend. will need front end implementation

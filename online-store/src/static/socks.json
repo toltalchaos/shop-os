@@ -1,280 +1,338 @@
 {
-    "socks": [
-      {
-        "id": 1,
-        "name": "Striped Socks",
-        "price": 10.99,
-        "image": "https://picsum.photos/id/1025/300/200",
-        "featured": false
-      },
-      {
-        "id": 2,
-        "name": "Polka Dot Socks",
-        "price": 12.99,
-        "image": "https://picsum.photos/id/1060/300/200",
-        "featured": false
-      },
-      {
-        "id": 3,
-        "name": "Solid Color Socks",
-        "price": 8.99,
-        "image": "https://picsum.photos/id/1040/300/200",
-        "featured": false
-      },
-      {
-        "id": 4,
-        "name": "Argyle Socks",
-        "price": 14.99,
-        "image": "https://picsum.photos/id/1050/300/200",
-        "featured": false
-      },
-      {
-        "id": 5,
-        "name": "Animal Print Socks",
-        "price": 9.99,
-        "image": "https://picsum.photos/id/1015/300/200",
-        "featured": false
-      },
-      {
-        "id": 6,
-        "name": "Striped Knee-High Socks",
-        "price": 11.99,
-        "image": "https://picsum.photos/id/1065/300/200",
-        "featured": false
-      },
-      {
-        "id": 7,
-        "name": "Solid Color Knee-High Socks",
-        "price": 7.99,
-        "image": "https://picsum.photos/id/1070/300/200",
-        "featured": false
-      },
-      {
-        "id": 8,
-        "name": "Football Socks",
-        "price": 16.99,
-        "image": "https://picsum.photos/id/1080/300/200",
-        "featured": true
-      },
-      {
-        "id": 9,
-        "name": "Crew Socks",
-        "price": 12.99,
-        "image": "https://picsum.photos/id/1010/300/200",
-        "featured": false
-      },
-      {
-        "id": 10,
-        "name": "Wool Socks",
-        "price": 17.99,
-        "image": "https://picsum.photos/id/1012/300/200",
-        "featured": false
-      },
-      {
-        "id": 11,
-        "name": "Hiking Socks",
-        "price": 19.99,
-        "image": "https://picsum.photos/id/1011/300/200",
-        "featured": false
-      },
-      {
-        "id": 12,
-        "name": "Compression Socks",
-        "price": 24.99,
-        "image": "https://picsum.photos/id/1030/300/200",
-        "featured": false
-      },
-      {
-        "id": 13,
-        "name": "Toe Socks",
-        "price": 8.99,
-        "image": "https://picsum.photos/id/1035/300/200",
-        "featured": false
-      },
-          {
-            "id": 14,
-            "name": "Funky Patterned Socks",
-            "price": 9.99,
-            "image": "https://picsum.photos/id/1076/300/200",
-            "featured": false
-          },
-          {
-            "id": 15,
-            "name": "Striped Socks",
-            "price": 8.99,
-            "image": "https://picsum.photos/id/1080/300/200",
-            "featured": true
-          },
-          {
-            "id": 16,
-            "name": "Argyle Socks",
-            "price": 10.99,
-            "image": "https://picsum.photos/id/1084/300/200",
-            "featured": false
-          },
-          {
-            "id": 17,
-            "name": "Polka Dot Socks",
-            "price": 12.99,
-            "image": "https://picsum.photos/id/1090/300/200",
-            "featured": false
-          },
-          {
-            "id": 18,
-            "name": "Solid Color Socks",
-            "price": 7.99,
-            "image": "https://picsum.photos/id/1100/300/200",
-            "featured": false
-          },
-          {
-            "id": 19,
-            "name": "Funky Striped Socks",
-            "price": 8.99,
-            "image": "https://picsum.photos/id/1110/300/200",
-            "featured": false
-          },
-          {
-            "id": 20,
-            "name": "Sports Socks",
-            "price": 14.99,
-            "image": "https://picsum.photos/id/1120/300/200",
-            "featured": true
-          },
-          {
-            "id": 21,
-            "name": "Fun Print Socks",
-            "price": 9.99,
-            "image": "https://picsum.photos/id/1130/300/200",
-            "featured": false
-          },
-          {
-            "id": 22,
-            "name": "Thick Wool Socks",
-            "price": 11.99,
-            "image": "https://picsum.photos/id/1140/300/200",
-            "featured": false
-          },
-          {
-            "id": 23,
-            "name": "Hiking Socks",
-            "price": 15.99,
-            "image": "https://picsum.photos/id/1150/300/200",
-            "featured": true
-          },
-          {
-            "id": 24,
-            "name": "Fashionable Socks",
-            "price": 10.99,
-            "image": "https://picsum.photos/id/1160/300/200",
-            "featured": false
-          },
-          {
-            "id": 25,
-            "name": "Bright Colored Socks",
-            "price": 9.99,
-            "image": "https://picsum.photos/id/1170/300/200",
-            "featured": false
-          },
-          {
-            "id": 26,
-            "name": "Classic Striped Socks",
-            "price": 8.99,
-            "image": "https://picsum.photos/id/1180/300/200",
-            "featured": false
-          },
-              {
-                "id": 27,
-                "name": "Floral Socks",
-                "price": 8.99,
-                "image": "https://picsum.photos/id/1079/300/200",
-                "featured": false
-              },
-              {
-                "id": 28,
-                "name": "Animal Print Socks",
-                "price": 10.99,
-                "image": "https://picsum.photos/id/1015/300/200",
-                "featured": false
-              },
-              {
-                "id": 29,
-                "name": "Neon Striped Socks",
-                "price": 9.99,
-                "image": "https://picsum.photos/id/1065/300/200",
-                "featured": false
-              },
-              {
-                "id": 30,
-                "name": "Hiking Socks",
-                "price": 12.99,
-                "image": "https://picsum.photos/id/1074/300/200",
-                "featured": false
-              },
-              {
-                "id": 31,
-                "name": "Low Cut Socks",
-                "price": 7.99,
-                "image": "https://picsum.photos/id/1038/300/200",
-                "featured": false
-              },
-              {
-                "id": 32,
-                "name": "Crew Socks",
-                "price": 9.99,
-                "image": "https://picsum.photos/id/1069/300/200",
-                "featured": false
-              },
-              {
-                "id": 33,
-                "name": "Quarter Socks",
-                "price": 8.99,
-                "image": "https://picsum.photos/id/1045/300/200",
-                "featured": false
-              },
-              {
-                "id": 34,
-                "name": "Penguin Socks",
-                "price": 11.99,
-                "image": "https://picsum.photos/id/1046/300/200",
-                "featured": false
-              },
-              {
-                "id": 35,
-                "name": "Music Note Socks",
-                "price": 9.99,
-                "image": "https://picsum.photos/id/1082/300/200",
-                "featured": false
-              },
-              {
-                "id": 36,
-                "name": "Pizza Socks",
-                "price": 13.99,
-                "image": "https://picsum.photos/id/1061/300/200",
-                "featured": false
-              },
-              {
-                "id": 37,
-                "name": "Tie-Dye Socks",
-                "price": 8.99,
-                "image": "https://picsum.photos/id/1014/300/200",
-                "featured": false
-              },
-              {
-                "id": 38,
-                "name": "Striped Socks",
-                "price": 10.99,
-                "image": "https://picsum.photos/id/1031/300/200",
-                "featured": false
-              },
-              {
-                "id": 39,
-                "name": "Polka Dot Socks",
-                "price": 12.99,
-                "image": "https://picsum.photos/id/1021/300/200",
-                "featured": false
-              }
-        ]
-    }
-          
-      
-  
+	"socks": [
+		{
+			"id": 1,
+			"name": "Striped Socks",
+			"price": 10.99,
+			"image": ["https://picsum.photos/id/1025/300/200","https://picsum.photos/id/1060/300/200"],
+			"featured": false,
+			"category": ["tall-socks"],
+			"description": "These striped socks are a stylish choice for any occasion."
+		},
+		{
+			"id": 2,
+			"name": "Polka Dot Socks",
+			"price": 12.99,
+			"image": "https://picsum.photos/id/1060/300/200",
+			"featured": false,
+			"category": ["tall-socks"],
+			"description": "Add a touch of fun to your outfit with these polka dot socks."
+		},
+		{
+			"id": 3,
+			"name": "Solid Color Socks",
+			"price": 8.99,
+			"image": "https://picsum.photos/id/1040/300/200",
+			"featured": false,
+			"category": ["tall-socks"],
+			"description": "These solid color socks are a versatile choice for everyday wear."
+		},
+		{
+			"id": 4,
+			"name": "Argyle Socks",
+			"price": 14.99,
+			"image": "https://picsum.photos/id/1050/300/200",
+			"featured": false,
+			"description": "Classic argyle pattern adds a touch of sophistication to these socks."
+		},
+		{
+			"id": 5,
+			"name": "Animal Print Socks",
+			"price": 9.99,
+			"image": "https://picsum.photos/id/1015/300/200",
+			"featured": false,
+			"description": "Make a statement with these trendy animal print socks."
+		},
+		{
+			"id": 6,
+			"name": "Striped Knee-High Socks",
+			"price": 11.99,
+			"image": "https://picsum.photos/id/1065/300/200",
+			"featured": false,
+			"category": ["tall-socks"],
+			"description": "These knee-high socks feature a stylish striped design."
+		},
+		{
+			"id": 7,
+			"name": "Solid Color Knee-High Socks",
+			"price": 7.99,
+			"image": "https://picsum.photos/id/1070/300/200",
+			"featured": false,
+			"category": ["tall-socks"],
+			"description": "Stay warm and stylish with these knee-high socks in solid colors."
+		},
+		{
+			"id": 8,
+			"name": "Football Socks",
+			"price": 16.99,
+			"image": "https://picsum.photos/id/1080/300/200",
+			"featured": true,
+			"category": ["tall-socks", "sports"],
+			"description": "Designed for athletes, these football socks provide comfort and support."
+		},
+		{
+			"id": 9,
+			"name": "Crew Socks",
+			"price": 12.99,
+			"image": "https://picsum.photos/id/1010/300/200",
+			"featured": false,
+			"category": ["work-socks"],
+			"description": "These crew socks are perfect for everyday wear and provide all-day comfort."
+		},
+		{
+			"id": 10,
+			"name": "Wool Socks",
+			"price": 17.99,
+			"image": "https://picsum.photos/id/1012/300/200",
+			"featured": false,
+			"category": ["work-socks"],
+			"description": "Keep your feet warm and cozy with these wool socks."
+		},
+		{
+			"id": 11,
+			"name": "Hiking Socks",
+			"price": 19.99,
+			"image": "https://picsum.photos/id/1011/300/200",
+			"featured": false,
+			"category": ["work-socks", "sports"],
+			"description": "Designed for outdoor enthusiasts, these hiking socks provide cushioning and support."
+		},
+		{
+			"id": 12,
+			"name": "Compression Socks",
+			"price": 24.99,
+			"image": "https://picsum.photos/id/1030/300/200",
+			"featured": false,
+			"category": ["work-socks", "sports", "medical", "tall-socks"],
+			"description": "These compression socks improve blood circulation and reduce leg fatigue."
+		},
+		{
+			"id": 13,
+			"name": "Toe Socks",
+			"price": 8.99,
+			"image": "https://picsum.photos/id/1035/300/200",
+			"featured": false,
+			"category": ["goofy socks"],
+			"description": "Experience the unique comfort of toe socks with these fun designs."
+		},
+		{
+			"id": 14,
+			"name": "Funky Patterned Socks",
+			"price": 9.99,
+			"image": "https://picsum.photos/id/1076/300/200",
+			"featured": false,
+			"category": ["goofy socks"],
+			"description": "Make a fashion statement with these funky patterned socks."
+		},
+		{
+			"id": 15,
+			"name": "Striped Socks",
+			"price": 8.99,
+			"image": "https://picsum.photos/id/1080/300/200",
+			"featured": true,
+			"category": ["goofy socks"],
+			"description": "These striped socks are a fun and colorful addition to your sock collection."
+		},
+		{
+			"id": 16,
+			"name": "Argyle Socks",
+			"price": 10.99,
+			"image": "https://picsum.photos/id/1084/300/200",
+			"featured": false,
+			"category": ["goofy socks"],
+			"description": "Add a touch of sophistication to your outfit with these argyle socks."
+		},
+		{
+			"id": 17,
+			"name": "Polka Dot Socks",
+			"price": 12.99,
+			"image": "https://picsum.photos/id/1090/300/200",
+			"featured": false,
+			"category": ["goofy socks"],
+			"description": "These polka dot socks are a playful choice for any occasion."
+		},
+		{
+			"id": 18,
+			"name": "Solid Color Socks",
+			"price": 7.99,
+			"image": "https://picsum.photos/id/1100/300/200",
+			"featured": false,
+			"category": ["work-socks","medical"],
+			"description": "These solid color socks are a practical choice for everyday wear."
+		},
+		{
+			"id": 19,
+			"name": "Funky Striped Socks",
+			"price": 8.99,
+			"image": "https://picsum.photos/id/1110/300/200",
+			"featured": false,
+			"category": ["goofy socks", "tall-socks"],
+			"description": "Make a statement with these funky striped socks."
+		},
+		{
+			"id": 20,
+			"name": "Sports Socks",
+			"price": 14.99,
+			"image": "https://picsum.photos/id/1120/300/200",
+			"featured": true,
+			"category": ["sports"],
+			"description": "Designed for athletes, these sports socks provide comfort and support during physical activities."
+		},
+		{
+			"id": 21,
+			"name": "Fun Print Socks",
+			"price": 9.99,
+			"image": "https://picsum.photos/id/1130/300/200",
+			"featured": false,
+			"category": ["goofy socks"],
+			"description": "Express your personality with these fun print socks."
+		},
+		{
+			"id": 22,
+			"name": "Thick Wool Socks",
+			"price": 11.99,
+			"image": "https://picsum.photos/id/1140/300/200",
+			"featured": false,
+			"category": ["work-socks"],
+			"description": "Keep your feet warm and cozy with these thick wool socks."
+		},
+		{
+			"id": 23,
+			"name": "Hiking Socks",
+			"price": 15.99,
+			"image": "https://picsum.photos/id/1150/300/200",
+			"featured": true,
+			"category": ["work-socks", "sports"],
+			"description": "These hiking socks are designed for outdoor adventures, providing cushioning and support."
+		},
+		{
+			"id": 24,
+			"name": "Fashionable Socks",
+			"price": 10.99,
+			"image": "https://picsum.photos/id/1160/300/200",
+			"featured": false,
+			"category": ["goofy socks"],
+			"description": "Stay stylish with these fashionable socks."
+		},
+		{
+			"id": 25,
+			"name": "Bright Colored Socks",
+			"price": 9.99,
+			"image": "https://picsum.photos/id/1170/300/200",
+			"featured": false,
+			"description": "Add a pop of color to your outfit with these bright colored socks."
+		},
+		{
+			"id": 26,
+			"name": "Classic Striped Socks",
+			"price": 8.99,
+			"image": "https://picsum.photos/id/1180/300/200",
+			"featured": false,
+			"description": "These classic striped socks are a timeless choice for any occasion."
+		},
+		{
+			"id": 27,
+			"name": "Floral Socks",
+			"price": 8.99,
+			"image": "https://picsum.photos/id/1079/300/200",
+			"featured": false,
+			"description": "Add a touch of femininity to your outfit with these floral socks."
+		},
+		{
+			"id": 28,
+			"name": "Animal Print Socks",
+			"price": 10.99,
+			"image": "https://picsum.photos/id/1015/300/200",
+			"featured": false,
+			"description": "Make a statement with these trendy animal print socks."
+		},
+		{
+			"id": 29,
+			"name": "Neon Striped Socks",
+			"price": 9.99,
+			"image": "https://picsum.photos/id/1065/300/200",
+			"featured": false,
+			"description": "Add a pop of color to your outfit with these neon striped socks."
+		},
+		{
+			"id": 30,
+			"name": "Hiking Socks",
+			"price": 12.99,
+			"image": "https://picsum.photos/id/1074/300/200",
+			"featured": false,
+			"description": "These hiking socks provide cushioning and support for outdoor adventures."
+		},
+		{
+			"id": 31,
+			"name": "Low Cut Socks",
+			"price": 7.99,
+			"image": "https://picsum.photos/id/1038/300/200",
+			"featured": false,
+			"description": "These low cut socks are perfect for wearing with sneakers or loafers."
+		},
+		{
+			"id": 32,
+			"name": "Crew Socks",
+			"price": 9.99,
+			"image": "https://picsum.photos/id/1069/300/200",
+			"featured": false,
+			"description": "These crew socks provide all-day comfort and support."
+		},
+		{
+			"id": 33,
+			"name": "Quarter Socks",
+			"price": 8.99,
+			"image": "https://picsum.photos/id/1045/300/200",
+			"featured": false,
+			"description": "These quarter socks are a versatile choice for everyday wear."
+		},
+		{
+			"id": 34,
+			"name": "Penguin Socks",
+			"price": 11.99,
+			"image": "https://picsum.photos/id/1046/300/200",
+			"featured": false,
+			"description": "Add a touch of cuteness to your outfit with these penguin socks."
+		},
+		{
+			"id": 35,
+			"name": "Music Note Socks",
+			"price": 9.99,
+			"image": "https://picsum.photos/id/1082/300/200",
+			"featured": false,
+			"description": "Express your love for music with these music note socks."
+		},
+		{
+			"id": 36,
+			"name": "Pizza Socks",
+			"price": 13.99,
+			"image": "https://picsum.photos/id/1061/300/200",
+			"featured": false,
+			"description": "Show off your love for pizza with these pizza socks."
+		},
+		{
+			"id": 37,
+			"name": "Tie-Dye Socks",
+			"price": 8.99,
+			"image": "https://picsum.photos/id/1014/300/200",
+			"featured": false,
+			"description": "Add a splash of color to your outfit with these tie-dye socks."
+		},
+		{
+			"id": 38,
+			"name": "Striped Socks",
+			"price": 10.99,
+			"image": "https://picsum.photos/id/1031/300/200",
+			"featured": false,
+			"description": "These striped socks are a classic choice for any occasion."
+		},
+		{
+			"id": 39,
+			"name": "Polka Dot Socks",
+			"price": 12.99,
+			"image": "https://picsum.photos/id/1021/300/200",
+			"featured": false,
+			"description": "Add a touch of playfulness to your outfit with these polka dot socks."
+		}
+	]
+}

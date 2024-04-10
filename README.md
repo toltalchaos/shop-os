@@ -8,8 +8,10 @@ v0.0.0-beta-1 and very much WIP
 
 - product enhancements
     - item categories field 
-    - nested product cards
+        - nested product cards within category
+        - category tags on edit forms (read all existing tags to highlight and select and additional new-tag field)
     - multiple images (carousel?)
+    -category image = carousel of inner-product images
 
 - init firestore client + .env settings
 
@@ -22,8 +24,6 @@ v0.0.0-beta-1 and very much WIP
 
 - add user account for management pages login
     - store credentials -> or atleast the authenticated boolean
-
-
 
 - cart/checkout
     - add count capabilities for the items available and in the cart
@@ -45,7 +45,7 @@ v0.0.0-beta-1 and very much WIP
 - data/sales anylitics in the management directories
     - use firebase queries to run analytics and pump the data into visuialization tools/components
 
-
+- properly add contributions page
 ---
 # setup
 

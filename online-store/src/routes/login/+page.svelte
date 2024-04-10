@@ -1,24 +1,31 @@
 <script>
+
+    import { authenticate_user } from '../../server/firebaseClient';
     let username = '';
     let password = '';
 
 
     function validateLogin() {
         // Perform login logic here
-        console.log('Logging in...');
-        return true;
+        let authenticated= authenticate_user({username, password}).then((response) => {
+            if (response) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        });
+        return authenticated;
     }
 
-    function handleLogin() {
+    async function handleLogin() {
         // Perform login logic here
-        console.log('Logging in...');
-        console.log('Username:', username);
-        console.log('Password:', password);
         // authenticate and save data to local storage
         localStorage.setItem('username', username);
         localStorage.setItem('password', password);//this is insecure and needs to be removed in production
-
-        if (validateLogin()) {
+        
+        const isValid = await validateLogin();
+        if (isValid) {
             //redirect to siteManagement page if login is valid
             window.location.href = '/siteManagement';
         }

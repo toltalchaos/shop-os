@@ -1,7 +1,8 @@
 <script>
 	// @ts-nocheck
 	import ProductCard from '../../components/ProductCard.svelte';
-	import CategoryEditDdl from '../../components/categoryEditDDL.svelte';
+	import { update_site_data } from '../../server/firebaseClient';
+	import ManageProductForm from '../../components/manageProductForm.svelte';
 	import allSocks from '../../global/allItems';
 	import { getContext } from 'svelte';
 	import { writable } from 'svelte/store';
@@ -55,22 +56,9 @@
 				textColor
 			};
 		});
+		update_site_data($siteData)
 	}
 
-	let productName = '';
-	let productDescription = '';
-	let productPrice = '';
-	let productImage = '';
-	let featured = false;
-	let productCategory = writable([]);
-	
-
-	function handleProductSubmit() {
-		// Handle form submission here
-		// You can access the updated values using the variables above
-		console.log('Adding new product...');
-		console.log(productCategory, $productCategory);
-	}
 </script>
 
 <main>
@@ -107,35 +95,7 @@
 	<hr />
 
 	<!-- form to manage products -->
-	<h2>Products</h2>
-	<form on:submit|preventDefault={handleProductSubmit} class="new-product-form">
-		<div>
-			<label for="productName">Product Name:</label>
-			<input type="text" id="productName" bind:value={productName} />
-		</div>
-
-		<div>
-			<label for="productPrice">Product Price:</label>
-			<input type="number" id="productPrice" bind:value={productPrice} />
-		</div>
-		<div>
-			<label for="productImage">Product Image:</label>
-			<input type="file" id="productImage" bind:value={productImage} />
-		</div>
-		<div>
-			<label for="productDescription">Product Description:</label>
-			<textarea id="productDescription" bind:value={productDescription} />
-		</div>
-		<div>
-			<label for="featured">Featured:</label>
-			<input type="checkbox" id="featured" bind:checked={featured} />
-		</div>
-		<div>
-			<label for="productCategory">Product Category:</label>
-			<CategoryEditDdl bind:categoryArray={productCategory} />
-		</div>
-		<button type="submit">Add Product</button>
-	</form>
+	<ManageProductForm/>
     <hr>
 	<!-- search bar -->
 	<input type="text" placeholder="Search products" on:input={handleSearch} />
@@ -147,7 +107,6 @@
 </main>
 
 <style>
-	/* Add your custom styles here */
 	main {
 		max-width: 800px;
 		margin: 0 auto;
@@ -162,15 +121,7 @@
         border: 2px solid black;
         border-radius: 0.5rem;
 	}
-	.new-product-form {
-		margin-bottom: 2rem;
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-        padding: 2rem;
-        border: 2px solid black;
-        border-radius: 0.5rem;
-	}
+
 	.product-list {
 		display: flex;
 		flex-wrap: wrap;

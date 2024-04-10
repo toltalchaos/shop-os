@@ -5,7 +5,6 @@
 	import { getContext } from 'svelte';
 	const siteData = getContext('siteData');
 	export let categoryArray;
-
 	let products = [];
 	allSocks.subscribe((value) => {
 		products = value;
@@ -79,7 +78,7 @@
         align-items: center;
         gap: 1rem;
     }
-    .checkboxes input, .checkboxes button {
+    .checkboxes input {
         margin: 0.5rem;
         padding: 0.5rem;
     }

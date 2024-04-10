@@ -7,7 +7,8 @@
 			"image": ["https://picsum.photos/id/1025/300/200","https://picsum.photos/id/1060/300/200"],
 			"featured": false,
 			"category": ["tall-socks"],
-			"description": "These striped socks are a stylish choice for any occasion."
+			"description": "These striped socks are a stylish choice for any occasion.",
+			"invintory": 15
 		},
 		{
 			"id": 2,
@@ -16,7 +17,8 @@
 			"image": "https://picsum.photos/id/1060/300/200",
 			"featured": false,
 			"category": ["tall-socks"],
-			"description": "Add a touch of fun to your outfit with these polka dot socks."
+			"description": "Add a touch of fun to your outfit with these polka dot socks.",
+			"invintory": 0
 		},
 		{
 			"id": 3,
@@ -25,7 +27,8 @@
 			"image": "https://picsum.photos/id/1040/300/200",
 			"featured": false,
 			"category": ["tall-socks"],
-			"description": "These solid color socks are a versatile choice for everyday wear."
+			"description": "These solid color socks are a versatile choice for everyday wear.",
+			"invintory": 20
 		},
 		{
 			"id": 4,
@@ -33,7 +36,8 @@
 			"price": 14.99,
 			"image": "https://picsum.photos/id/1050/300/200",
 			"featured": false,
-			"description": "Classic argyle pattern adds a touch of sophistication to these socks."
+			"description": "Classic argyle pattern adds a touch of sophistication to these socks.",
+			"invintory": 10
 		},
 		{
 			"id": 5,
@@ -41,7 +45,8 @@
 			"price": 9.99,
 			"image": "https://picsum.photos/id/1015/300/200",
 			"featured": false,
-			"description": "Make a statement with these trendy animal print socks."
+			"description": "Make a statement with these trendy animal print socks.",
+			"invintory": 25
 		},
 		{
 			"id": 6,
@@ -50,7 +55,8 @@
 			"image": "https://picsum.photos/id/1065/300/200",
 			"featured": false,
 			"category": ["tall-socks"],
-			"description": "These knee-high socks feature a stylish striped design."
+			"description": "These knee-high socks feature a stylish striped design.",
+			"invintory": 8
 		},
 		{
 			"id": 7,
@@ -59,7 +65,8 @@
 			"image": "https://picsum.photos/id/1070/300/200",
 			"featured": false,
 			"category": ["tall-socks"],
-			"description": "Stay warm and stylish with these knee-high socks in solid colors."
+			"description": "Stay warm and stylish with these knee-high socks in solid colors.",
+			"invintory": 12
 		},
 		{
 			"id": 8,
@@ -68,7 +75,8 @@
 			"image": "https://picsum.photos/id/1080/300/200",
 			"featured": true,
 			"category": ["tall-socks", "sports"],
-			"description": "Designed for athletes, these football socks provide comfort and support."
+			"description": "Designed for athletes, these football socks provide comfort and support.",
+			"invintory": 18
 		},
 		{
 			"id": 9,
@@ -77,7 +85,8 @@
 			"image": "https://picsum.photos/id/1010/300/200",
 			"featured": false,
 			"category": ["work-socks"],
-			"description": "These crew socks are perfect for everyday wear and provide all-day comfort."
+			"description": "These crew socks are perfect for everyday wear and provide all-day comfort.",
+			"invintory": 3
 		},
 		{
 			"id": 10,
@@ -86,7 +95,8 @@
 			"image": "https://picsum.photos/id/1012/300/200",
 			"featured": false,
 			"category": ["work-socks"],
-			"description": "Keep your feet warm and cozy with these wool socks."
+			"description": "Keep your feet warm and cozy with these wool socks.",
+			"invintory": 22
 		},
 		{
 			"id": 11,
@@ -95,7 +105,8 @@
 			"image": "https://picsum.photos/id/1011/300/200",
 			"featured": false,
 			"category": ["work-socks", "sports"],
-			"description": "Designed for outdoor enthusiasts, these hiking socks provide cushioning and support."
+			"description": "Designed for outdoor enthusiasts, these hiking socks provide cushioning and support.",
+			"invintory": 7
 		},
 		{
 			"id": 12,
@@ -104,7 +115,8 @@
 			"image": "https://picsum.photos/id/1030/300/200",
 			"featured": false,
 			"category": ["work-socks", "sports", "medical", "tall-socks"],
-			"description": "These compression socks improve blood circulation and reduce leg fatigue."
+			"description": "These compression socks improve blood circulation and reduce leg fatigue.",
+			"invintory": 30
 		},
 		{
 			"id": 13,
@@ -113,7 +125,8 @@
 			"image": "https://picsum.photos/id/1035/300/200",
 			"featured": false,
 			"category": ["goofy socks"],
-			"description": "Experience the unique comfort of toe socks with these fun designs."
+			"description": "Experience the unique comfort of toe socks with these fun designs.",
+			"invintory": 2
 		},
 		{
 			"id": 14,
@@ -122,7 +135,8 @@
 			"image": "https://picsum.photos/id/1076/300/200",
 			"featured": false,
 			"category": ["goofy socks"],
-			"description": "Make a fashion statement with these funky patterned socks."
+			"description": "Make a fashion statement with these funky patterned socks.",
+			"invintory": 16
 		},
 		{
 			"id": 15,
@@ -131,7 +145,8 @@
 			"image": "https://picsum.photos/id/1080/300/200",
 			"featured": true,
 			"category": ["goofy socks"],
-			"description": "These striped socks are a fun and colorful addition to your sock collection."
+			"description": "These striped socks are a fun and colorful addition to your sock collection.",
+			"invintory": 9
 		},
 		{
 			"id": 16,
@@ -140,7 +155,8 @@
 			"image": "https://picsum.photos/id/1084/300/200",
 			"featured": false,
 			"category": ["goofy socks"],
-			"description": "Add a touch of sophistication to your outfit with these argyle socks."
+			"description": "Add a touch of sophistication to your outfit with these argyle socks.",
+			"invintory": 14
 		},
 		{
 			"id": 17,
@@ -149,7 +165,8 @@
 			"image": "https://picsum.photos/id/1090/300/200",
 			"featured": false,
 			"category": ["goofy socks"],
-			"description": "These polka dot socks are a playful choice for any occasion."
+			"description": "These polka dot socks are a playful choice for any occasion.",
+			"invintory": 11
 		},
 		{
 			"id": 18,
@@ -158,7 +175,8 @@
 			"image": "https://picsum.photos/id/1100/300/200",
 			"featured": false,
 			"category": ["work-socks","medical"],
-			"description": "These solid color socks are a practical choice for everyday wear."
+			"description": "These solid color socks are a practical choice for everyday wear.",
+			"invintory": 6
 		},
 		{
 			"id": 19,
@@ -167,7 +185,8 @@
 			"image": "https://picsum.photos/id/1110/300/200",
 			"featured": false,
 			"category": ["goofy socks", "tall-socks"],
-			"description": "Make a statement with these funky striped socks."
+			"description": "Make a statement with these funky striped socks.",
+			"invintory": 23
 		},
 		{
 			"id": 20,
@@ -176,7 +195,8 @@
 			"image": "https://picsum.photos/id/1120/300/200",
 			"featured": true,
 			"category": ["sports"],
-			"description": "Designed for athletes, these sports socks provide comfort and support during physical activities."
+			"description": "Designed for athletes, these sports socks provide comfort and support during physical activities.",
+			"invintory": 17
 		},
 		{
 			"id": 21,
@@ -185,7 +205,8 @@
 			"image": "https://picsum.photos/id/1130/300/200",
 			"featured": false,
 			"category": ["goofy socks"],
-			"description": "Express your personality with these fun print socks."
+			"description": "Express your personality with these fun print socks.",
+			"invintory": 13
 		},
 		{
 			"id": 22,
@@ -194,7 +215,8 @@
 			"image": "https://picsum.photos/id/1140/300/200",
 			"featured": false,
 			"category": ["work-socks"],
-			"description": "Keep your feet warm and cozy with these thick wool socks."
+			"description": "Keep your feet warm and cozy with these thick wool socks.",
+			"invintory": 19
 		},
 		{
 			"id": 23,
@@ -203,7 +225,8 @@
 			"image": "https://picsum.photos/id/1150/300/200",
 			"featured": true,
 			"category": ["work-socks", "sports"],
-			"description": "These hiking socks are designed for outdoor adventures, providing cushioning and support."
+			"description": "These hiking socks are designed for outdoor adventures, providing cushioning and support.",
+			"invintory": 4
 		},
 		{
 			"id": 24,
@@ -212,7 +235,8 @@
 			"image": "https://picsum.photos/id/1160/300/200",
 			"featured": false,
 			"category": ["goofy socks"],
-			"description": "Stay stylish with these fashionable socks."
+			"description": "Stay stylish with these fashionable socks.",
+			"invintory": 27
 		},
 		{
 			"id": 25,
@@ -220,7 +244,8 @@
 			"price": 9.99,
 			"image": "https://picsum.photos/id/1170/300/200",
 			"featured": false,
-			"description": "Add a pop of color to your outfit with these bright colored socks."
+			"description": "Add a pop of color to your outfit with these bright colored socks.",
+			"invintory": 21
 		},
 		{
 			"id": 26,
@@ -228,7 +253,8 @@
 			"price": 8.99,
 			"image": "https://picsum.photos/id/1180/300/200",
 			"featured": false,
-			"description": "These classic striped socks are a timeless choice for any occasion."
+			"description": "These classic striped socks are a timeless choice for any occasion.",
+			"invintory": 28
 		},
 		{
 			"id": 27,
@@ -236,7 +262,8 @@
 			"price": 8.99,
 			"image": "https://picsum.photos/id/1079/300/200",
 			"featured": false,
-			"description": "Add a touch of femininity to your outfit with these floral socks."
+			"description": "Add a touch of femininity to your outfit with these floral socks.",
+			"invintory": 24
 		},
 		{
 			"id": 28,
@@ -244,7 +271,8 @@
 			"price": 10.99,
 			"image": "https://picsum.photos/id/1015/300/200",
 			"featured": false,
-			"description": "Make a statement with these trendy animal print socks."
+			"description": "Make a statement with these trendy animal print socks.",
+			"invintory": 1
 		},
 		{
 			"id": 29,
@@ -252,7 +280,8 @@
 			"price": 9.99,
 			"image": "https://picsum.photos/id/1065/300/200",
 			"featured": false,
-			"description": "Add a pop of color to your outfit with these neon striped socks."
+			"description": "Add a pop of color to your outfit with these neon striped socks.",
+			"invintory": 26
 		},
 		{
 			"id": 30,
@@ -260,7 +289,8 @@
 			"price": 12.99,
 			"image": "https://picsum.photos/id/1074/300/200",
 			"featured": false,
-			"description": "These hiking socks provide cushioning and support for outdoor adventures."
+			"description": "These hiking socks provide cushioning and support for outdoor adventures.",
+			"invintory": 29
 		},
 		{
 			"id": 31,
@@ -268,7 +298,8 @@
 			"price": 7.99,
 			"image": "https://picsum.photos/id/1038/300/200",
 			"featured": false,
-			"description": "These low cut socks are perfect for wearing with sneakers or loafers."
+			"description": "These low cut socks are perfect for wearing with sneakers or loafers.",
+			"invintory": 9
 		},
 		{
 			"id": 32,
@@ -276,7 +307,8 @@
 			"price": 9.99,
 			"image": "https://picsum.photos/id/1069/300/200",
 			"featured": false,
-			"description": "These crew socks provide all-day comfort and support."
+			"description": "These crew socks provide all-day comfort and support.",
+			"invintory": 16
 		},
 		{
 			"id": 33,
@@ -284,7 +316,8 @@
 			"price": 8.99,
 			"image": "https://picsum.photos/id/1045/300/200",
 			"featured": false,
-			"description": "These quarter socks are a versatile choice for everyday wear."
+			"description": "These quarter socks are a versatile choice for everyday wear.",
+			"invintory": 7
 		},
 		{
 			"id": 34,
@@ -292,7 +325,8 @@
 			"price": 11.99,
 			"image": "https://picsum.photos/id/1046/300/200",
 			"featured": false,
-			"description": "Add a touch of cuteness to your outfit with these penguin socks."
+			"description": "Add a touch of cuteness to your outfit with these penguin socks.",
+			"invintory": 18
 		},
 		{
 			"id": 35,
@@ -300,7 +334,8 @@
 			"price": 9.99,
 			"image": "https://picsum.photos/id/1082/300/200",
 			"featured": false,
-			"description": "Express your love for music with these music note socks."
+			"description": "Express your love for music with these music note socks.",
+			"invintory": 11
 		},
 		{
 			"id": 36,
@@ -308,31 +343,17 @@
 			"price": 13.99,
 			"image": "https://picsum.photos/id/1061/300/200",
 			"featured": false,
-			"description": "Show off your love for pizza with these pizza socks."
+			"description": "Show off your love for pizza with these pizza socks.",
+			"invintory": 23
 		},
 		{
 			"id": 37,
 			"name": "Tie-Dye Socks",
 			"price": 8.99,
-			"image": "https://picsum.photos/id/1014/300/200",
+			"image": "https://picsum.photos/id/1076/300/200",
 			"featured": false,
-			"description": "Add a splash of color to your outfit with these tie-dye socks."
-		},
-		{
-			"id": 38,
-			"name": "Striped Socks",
-			"price": 10.99,
-			"image": "https://picsum.photos/id/1031/300/200",
-			"featured": false,
-			"description": "These striped socks are a classic choice for any occasion."
-		},
-		{
-			"id": 39,
-			"name": "Polka Dot Socks",
-			"price": 12.99,
-			"image": "https://picsum.photos/id/1021/300/200",
-			"featured": false,
-			"description": "Add a touch of playfulness to your outfit with these polka dot socks."
+			"description": "Make a statement with these tie-dye socks.",
+			"invintory": 14
 		}
 	]
 }

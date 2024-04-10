@@ -6,8 +6,6 @@ v0.0.0-beta-1 and very much WIP
 ---
 
 # TODO:
-- add count capabilities for the items available and in the cart
-
 - +order status flow
 - sort out order management/tracking
     - sub-directory in managment screens

@@ -5,6 +5,7 @@
 	import cartItems from '../global/cartItems';
 	import { getContext } from 'svelte';
 	import ImgCarousel from './imgCarousel.svelte';
+	import ManageProductForm from './manageProductForm.svelte';
 	const siteData = getContext('siteData');
 	export let product;
 	export let editable = false;
@@ -27,8 +28,9 @@
 	<p style="color: {$siteData.textColor};">${product.price}</p>
 	{#if editable}
 		<!-- Form code here -->
-		<p>EDITABLE FORM WILL GO HERE</p>
+		<ManageProductForm {product}/>
 	{:else}
+		{#if product.invintory > 0}
 		<button
 			style="color: {$siteData.textColor}; background-color: {$siteData.tirciaryColor};"
 			class:disabled={$cartItems.some((item) => item.id === product.id)}
@@ -36,6 +38,9 @@
 		>
 			{$cartItems.some((item) => item.id === product.id) ? 'Already in Cart' : 'Add to Cart'}
 		</button>
+		{:else}
+			<p style="color: {$siteData.textColor};">Out of Stock</p>
+		{/if}
 	{/if}
 </div>
 

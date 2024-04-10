@@ -31,6 +31,7 @@
 </script>
 
 <div>
+    <!-- would like to add functionality to click through the images -->
     {#if images.length > 1}
         <img src={images[currentIndex]} alt="rotating Carousel product images" class="carousel-image"/>
         {:else}
@@ -39,15 +40,16 @@
 </div>
 
 <style>
+    /* would be nice to provide sliders for this... but its fine for now */
        @keyframes fadeOut {
             0% {
             opacity: 1;
             }
-            90% {
+            95% {
             opacity: 1;
             }
             99% {
-            opacity: 0.7;
+            opacity: 0.5;
             }
             100% {
             opacity: 1;

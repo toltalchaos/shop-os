@@ -9,6 +9,9 @@
 	export let product;
 	export let editable = false;
 
+  //add functionality to make the selected card larger by seeing if it has "focus"?
+  let selected = false;
+
 	// Add the product to the cart on button click
 	function addToCart() {
 		const isDuplicate = $cartItems.some((item) => item.id === product.id);

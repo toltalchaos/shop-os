@@ -1,6 +1,13 @@
 // @ts-nocheck
 
+/**
+ * Returns an object containing products grouped by their categories.
+ *
+ * @param {Array} products - The array of products.
+ * @returns {Object} - An object with categories as keys and arrays of products as values.
+ */
 export function getExistingCategories(products) {
+
     function checkArrayItems(accArray, categoryArray) {
         //if the accumulator array is empty, return the category array
         if (!accArray) {

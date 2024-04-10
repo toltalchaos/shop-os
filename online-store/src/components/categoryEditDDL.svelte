@@ -40,24 +40,54 @@
 	}
 	function addNewCategory(event) {
 		addCategory(newCategoryInput);
-        productsByCategory[newCategoryInput] = [];
+		productsByCategory[newCategoryInput] = [];
 	}
 </script>
 
-<div>
-	<input type="text" bind:value={newCategoryInput} />
-	<button on:click|preventDefault={addNewCategory}> Add New Category to Item</button>
-	{#each Object.keys(productsByCategory) as category}
-		<input
-			type="checkbox"
-			checked={$categoryArray.includes(category)}
-			value={category}
-			id={category}
-			on:change={updatecategoryArray}
-		/>
-		<label for={category}>{category}</label>
-	{/each}
+<div class="container">
+	<div class="new-category">
+		<input type="text" bind:value={newCategoryInput} />
+		<button on:click|preventDefault={addNewCategory}> Add New Category to Item</button>
+	</div>
+	<div class="checkboxes">
+		{#each Object.keys(productsByCategory) as category}
+			<input
+				type="checkbox"
+				checked={$categoryArray.includes(category)}
+				value={category}
+				id={category}
+				on:change={updatecategoryArray}
+			/>
+			<label for={category}
+            style="background-color: {$siteData.primaryColor}; {$categoryArray.includes(category) ? 'opacity: 0.5' : ''}"
+            >{category}</label>
+		{/each}
+	</div>
 </div>
 
 <style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .checkboxes {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+    .checkboxes input, .checkboxes button {
+        margin: 0.5rem;
+        padding: 0.5rem;
+    }
+    .new-category {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
 </style>

@@ -13,12 +13,4 @@ let storedItems = [];
 
 const cartItems = writable(storedItems);
 
-// Subscribe to the cartItems store and save the current items to localStorage
-cartItems.subscribe(items => {
-  if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
-    localStorage.setItem('cartItems', JSON.stringify(items));
-  }
-});
-
-// Export the store for other components to use
 export default cartItems;

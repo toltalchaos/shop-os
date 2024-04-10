@@ -21,9 +21,6 @@ v0.0.0-beta-1 and very much WIP
     - website data
     - order data/status
 
-- add user account for management pages login
-    - store credentials -> or atleast the authenticated boolean
-
 - cart/checkout
     - shipping
         - add logic for no shipping (pickup option)
@@ -38,8 +35,6 @@ v0.0.0-beta-1 and very much WIP
 
 - data/sales anylitics in the management directories
     - use firebase queries to run analytics and pump the data into visuialization tools/components
-
-- properly add contributions page
 ---
 # setup
 

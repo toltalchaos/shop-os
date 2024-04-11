@@ -7,6 +7,9 @@ v0.0.0-beta-1 and very much WIP
 
 # TODO:
 
+
+- Fully implement cart and product counts
+    -   currently can update the invintory in the management, and it is reflected as out of stock then its at 0 BUT there is no way to add X number of them in the cart 
 - init firestore client + .env settings
 
 - use firestore for required data in the application
@@ -28,11 +31,16 @@ v0.0.0-beta-1 and very much WIP
 
 - refine order tracking
 
+- Db data versioning
+    - right now the static data is ever changing shape so it makes sense to keep changing. BUT it should return a field with the version number and there should be a way to update the shape of the storage when the version changes and expectes different data. 
+        - expected data shape tied to version number. on update the data shape is managed.
 
 - ADD OAUTH firebase allows features for this on the backend. will need front end implementation
 
-- data/sales anylitics in the management directories
+- data/sales anylitics in the management directories (https://www.npmjs.com/package/victory) would be cool
     - use firebase queries to run analytics and pump the data into visuialization tools/components
+
+
 ---
 # setup
 

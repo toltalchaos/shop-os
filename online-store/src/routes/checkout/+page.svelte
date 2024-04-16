@@ -21,13 +21,12 @@
     let cardNumber = '';
     let expDate = '';
     let cvv = '';
-    let total = 0;
-  
-    // Calculate total cost of items in the cart
-    onMount(() => {
-      total = items.reduce((previousValue, item) => previousValue + item.price, 0);
-      
-    });
+    let subtotal = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    let shipping = 10;
+    let taxRate = 0.07;
+    let tax = subtotal * taxRate;
+    let total = subtotal + shipping + tax;
+    let totals = {subtotal, shipping, tax, taxRate, total};
   
   // Handle form submission
   async function handleSubmit(event) {
@@ -79,12 +78,13 @@
       }
     });
   }
+  
 </script>
   
   <div class="checkout-page" style= "background-color: {$siteData.backgroundColor};">
 
     <h2>Checkout</h2>
-    <Invoice {items}></Invoice>
+    <Invoice {items} {totals}></Invoice>
     <form on:submit={handleSubmit}>
       <div class="form-row">
         <label for="customerName">Name:</label>
@@ -116,7 +116,7 @@
       </div>
       <div class="form-row">
         <label for="total">Total:</label>
-        <input type="text" id="total" bind:value={total} disabled />
+        <input type="text" id="total" value={total.toFixed(2)} disabled />
       </div>
       <button type="submit">Pay Now</button>
     </form>

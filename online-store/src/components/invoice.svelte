@@ -3,18 +3,13 @@
   
     export let items = [];
   
-    let subtotal = 0;
-    let shipping = 10;
-    let taxRate = 0.07;
-    let tax = 0;
-    let total = 0;
-  
-    // Calculate subtotal, tax, and total cost of items in the cart
-    $: {
-      subtotal = items.reduce((acc, item) => acc + item.price, 0);
-      tax = subtotal * taxRate;
-      total = subtotal + shipping + tax;
-    }
+    export let totals = {
+      subtotal: 0,
+      shipping: 0,
+      tax: 0,
+      taxRate: 0,
+      total: 0,
+    };
   </script>
   
   <div class="invoice-page">
@@ -22,32 +17,34 @@
     <table>
       <thead>
         <tr>
-          <th>Item</th>
-          <th>Price</th>
+          <th></th>
+          <th>Quantity</th>
+          <th>Totals</th>
         </tr>
       </thead>
       <tbody>
         {#each items as item}
         <tr>
           <td>{item.name}</td>
-          <td>${item.price.toFixed(2)}</td>
+          <td>{item.quantity}</td>
+          <td>{item.price.toFixed(2) * item.quantity}</td>
         </tr>
         {/each}
         <tr>
-          <td>Subtotal:</td>
-          <td>${subtotal.toFixed(2)}</td>
+            <td colspan="2">Subtotal:</td>
+          <td>${totals.subtotal.toFixed(2)}</td>
         </tr>
         <tr>
-          <td>Shipping:</td>
-          <td>${shipping.toFixed(2)}</td>
+          <td colspan="2">Shipping:</td>
+          <td>${totals.shipping.toFixed(2)}</td>
         </tr>
         <tr>
-          <td>Tax ({(taxRate * 100).toFixed(0)}%):</td>
-          <td>${tax.toFixed(2)}</td>
+          <td colspan="2">Tax ({(totals.taxRate * 100).toFixed(0)}%):</td>
+          <td>${totals.tax.toFixed(2)}</td>
         </tr>
         <tr>
-          <td>Total:</td>
-          <td>${total.toFixed(2)}</td>
+          <td colspan="2">Total:</td>
+          <td>${totals.total.toFixed(2)}</td>
         </tr>
       </tbody>
     </table>

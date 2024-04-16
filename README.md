@@ -7,29 +7,27 @@ v0.0.0-beta-1 and very much WIP
 
 # TODO:
 
+- cart/checkout
+    - shipping
+        - add logic for no shipping (pickup option)
+        - dynamically adjust tax rate in components>invoice.svelte
+        - dynamically adjust shipping rate in components>invoice.svelte
+    - tax rates?
+    - add payment/checkout flow
+        - different payment types
+        - e-transfer option 
+    - order number issuing
+- refine order tracking
 
-- Fully implement cart and product counts
-    -   currently can update the invintory in the management, and it is reflected as out of stock then its at 0 BUT there is no way to add X number of them in the cart 
 - init firestore client + .env settings
 
 - use firestore for required data in the application
     - user account management
     - product data
         - IMAGE storage !!! this is a big one !!!
+        - maybe save images to byte data? or just tell the users to insert a URL to the image?
     - website data
     - order data/status
-
-- cart/checkout
-    - shipping
-        - add logic for no shipping (pickup option)
-        - dynamically adjust tax rate in components>invoice.svelte
-        - dynamically adjust shipping rate in components>invoice.svelte
-    - add payment/checkout flow
-        - different payment types
-        - e-transfer option 
-    - order number issuing
-
-- refine order tracking
 
 - Db data versioning
     - right now the static data is ever changing shape so it makes sense to keep changing. BUT it should return a field with the version number and there should be a way to update the shape of the storage when the version changes and expectes different data. 

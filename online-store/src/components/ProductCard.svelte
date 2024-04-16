@@ -17,6 +17,7 @@
 	function addToCart() {
 		const isDuplicate = $cartItems.some((item) => item.id === product.id);
 		if (!isDuplicate) {
+			product.quantity = 1;
 			cartItems.update((items) => [...items, product]);
 		}
 	}

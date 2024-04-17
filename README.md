@@ -7,6 +7,13 @@ v0.0.0-beta-1 and very much WIP
 
 # TODO:
 
+- new product category selection wont unselect
+- multiple photo upload
+- order updates to track lineage and times of updates
+    - + comments fields
+- add background and set colours to other pages
+- checkout -> add contact info
+
 - cart/checkout
     - shipping
         - add logic for no shipping (pickup option)

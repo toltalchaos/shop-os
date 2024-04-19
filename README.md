@@ -8,7 +8,7 @@ v0.0.0-beta-1 and very much WIP
 # TODO:
 
 - create static files for products, orders, manager accounts, and site settings to make the server files call/write to as needed
-- new product category selection wont unselect
+    - (RIGHT NOW IS JUST ALL LOCATED IN SERVER.FIREBASECLIENT.JS)
 - multiple photo upload
 - order updates to track lineage and times of updates
     - + comments fields

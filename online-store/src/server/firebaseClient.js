@@ -23,7 +23,7 @@ async function get_site_data() {
 	return default_settings;
 }
 async function set_site_data(newSiteData) {
-    console.log('setting site data');
+    console.log('setting site data', newSiteData);
     //this function to set all the site data and return the required json content to our webpage
 }
 
@@ -48,12 +48,12 @@ async function get_order_status() {
 }
 // update order status
 async function set_order_status(orderData) {
-	console.log('updating order status');
+	console.log('updating order status', orderData);
 }
 
 // update site data
 async function update_site_data(siteData) {
-	console.log('updating site data');
+	console.log('updating site data', siteData);
 }
 
 // update products ->

@@ -21,6 +21,13 @@
 		});
 	}
 
+	function removeCategory(item) {
+		categoryArray.update((value) => {
+			value = value.filter((category) => category !== item);
+			return value;
+		});
+	}
+
 	function updatecategoryArray(event) {
 		const category = event.target.value;
 		if ($categoryArray.includes(category) && event.target.checked) {
@@ -31,9 +38,8 @@
 				category
 			);
 		} else if ($categoryArray.includes(category) && !event.target.checked) {
-			categoryArray.remove(category);
+			removeCategory(category);
 		} else if (!$categoryArray.includes(category) && event.target.checked) {
-			console.log('adding category', category);
 			addCategory(category);
 		}
 	}
@@ -58,7 +64,7 @@
 				on:change={updatecategoryArray}
 			/>
 			<label for={category}
-            style="background-color: {$siteData.primaryColor}; {$categoryArray.includes(category) ? 'opacity: 0.5' : ''}"
+            style="background-color: {$siteData.primaryColor}; {$categoryArray.includes(category) ? 'opacity: 0.5' : 'opacity: 1'}"
             >{category}</label>
 		{/each}
 	</div>

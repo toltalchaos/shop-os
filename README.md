@@ -7,7 +7,7 @@ v0.0.0-beta-1 and very much WIP
 
 # TODO:
 
-- create static files for products, orders, and site settings to make the server files call/write to as needed
+- create static files for products, orders, manager accounts, and site settings to make the server files call/write to as needed
 - new product category selection wont unselect
 - multiple photo upload
 - order updates to track lineage and times of updates
@@ -22,9 +22,10 @@ v0.0.0-beta-1 and very much WIP
         - dynamically adjust shipping rate in components>invoice.svelte
     - tax rates?
     - add payment/checkout flow
-        - different payment types
+        - different payment types (payment gateways)
         - e-transfer option 
     - order number issuing
+        - sendgrid email system??? for both orders and updates
 - refine order tracking
 
 - init firestore client + .env settings
@@ -50,25 +51,26 @@ v0.0.0-beta-1 and very much WIP
 ---
 # setup
 
-- create firebase acct
-- create users, 1 for the site to use and 1 for the site manager to use
+- for now devs look at the readme in "online-store" eventually i will put a full setup guide here for non-devs
 
 --- 
-## Sock City
-Sock City is a web application for an online sock store built using the Svelte framework.
+# user flow
 
-## Installation
-Clone the repository: git clone https://github.com/your-username/sock-city.git
-Navigate to the project directory: cd sock-city
-Install dependencies: npm install
-Run the development server: npm run dev
-Open http://localhost:5173 in your browser
-Usage
-Once the application is running, you can browse and purchase socks. You can add socks to your cart and checkout using the built-in checkout form.
+- home page viewing featured
+- navigate to products
+- view products, add some to cart
+- navigate to cart
+- adjust counts and cart contents
+- checkout
+- view invoice, fill form
+- submit
+- order number is generated and order is saved
+- navigate to orders
+- input order number
+- view order status
 
-## Features
-Browse a selection of socks
-Add socks to cart
-Checkout using a form that collects customer information and payment details
-Receive an invoice after checkout
-Get a notification when a new order is received
+# management flow
+
+- managers are the only ones with logins (through firebase/static)
+- they can edit the values on the management page
+- order editor to update orders

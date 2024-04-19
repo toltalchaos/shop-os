@@ -1,5 +1,5 @@
 <script>
-import { update_order_status } from "../server/firebaseClient";
+import { set_order_status } from "../server/firebaseClient";
 
 export let order = {
 		order_id: 0,
@@ -15,7 +15,7 @@ export let order = {
     async function handleUpdate() {
 		// Call your helper function here to update the order status
 		// Example: updateOrderStatus(orderData);
-		await update_order_status(order);
+		await set_order_status(order);
 	}
 </script>
 

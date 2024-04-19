@@ -3,6 +3,9 @@
 Welcome to the future of e-commerce, where your store comes to life with ease. Our Open Source E-commerce software is the perfect solution for those who want to break free from big vendors and enjoy the simplicity of a drag-and-drop setup. Established in 2024 and contributors (see contributions page), we’re not just a platform; we’re a community-driven journey towards an accessible online marketplace for all. No matter your tech skills, we make sure you’re not just keeping up—you’re setting the pace. Dive into our user-friendly manual and watch your store spring into action today!
 
 v0.0.0-beta-1 and very much WIP
+
+
+for now i have decided to move forward with a very DIY ownership option model where the "manager" is in charge of curating all of the orders and order statuses as well as recieving payment through e-transfer. this way the app can remain free for anybody to use. additional payment gateways may be added in later releases. 
 ---
 
 # TODO:
@@ -10,20 +13,21 @@ v0.0.0-beta-1 and very much WIP
 - create static files for products, orders, manager accounts, and site settings to make the server files call/write to as needed
     - (RIGHT NOW IS JUST ALL LOCATED IN SERVER.FIREBASECLIENT.JS)
 - multiple photo upload
-- order updates to track lineage and times of updates
+    - optional URL photo link
 - add background and set colours to other pages
 
 - cart/checkout
     - shipping
-        - dynamically adjust tax rate in components>invoice.svelte
-        - dynamically adjust shipping rate in components>invoice.svelte
+        - shipping rates decided in site settings
     - tax rates?
+        - this should be decided in site settings also
     - add payment/checkout flow
-        - different payment types (payment gateways)
-        - e-transfer option 
+        - e-transfer flow - gotta sort this out yet
     - order number issuing
         - sendgrid email system??? for both orders and updates
+        - manager order management page should have the full list of orders and statuses. for now is just a lookup by ID
 - refine order tracking
+    - order updates to track lineage and times of updates
 
 - init firestore client + .env settings
 
@@ -35,7 +39,7 @@ v0.0.0-beta-1 and very much WIP
     - website data
     - order data/status
 
-- Db data versioning
+- Db data versioning/application version tagging for later releases.
     - right now the static data is ever changing shape so it makes sense to keep changing. BUT it should return a field with the version number and there should be a way to update the shape of the storage when the version changes and expectes different data. 
         - expected data shape tied to version number. on update the data shape is managed.
 
@@ -43,6 +47,11 @@ v0.0.0-beta-1 and very much WIP
 
 - data/sales anylitics in the management directories (https://www.npmjs.com/package/victory) would be cool
     - use firebase queries to run analytics and pump the data into visuialization tools/components
+    - order tracking will provide alot of insights... the following is a list of "interesting" metrics we could sort out.... likely in some python package adjacent to `online-store`
+        - orders by day of the week
+        - featured items vs non-featured
+        - shipped vs non-shipped
+        - time to fufilment
 
 
 ---

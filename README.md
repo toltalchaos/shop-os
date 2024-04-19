@@ -11,13 +11,10 @@ v0.0.0-beta-1 and very much WIP
     - (RIGHT NOW IS JUST ALL LOCATED IN SERVER.FIREBASECLIENT.JS)
 - multiple photo upload
 - order updates to track lineage and times of updates
-    - + comments fields
 - add background and set colours to other pages
-- checkout -> add contact info
 
 - cart/checkout
     - shipping
-        - add logic for no shipping (pickup option)
         - dynamically adjust tax rate in components>invoice.svelte
         - dynamically adjust shipping rate in components>invoice.svelte
     - tax rates?

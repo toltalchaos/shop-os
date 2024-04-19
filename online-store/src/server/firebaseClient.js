@@ -33,21 +33,36 @@ async function get_all_products() {
 	//make call here
 	return productData.socks;
 }
-
+async function create_order(orderData) {
+	try {
+		console.log('creating order', orderData);
+		//make call to firestore here...
+		//return order_id
+		return 1;
+	} catch (err) {
+		console.error('Failed to submit order:', err);
+	}
+}
 // get order status
-async function get_order_status() {
+async function get_order_status(order_id) {
+	//we want to get the most recent order status update of the order that was placed given the order_id
+	//the idea is to have an array associated to a given ID that contains all the order status updates ordered by date
 	console.log('getting order status');
 	return {
 		order_id: 1,
 		status: 'shipped',
+		comments: 'order has been shipped',
 		tracking_number: '1234567890',
 		shipping_carrier: 'USPS',
 		shipping_date: '2021-01-01',
-		link: 'https://www.usps.com/1234567890'
+		link: 'https://www.usps.com/1234567890',
+		update_time: '2021-01-01'
 	};
 }
 // update order status
 async function set_order_status(orderData) {
+	//we want to update the order status of the order that was placed given the order_id
+	//this will add a new item to the array of orders by the associated ID
 	console.log('updating order status', orderData);
 }
 
@@ -76,6 +91,7 @@ export {
 	get_site_data,
     set_site_data,
 	get_all_products,
+	create_order,
 	get_order_status,
 	set_order_status,
 	update_site_data,

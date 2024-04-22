@@ -1,4 +1,6 @@
 <script>
+
+
 	// @ts-nocheck
 	// Add your script logic here
 	import { update_products } from '../server/firebaseClient';
@@ -23,6 +25,17 @@
 		productCategoryStore = writable([...product.category]);
 	}
 
+	// need to change our overall logic to work with multiple file uploads for the images
+		//if the product has an image, set the image to the first image in the array
+		//if the product has no image, set the image to an empty string? -> object??? -> null???
+		//when an image is uploaded, add the image to the array of images
+		//when an image is deleted, remove the image from the array of images
+		//allow multiple files to be uploaded at once
+
+		//accept both file uploads and urls for images
+		//if the image is a url, display the image
+		//if the image is a file, display the image
+		
 	function handleProductSubmit() {
 		// Handle form submission here
 		// You can access the updated values using the variables above
@@ -58,8 +71,9 @@
 		<input type="number" id="productInvintory" bind:value={product.invintory} />
 	</div>
 	<div>
+		<!-- https://www.w3schools.com/tags/att_input_type_file.asp -->
 		<label for="productImage">Product Image:</label>
-		<input type="file" id="productImage" bind:value={product.image} />
+		<input type="file" id="productImage" bind:value={product.image} /> 
 	</div>
 	<div>
 		<label for="productDescription">Product Description:</label>

@@ -1,14 +1,15 @@
 <script>
-
-
 	// @ts-nocheck
 	// Add your script logic here
 	import { update_products } from '../server/firebaseClient';
 	import { writable } from 'svelte/store';
 	import CategoryEditDdl from './categoryEditDDL.svelte';
+	import ItemImageManager from './itemImageManager.svelte';
 	export let product = null;
 	let newProduct = false;
+	//stores let us offload the logic of managing the state of our data to svelte
 	let productCategoryStore = writable([]);
+	let itemImageStore = writable([]);
 	//if there is no product being passed in, create a new product
 	if (!product) {
 		newProduct = true;
@@ -16,39 +17,24 @@
 			name: '',
 			invintory: 0,
 			price: 0.0,
-			image: '',
+			image: [],
 			description: '',
 			featured: false,
 			category: []
 		};
 	} else {
+		//if there is a product being passed in, set the value of the writable stores to the value of the product
+		itemImageStore = writable([...product.image]);
 		productCategoryStore = writable([...product.category]);
 	}
-
-	// need to change our overall logic to work with multiple file uploads for the images
-		//if the product has an image, set the image to the first image in the array
-		//if the product has no image, set the image to an empty string? -> object??? -> null???
-		//when an image is uploaded, add the image to the array of images
-		//when an image is deleted, remove the image from the array of images
-		//allow multiple files to be uploaded at once
-
-		//accept both file uploads and urls for images
-		//if the image is a url, display the image
-		//if the image is a file, display the image
 		
 	function handleProductSubmit() {
-		// Handle form submission here
-		// You can access the updated values using the variables above
-		console.log('Adding new product...');
 		//set the value of product.category to the value of the data in the writable store
 		product.category = $productCategoryStore;
 		update_products(product);
 	}
 
 	function deleteItem() {
-		// Handle form submission here
-		// You can access the updated values using the variables above
-		console.log('Deleting product...');
 		//set the value of product.category to the value of the data in the writable store
 		product.category = $productCategoryStore;
 		update_products(product, true);
@@ -71,9 +57,7 @@
 		<input type="number" id="productInvintory" bind:value={product.invintory} />
 	</div>
 	<div>
-		<!-- https://www.w3schools.com/tags/att_input_type_file.asp -->
-		<label for="productImage">Product Image:</label>
-		<input type="file" id="productImage" bind:value={product.image} /> 
+		<ItemImageManager bind:imageArray={itemImageStore} />
 	</div>
 	<div>
 		<label for="productDescription">Product Description:</label>

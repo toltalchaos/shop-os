@@ -4,8 +4,12 @@ Welcome to the future of e-commerce, where your store comes to life with ease. O
 
 v0.0.0-beta-1 and very much WIP
 
-
+```text
 for now i have decided to move forward with a very DIY ownership option model where the "manager" is in charge of curating all of the orders and order statuses as well as recieving payment through e-transfer. this way the app can remain free for anybody to use. additional payment gateways may be added in later releases. 
+
+to the managers or potential managers, load up the app and adjust the site settings, the defaults might be funky but ideally its a single form to get it branded the way you want.
+```
+
 ---
 
 # TODO:
@@ -15,6 +19,10 @@ for now i have decided to move forward with a very DIY ownership option model wh
 - multiple photo upload
     - optional URL photo link
 - add background and set colours to other pages
+
+- add site design options such as branding figures/images
+- add site setting for fonts
+
 
 - cart/checkout
     - shipping

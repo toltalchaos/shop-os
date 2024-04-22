@@ -14,8 +14,7 @@ to the managers or potential managers, load up the app and adjust the site setti
 
 # TODO:
 
-- multiple photo upload
-    - optional URL photo link
+- multiple photo upload (current WIP with optional URL photo link)
 - add background and set colours to other pages
 - add site design options such as branding figures/images
 - add site setting for fonts

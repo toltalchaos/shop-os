@@ -6,6 +6,7 @@
 	import CategoryEditDdl from './categoryEditDDL.svelte';
 	import ItemImageManager from './itemImageManager.svelte';
 	export let product = null;
+	const origionalProduct = product;
 	let newProduct = false;
 	//stores let us offload the logic of managing the state of our data to svelte
 	let productCategoryStore = writable([]);
@@ -31,7 +32,7 @@
 	function handleProductSubmit() {
 		//set the value of product.category to the value of the data in the writable store
 		product.category = $productCategoryStore;
-		update_products(product);
+		update_products(product, origionalProduct);
 	}
 
 	function deleteItem() {

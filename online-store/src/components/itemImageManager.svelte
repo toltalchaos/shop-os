@@ -41,7 +41,7 @@
 
 	<!-- display all existing images -->
 	<div class="image-boxes">
-		{#each imageArray as image}
+		{#each $imageArray as image}
 			<img src={image} alt="product Photos" />
 			<button on:click={() => removeImage(image)}>Delete Image</button>
 		{/each}

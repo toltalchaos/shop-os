@@ -72,12 +72,14 @@ async function update_site_data(siteData) {
 }
 
 // update products ->
-async function update_products(productData, isDelete = false) {
+async function update_products(newproductData, origionalproductData,isDelete = false) {
 	//this function will update the products in the database
 	//if isDelete is true, then the product will be deleted
 	//get the existing products, look for the product to update, update the product, and then set the products
 	//if there is no product to update, then add the product to the list, and then set the products
-	console.log('updating products', productData, isDelete);
+	console.log('updating products...');
+	console.log('new product data', newproductData);
+	console.log('original product data', origionalproductData);
 	return;
 }
 

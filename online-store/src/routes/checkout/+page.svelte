@@ -5,7 +5,6 @@
 	import cartItems from '../../global/cartItems';
 	import { getContext } from 'svelte';
 	const siteData = getContext('siteData');
-
 	let items = [];
 	// Subscribe to the cartItems store and update the `items` variable
 	// whenever the store value changes
@@ -23,7 +22,7 @@
 	let subtotal = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
 	let taxRate = 0.07;
 	let tax = subtotal * (taxRate + 1);
-	let shipping = 10 * (taxRate + 1); // Default shipping cost is $10
+	let shipping = $siteData.shippingRate * (taxRate + 1); // Default shipping cost is $10
 	let total = subtotal + shipping + tax;
 	let totals = { subtotal, shipping, tax, taxRate, total };
 

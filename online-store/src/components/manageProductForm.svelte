@@ -6,7 +6,7 @@
 	import CategoryEditDdl from './categoryEditDDL.svelte';
 	import ItemImageManager from './itemImageManager.svelte';
 	export let product = null;
-	const origionalProduct = product;
+	const origionalProduct = JSON.parse(JSON.stringify(product));
 	let newProduct = false;
 	//stores let us offload the logic of managing the state of our data to svelte
 	let productCategoryStore = writable([]);
@@ -25,19 +25,19 @@
 		};
 	} else {
 		//if there is a product being passed in, set the value of the writable stores to the value of the product
-		itemImageStore = writable([...product.image]);
+		itemImageStore = writable([product.image]);
 		productCategoryStore = writable([...product.category]);
 	}
 		
 	function handleProductSubmit() {
-		//set the value of product.category to the value of the data in the writable store
 		product.category = $productCategoryStore;
+		product.image = [...$itemImageStore];
 		update_products(product, origionalProduct);
 	}
 
 	function deleteItem() {
-		//set the value of product.category to the value of the data in the writable store
 		product.category = $productCategoryStore;
+		product.image = $itemImageStore;
 		update_products(product, true);
 	}
 </script>
@@ -83,8 +83,8 @@
 		margin-bottom: 2rem;
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
-		padding: 2rem;
+		padding:1rem;
+		gap:1rem;
 		border: 2px solid black;
 		border-radius: 0.5rem;
 	}

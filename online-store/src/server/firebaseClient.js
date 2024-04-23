@@ -16,7 +16,8 @@ async function get_site_data() {
 		secondaryColor: 'cornsilk',
 		tirciaryColor: '#A9A9',
 		textColor: 'brown',
-		contactInfo: 'stuff'
+		contactInfo: 'stuff',
+		shippingRate: 10
 	};
 
 	//make call to firestore here...

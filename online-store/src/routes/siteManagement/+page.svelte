@@ -5,7 +5,6 @@
 	import ManageProductForm from '../../components/manageProductForm.svelte';
 	import allSocks from '../../global/allItems';
 	import { getContext } from 'svelte';
-	import { writable } from 'svelte/store';
 	const siteData = getContext('siteData');
 	let products = [];
 
@@ -35,6 +34,7 @@
 	let backgroundColor = $siteData.backgroundColor;
 	let contactInfo = $siteData.contactInfo;
 	let textColor = $siteData.textColor;
+	let shippingRate = $siteData.shippingRate;
 
 	function handleSiteManagmentSubmit() {
 		// Handle form submission here
@@ -53,7 +53,8 @@
 				tirciaryColor,
 				backgroundColor,
 				contactInfo,
-				textColor
+				textColor,
+				shippingRate
 			};
 		});
 		update_site_data($siteData)
@@ -86,6 +87,9 @@
 
 		<label for="textColor">Text Color:</label>
 		<input type="color" id="textColor" bind:value={textColor} />
+
+		<label for="shippingRate">Shipping Rate:</label>
+		<input type="number" step="0.01" id="shippingRate" bind:value={shippingRate} />
 
 		<label for="contactInfo">Contact Information:</label>
 		<textarea id="contactInfo" bind:value={contactInfo} />

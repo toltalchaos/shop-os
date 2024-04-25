@@ -17,7 +17,8 @@
 		tirciaryColor,
 		textColor,
 		contactInfo,
-		shippingRate
+		shippingRate,
+		taxRate,
 	} = data.siteData;
 
 	const siteDataWritable = writable({
@@ -29,7 +30,8 @@
 		tirciaryColor: tirciaryColor,
 		textColor: textColor,
 		contactInfo: contactInfo,
-		shippingRate: shippingRate
+		shippingRate: shippingRate,
+		taxRate: taxRate,
 	});
 
 	setContext('siteData', siteDataWritable);

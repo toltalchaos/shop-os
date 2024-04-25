@@ -11,13 +11,14 @@ async function get_site_data() {
 	const default_settings = {
 		title: 'SHOP_OS',
 		description: 'Welcome to the future of e-commerce for small business',
-		backgroundColor: 'white',
+		backgroundColor: 'cornflowerblue',
 		primaryColor: 'tan',
 		secondaryColor: 'cornsilk',
 		tirciaryColor: '#A9A9',
 		textColor: 'brown',
 		contactInfo: 'stuff',
-		shippingRate: 10
+		shippingRate: 10,
+		taxRate: 0.05,
 	};
 
 	//make call to firestore here...

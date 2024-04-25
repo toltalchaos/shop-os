@@ -18,8 +18,6 @@ to the managers or potential managers, load up the app and adjust the site setti
 - add site design options such as branding figures/images
 
 - cart/checkout
-    - tax rates?
-        - this should be decided in site settings also
     - add payment/checkout flow
         - e-transfer flow - gotta sort this out yet
     - order number issuing

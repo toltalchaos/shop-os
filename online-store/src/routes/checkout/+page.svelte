@@ -20,7 +20,7 @@
 	let expDate = '';
 	let cvv = '';
 	let subtotal = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
-	let taxRate = 0.07;
+	let taxRate = $siteData.taxRate;
 	let tax = subtotal * (taxRate + 1);
 	let shipping = $siteData.shippingRate * (taxRate + 1); // Default shipping cost is $10
 	let total = subtotal + shipping + tax;

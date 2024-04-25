@@ -23,8 +23,12 @@ to the managers or potential managers, load up the app and adjust the site setti
     - order number issuing
         - sendgrid email system??? for both orders and updates
         - manager order management page should have the full list of orders and statuses. for now is just a lookup by ID
+        
 - refine order tracking
-    - order updates to track lineage and times of updates
+    - order updates to track lineage and times of updates (shows previous updates using a card with "editable" flag for the managers view much like the product edits)
+    - this could be a timeline showing events from current with accordions to show historical events.
+        - **INTAKE**: an array of order update events (name this?)
+        - **display**: timeline with accordion for each value other then the first - **WITH SORTING BY TIME**
 
 - create static files for products, orders, manager accounts, and site settings to make the server files call/write to as needed
     - (RIGHT NOW IS JUST ALL LOCATED IN SERVER.FIREBASECLIENT.JS)

@@ -16,14 +16,7 @@ to the managers or potential managers, load up the app and adjust the site setti
 
 - add background and set colours to other pages
 - add site design options such as branding figures/images
-    - 2 options for site logos - large - small
-- order status "status" title to be a DDL component
-    - order placed
-    - order confirmed (awaiting payment)
-    - order processing
-    - order shipped
-    - order complete
-    - ...
+    - 2 options for site logos - large - small    
 
 - cart/checkout
     - items availability/invintory is updated

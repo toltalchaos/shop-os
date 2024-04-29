@@ -29,6 +29,9 @@
         below is a copy of your order, please use your order number ("{orderDetails.order_id}") as a comment for the e-transfer so we
         can update your order accordingly!
     </p>
+    <p>
+        when you want to check the status of your order, please use the order number to check the status of your order. in the "orders" section at the top of the page.
+    </p>
     
     <h2>Order Details</h2>
         <p>Order Number: {orderDetails.order_id}</p>

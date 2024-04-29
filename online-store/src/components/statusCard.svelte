@@ -24,5 +24,17 @@
 {/each}
 </div>
 
-
+<style>
+    .container {
+        display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-around;
+		max-width: 300px;
+		padding: 1rem;
+        margin: 1rem;
+		border-radius: 1rem;
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+</style>
 

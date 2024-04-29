@@ -57,11 +57,6 @@
 		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 	}
 
-	.product-card img {
-		width: 100%;
-		margin-bottom: 1rem;
-	}
-
 	.product-card h2 {
 		font-size: 1.5rem;
 		margin-bottom: 1rem;

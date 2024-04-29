@@ -39,6 +39,7 @@ async function create_order(orderData) {
 	try {
 		console.log('creating order', orderData);
 		//make call to firestore here...
+		//email the user the order confirmation...
 		//return order_id
 		return 1;
 	} catch (err) {

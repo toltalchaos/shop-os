@@ -30,6 +30,7 @@
 		if (!validateForm()){
 			alert('Please fill out all required fields.');
 		}
+		confirm('Are you sure you want to submit the order? This action cannot be undone.')
 		console.log('Submitting order data...');
 		let orderData = {
 			//items includes the existing invintory at this time. this is not helpful for the order it should be a separate collection

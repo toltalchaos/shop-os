@@ -114,7 +114,7 @@
 			<label for="total">Total:</label>
 			<input type="text" id="total" value={total.toFixed(2)} disabled />
 		</div>
-		<button type="submit">Pay Now</button>
+		<button type="submit">Order Now</button>
 	</form>
 </div>
 

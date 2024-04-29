@@ -39,30 +39,51 @@ async function create_order(orderData) {
 	try {
 		console.log('creating order', orderData);
 		//create order - for firestore (ordet_id = orderData.customerName + uuid(10))
+		let order = {
+			order_id: orderData.customerName + '-' + Math.random().toString(36).substring(7),
+			orderData:{...orderData},
+			status:[{
+				order_id: 1,
+				status: 'payment pending',
+				comments: 'order has been submitted',
+				tracking_number: '',
+				shipping_carrier: '',
+				shipping_date: '',
+				link: '',
+				update_time: new Date().toISOString()
+			}]
+		}
 		//make call to firestore here...
 		//email the user the order confirmation...
+		// update the product inventory
 		//return order_id
-		return 1;
+		return order
+		
 	} catch (err) {
 		console.error('Failed to submit order:', err);
 	}
 }
-// get order status
-async function get_order_status(order_id) {
-	//we want to get the most recent order status update of the order that was placed given the order_id
-	//the idea is to have an array associated to a given ID that contains all the order status updates ordered by date
-	console.log('getting order status');
+async function get_order_details(order_id) {
+	//we want to get the order details of the order that was placed given the order_id
+	//the idea is to have an array associated to a given ID that contains all the order details ordered by date
+	console.log('getting order details');
 	return {
 		order_id: 1,
-		status: 'shipped',
-		comments: 'order has been shipped',
+		customerName: 'John Doe',
+		customerEmail: '',
+	status:[{
+		order_id: 1,
+		status: 'order has been submitted',
+		comments: 'comments go here...	',
 		tracking_number: '1234567890',
 		shipping_carrier: 'USPS',
 		shipping_date: '2021-01-01',
 		link: 'https://www.usps.com/1234567890',
 		update_time: '2021-01-01'
-	};
+	}]}
 }
+
+
 // update order status
 async function set_order_status(orderData) {
 	//we want to update the order status of the order that was placed given the order_id
@@ -98,7 +119,7 @@ export {
     set_site_data,
 	get_all_products,
 	create_order,
-	get_order_status,
+	get_order_details,
 	set_order_status,
 	update_site_data,
 	update_products,

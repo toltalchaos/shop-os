@@ -4,6 +4,8 @@
 	import Invoice from '../../components/invoice.svelte';
 	import cartItems from '../../global/cartItems';
 	import { getContext } from 'svelte';
+	import { goto } from '$app/navigation';
+
 	const siteData = getContext('siteData');
 	let items = [];
 	// Subscribe to the cartItems store and update the `items` variable
@@ -17,7 +19,7 @@
 	let shippingAddress = '';
 	let postalCode = '';
 	let city = '';
-	let subtotal = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
+	let subtotal = items.reduce((acc, item) => acc + item.price * item.cart_quantity, 0);
 	let taxRate = $siteData.taxRate;
 	let tax = subtotal * (taxRate + 1);
 	let shipping = $siteData.shippingRate * (taxRate + 1); // Default shipping cost is $10
@@ -27,25 +29,35 @@
 	// Handle form submission
 	async function handleSubmit(event) {
 		event.preventDefault();
-		if (!validateForm()){
+		if (!validateForm()) {
 			alert('Please fill out all required fields.');
 		}
-		confirm('Are you sure you want to submit the order? This action cannot be undone.')
-		console.log('Submitting order data...');
-		let orderData = {
-			//items includes the existing invintory at this time. this is not helpful for the order it should be a separate collection
-			items,
-			customerName,
-			customerEmail,
-			shippingAddress,
-			postalCode,
-			city,
-			totals
-		};
-		let newOrder = await create_order(orderData);
-		console.log('Order submitted:', newOrder);
-		alert('Order submitted successfully!', 
-		'Order ID: ' + newOrder.id);
+		if (confirm('Are you sure you want to submit the order? This action cannot be undone.')) {
+			console.log('Submitting order data...');
+			let orderData = {
+				//items includes the existing invintory at this time. this is not helpful for the order it should be a separate collection
+				items,
+				customerName,
+				customerEmail,
+				shippingAddress,
+				postalCode,
+				city,
+				totals
+			};
+			let newOrder = await create_order(orderData);
+			console.log('Order submitted:', newOrder);
+			alert('Order submitted successfully!', 'Order ID: ' + newOrder.order_id);
+			//clear cart
+			clearCart();
+			//redirect to order payment instructions page
+			goto('/checkout/orderInstructions?orderNum=' + newOrder.order_id);
+		}
+	}
+	function clearCart(){
+		//clear local storage
+		localStorage.setItem('cartItems', JSON.stringify([]));
+		//clear global store
+		cartItems.update((items) => []);
 	}
 
 	function validateForm() {
@@ -77,30 +89,36 @@
 		</div>
 		<div class="form-row">
 			<div class="shipping-info">
-				<label for="city">City:
+				<label for="city"
+					>City:
 					<input
 						id="city"
 						type="city"
 						bind:value={city}
 						required={shipping == 0 ? true : false}
 						disabled={shipping == 0 ? true : false}
-					/></label>
-				<label for="shippingAddress">Street Address:
-				<input
-					id="shippingAddress"
-					type="address"
-					bind:value={shippingAddress}
-					required={shipping == 0 ? true : false}
-					disabled={shipping == 0 ? true : false}
-				/></label>
-				<label for="postalCode">Postal Code (ZIP code):
-				<input
-					id="postalCode"
-					type="zip"
-					bind:value={postalCode}
-					required={shipping == 0 ? true : false}
-					disabled={shipping == 0 ? true : false}
-				/></label>
+					/></label
+				>
+				<label for="shippingAddress"
+					>Street Address:
+					<input
+						id="shippingAddress"
+						type="address"
+						bind:value={shippingAddress}
+						required={shipping == 0 ? true : false}
+						disabled={shipping == 0 ? true : false}
+					/></label
+				>
+				<label for="postalCode"
+					>Postal Code (ZIP code):
+					<input
+						id="postalCode"
+						type="zip"
+						bind:value={postalCode}
+						required={shipping == 0 ? true : false}
+						disabled={shipping == 0 ? true : false}
+					/></label
+				>
 			</div>
 			<div>
 				<!-- toggle switch  -->
@@ -137,7 +155,6 @@
 	}
 
 	input[type='text'],
-
 	input {
 		border-radius: 0.5rem;
 		padding: 0.5rem;
@@ -146,7 +163,6 @@
 	}
 
 	input[type='text']:focus,
-
 	input[type='email']:focus {
 		outline: none;
 	}
@@ -165,12 +181,10 @@
 	button[type='submit']:hover {
 		background-color: #0c0;
 	}
-	.shipping-info{
-
+	.shipping-info {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-evenly;
-	
 	}
 
 	/* toggle switch styles */

@@ -26,8 +26,8 @@
         {#each items as item}
         <tr>
           <td>{item.name}</td>
-          <td>{item.quantity}</td>
-          <td>{item.price.toFixed(2) * item.quantity}</td>
+          <td>{item.cart_quantity}</td>
+          <td>{item.price.toFixed(2) * item.cart_quantity}</td>
         </tr>
         {/each}
         <tr>

@@ -24,12 +24,6 @@ to the managers or potential managers, load up the app and adjust the site setti
         - e-transfer flow - gotta sort this out yet
             - user creates order
                 - items availability/invintory is updated
-            - user is instructed to send money to siteData.businessEmail
-                - email
-                - new window
-            - user is re-directed to the orders page and instructed to input their order number
-            - order detail card says to send money to siteData.businessEmail
-            - order detail "awaiting payment confirmation"
     - sendgrid email system??? for both orders and updates
     - manager order management page should have the full list of orders and statuses. for now is just a lookup by ID
         

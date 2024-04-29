@@ -7,7 +7,7 @@
 	const siteData = getContext('siteData');
 	export let product;
 
-	let quantity = product.quantity;
+	let cart_quantity = product.cart_quantity;
 
 	// Remove the product from the cart on button click
 	function removeFromCart() {
@@ -15,14 +15,14 @@
 	}
 
 	function adjustQuantity(adjquantity) {
-		if (adjquantity === -1 && quantity === 1) {
+		if (adjquantity === -1 && cart_quantity === 1) {
 			removeFromCart();
 		} else {
-			quantity += adjquantity;
+			cart_quantity += adjquantity;
       // Update the quantity of the product in the cart
       cartItems.update((items) => items.map((item) => {
       if(item.id === product.id){
-        item.quantity = quantity;
+        item.cart_quantity = cart_quantity;
       }
       return item;
     }));
@@ -41,8 +41,8 @@
 	</div>
 	<div class="checkout-item-details">
 		<h2>Quantity</h2>
-		<p>{quantity}</p>
-		<button on:click={() => adjustQuantity(1)} disabled={quantity == product.invintory}>Add</button>
+		<p>{cart_quantity}</p>
+		<button on:click={() => adjustQuantity(1)} disabled={cart_quantity == product.invintory}>Add</button>
 		<button on:click={() => adjustQuantity(-1)}>Remove</button>
 	</div>
 	<div class="checkout-item-remove">

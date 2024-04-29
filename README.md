@@ -14,7 +14,6 @@ to the managers or potential managers, load up the app and adjust the site setti
 
 # TODO:
 
-- add local storage caching so that we dont make too many unnessesary calls (1hr?)
 - add a review and confirm step after checking out
 - product cards to enlarge when they have focus to display details
 - add background and set colours to other pages
@@ -60,6 +59,8 @@ to the managers or potential managers, load up the app and adjust the site setti
         - featured items vs non-featured
         - shipped vs non-shipped
         - time to fufilment
+
+- add local storage caching so that we dont make too many unnessesary calls (1hr?)
 
 
 ---

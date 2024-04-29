@@ -10,28 +10,45 @@
 	export let product;
 	export let editable = false;
 
-  //add functionality to make the selected card larger by seeing if it has "focus"?
-  let selected = false;
+	//add functionality to make the selected card larger by seeing if it has "focus"?
+	let selected = false;
 
 	// Add the product to the cart on button click
-	function addToCart() {
+	function addToCart(event) {
+		flop(event);
 		const isDuplicate = $cartItems.some((item) => item.id === product.id);
 		if (!isDuplicate) {
 			product.cart_quantity = 1;
 			cartItems.update((items) => [...items, product]);
 		}
 	}
+
+	function flop(event) {
+		if(!selected){
+			event.target.focus();
+		}else{
+			event.target.blur();}
+		selected = !selected;
+	}
 </script>
 
-<div class="product-card" style="background-color: {$siteData.secondaryColor}; ">
-	<ImgCarousel images={product.image} interval=5000 />
+<div
+	class="product-card"
+	style="background-color: {$siteData.secondaryColor}; "
+	on:click={flop}
+	on:keydown={flop}
+	tabindex="-1"
+>
+	<ImgCarousel images={product.image} interval="5000" />
 	<h2>{product.name}</h2>
 	<p style="color: {$siteData.textColor};">${product.price}</p>
+	{#if selected}
+		<p style="color: {$siteData.textColor};">{product.description}</p>
+	{/if}
 	{#if editable}
 		<!-- Form code here -->
-		<ManageProductForm {product}/>
-	{:else}
-		{#if product.invintory > 0}
+		<ManageProductForm {product} />
+	{:else if product.invintory > 0}
 		<button
 			style="color: {$siteData.textColor}; background-color: {$siteData.tirciaryColor};"
 			class:disabled={$cartItems.some((item) => item.id === product.id)}
@@ -39,9 +56,8 @@
 		>
 			{$cartItems.some((item) => item.id === product.id) ? 'Already in Cart' : 'Add to Cart'}
 		</button>
-		{:else}
-			<p style="color: {$siteData.textColor};">Out of Stock</p>
-		{/if}
+	{:else}
+		<p style="color: {$siteData.textColor};">Out of Stock</p>
 	{/if}
 </div>
 
@@ -55,6 +71,9 @@
 		padding: 1rem;
 		border-radius: 1rem;
 		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+		z-index: 1;
+		transition-property: transform, z-index;
+  		transition-duration: 0.2s;
 	}
 
 	.product-card h2 {
@@ -83,5 +102,10 @@
 	.product-card button.disabled {
 		background-color: #ccc;
 		cursor: not-allowed;
+	}
+
+	.product-card:focus{
+		transform: scale(1.1);
+		z-index: 10;
 	}
 </style>

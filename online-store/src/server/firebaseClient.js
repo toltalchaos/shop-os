@@ -15,6 +15,7 @@ async function get_site_data() {
 		contactInfo: 'stuff',
 		shippingRate: 10,
 		taxRate: 0.05,
+		contact: {email: "someEmail"},
 	};
 
 	//make call to firestore here...

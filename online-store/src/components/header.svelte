@@ -15,7 +15,7 @@
   </script>
   
   <nav style= "color: {$siteData.textColor}; background-color: {$siteData.primaryColor};">
-    <div><a href="/login"  style= "color: {$siteData.textColor}; text-decoration: none;">
+    <div><a href="/"  style= "color: {$siteData.textColor}; text-decoration: none;">
       {$siteData.title}
     </a></div>
     <div class="navigation-items">

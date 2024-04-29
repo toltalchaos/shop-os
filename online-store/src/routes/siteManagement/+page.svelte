@@ -35,6 +35,7 @@
 	let contactInfo = $siteData.contactInfo;
 	let textColor = $siteData.textColor;
 	let shippingRate = $siteData.shippingRate;
+	let emailContact = $siteData.contact.email;
 
 	function handleSiteManagmentSubmit() {
 		// Handle form submission here
@@ -54,7 +55,10 @@
 				backgroundColor,
 				contactInfo,
 				textColor,
-				shippingRate
+				shippingRate,
+				contact: {
+					email: emailContact,
+				},
 			};
 		});
 		update_site_data($siteData)
@@ -72,6 +76,9 @@
 
 		<label for="description">Description:</label>
 		<textarea id="description" bind:value={description} />
+
+		<label for="email">Contact email</label>
+		<input type="email" id="email" bind:value={emailContact} />
 
 		<label for="backgroundColor">Background Color(header background):</label>
 		<input type="color" id="primaryColor" bind:value={backgroundColor} />

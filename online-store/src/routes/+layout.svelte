@@ -19,6 +19,7 @@
 		contactInfo,
 		shippingRate,
 		taxRate,
+		contact,
 	} = data.siteData;
 
 	const siteDataWritable = writable({
@@ -32,6 +33,7 @@
 		contactInfo: contactInfo,
 		shippingRate: shippingRate,
 		taxRate: taxRate,
+		contact: contact,
 	});
 
 	setContext('siteData', siteDataWritable);

@@ -14,10 +14,9 @@ to the managers or potential managers, load up the app and adjust the site setti
 
 # TODO:
 
-- product cards to enlarge when they have focus to display details
 - add background and set colours to other pages
-- hide the management page within a :connect: page
 - add site design options such as branding figures/images
+    - 2 options for site logos - large - small
 - order status "status" title to be a DDL component
     - order placed
     - order confirmed (awaiting payment)

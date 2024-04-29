@@ -1,10 +1,6 @@
 // @ts-nocheck
 import productData from '../static/socks.json';
-// create a client to connect and send/recieve requests to firebase
-
-//operations needed.
-
-// get site data
+//site operations
 async function get_site_data() {
 	console.log('getting site data');
 	//this function to get all the site data and return the required json content to our webpage
@@ -28,13 +24,28 @@ async function set_site_data(newSiteData) {
     console.log('setting site data', newSiteData);
     //this function to set all the site data and return the required json content to our webpage
 }
+async function update_site_data(siteData) {
+	console.log('updating site data', siteData);
+}
 
-// get products
+//product operations
 async function get_all_products() {
 	console.log('getting all products');
 	//make call here
 	return productData.socks;
 }
+async function update_products(newproductData, origionalproductData,isDelete = false) {
+	//this function will update the products in the database
+	//if isDelete is true, then the product will be deleted
+	//get the existing products, look for the product to update, update the product, and then set the products
+	//if there is no product to update, then add the product to the list, and then set the products
+	console.log('updating products...');
+	console.log('new product data', newproductData);
+	console.log('original product data', origionalproductData);
+	return;
+}
+
+//order operations
 async function create_order(orderData) {
 	try {
 		console.log('creating order', orderData);
@@ -82,30 +93,10 @@ async function get_order_details(order_id) {
 		update_time: '2021-01-01'
 	}]}
 }
-
-
-// update order status
 async function set_order_status(orderData) {
 	//we want to update the order status of the order that was placed given the order_id
 	//this will add a new item to the array of orders by the associated ID
 	console.log('updating order status', orderData);
-}
-
-// update site data
-async function update_site_data(siteData) {
-	console.log('updating site data', siteData);
-}
-
-// update products ->
-async function update_products(newproductData, origionalproductData,isDelete = false) {
-	//this function will update the products in the database
-	//if isDelete is true, then the product will be deleted
-	//get the existing products, look for the product to update, update the product, and then set the products
-	//if there is no product to update, then add the product to the list, and then set the products
-	console.log('updating products...');
-	console.log('new product data', newproductData);
-	console.log('original product data', origionalproductData);
-	return;
 }
 
 // authenticate user

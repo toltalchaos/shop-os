@@ -1,7 +1,5 @@
 <script>
 	// @ts-nocheck
-
-	import { onMount } from 'svelte';
 	import cartItems from '../global/cartItems';
 	import { getContext } from 'svelte';
 	const siteData = getContext('siteData');

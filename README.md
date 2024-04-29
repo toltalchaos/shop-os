@@ -18,19 +18,21 @@ to the managers or potential managers, load up the app and adjust the site setti
 - add background and set colours to other pages
 - hide the management page within a :connect: page
 - add site design options such as branding figures/images
+- order status "status" title to be a DDL component
+    - order placed
+    - order confirmed (awaiting payment)
+    - order processing
+    - order shipped
+    - order complete
+    - ...
 
 - cart/checkout
-    - add payment/checkout flow
-        - e-transfer flow - gotta sort this out yet
-            - user creates order
-                - items availability/invintory is updated
+    - items availability/invintory is updated
     - sendgrid email system??? for both orders and updates
     - manager order management page should have the full list of orders and statuses. for now is just a lookup by ID
         
 - refine order tracking
-    - order updates to track lineage and times of updates (shows previous updates using a card with "editable" flag for the managers view much like the product edits)
     - this could be a timeline showing events from current with accordions to show historical events.
-        - **INTAKE**: an array of order update events (name this?)
         - **display**: timeline with accordion for each value other then the first - **WITH SORTING BY TIME**
 
 - create static files for products, orders, manager accounts, and site settings to make the server files call/write to as needed
@@ -50,8 +52,6 @@ to the managers or potential managers, load up the app and adjust the site setti
     - right now the static data is ever changing shape so it makes sense to keep changing. BUT it should return a field with the version number and there should be a way to update the shape of the storage when the version changes and expectes different data. 
         - expected data shape tied to version number. on update the data shape is managed.
 
-- ADD OAUTH firebase allows features for this on the backend. will need front end implementation
-
 - data/sales anylitics in the management directories (https://www.npmjs.com/package/victory) would be cool
     - use firebase queries to run analytics and pump the data into visuialization tools/components
     - order tracking will provide alot of insights... the following is a list of "interesting" metrics we could sort out.... likely in some python package adjacent to `online-store`
@@ -59,9 +59,6 @@ to the managers or potential managers, load up the app and adjust the site setti
         - featured items vs non-featured
         - shipped vs non-shipped
         - time to fufilment
-
-- add local storage caching so that we dont make too many unnessesary calls (1hr?)
-
 
 ---
 # setup

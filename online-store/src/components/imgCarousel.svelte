@@ -3,6 +3,7 @@
 	import { onMount, onDestroy } from 'svelte';
 
 	export let images;
+	
 	// Convert single item to array in the case that there is only one image
 	if (!Array.isArray(images)) {
 		images = [images];
@@ -28,11 +29,12 @@
 	onDestroy(() => {
 		stopCarousel();
 	});
+	
 </script>
 
 <div>
 	<!-- would like to add functionality to click through the images -->
-	{#if images.length > 1}
+	{#if Array.isArray(images) && images.length > 1}
 		<img
 			src={images[currentIndex]}
 			alt="rotating Carousel product images"
@@ -40,7 +42,7 @@
 			style="animation-duration: {interval}ms;"
 		/>
 	{:else}
-		<img src={images[currentIndex]} alt="product images" />
+		<img src={Array.isArray(images) ? images[0] : images} alt="product images" />
 	{/if}
 </div>
 

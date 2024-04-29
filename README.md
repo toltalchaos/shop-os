@@ -14,12 +14,12 @@ to the managers or potential managers, load up the app and adjust the site setti
 
 # TODO:
 
-- hide the management page within a :connect: page
-- add a review and confirm step after checking out
-- add background and set colours to other pages
-- add site design options such as branding figures/images
-- product cards to enlarge when they have focus to display details
 - add local storage caching so that we dont make too many unnessesary calls (1hr?)
+- add a review and confirm step after checking out
+- product cards to enlarge when they have focus to display details
+- add background and set colours to other pages
+- hide the management page within a :connect: page
+- add site design options such as branding figures/images
 
 - cart/checkout
     - add payment/checkout flow

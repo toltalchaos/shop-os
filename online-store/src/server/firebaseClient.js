@@ -38,6 +38,7 @@ async function get_all_products() {
 async function create_order(orderData) {
 	try {
 		console.log('creating order', orderData);
+		//create order - for firestore (ordet_id = orderData.customerName + uuid(10))
 		//make call to firestore here...
 		//email the user the order confirmation...
 		//return order_id

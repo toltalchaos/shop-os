@@ -14,7 +14,6 @@ to the managers or potential managers, load up the app and adjust the site setti
 
 # TODO:
 
-- add a review and confirm step after checking out
 - product cards to enlarge when they have focus to display details
 - add background and set colours to other pages
 - hide the management page within a :connect: page
@@ -23,9 +22,16 @@ to the managers or potential managers, load up the app and adjust the site setti
 - cart/checkout
     - add payment/checkout flow
         - e-transfer flow - gotta sort this out yet
-    - order number issuing
-        - sendgrid email system??? for both orders and updates
-        - manager order management page should have the full list of orders and statuses. for now is just a lookup by ID
+            - user creates order
+                - items availability/invintory is updated
+            - user is instructed to send money to siteData.businessEmail
+                - email
+                - new window
+            - user is re-directed to the orders page and instructed to input their order number
+            - order detail card says to send money to siteData.businessEmail
+            - order detail "awaiting payment confirmation"
+    - sendgrid email system??? for both orders and updates
+    - manager order management page should have the full list of orders and statuses. for now is just a lookup by ID
         
 - refine order tracking
     - order updates to track lineage and times of updates (shows previous updates using a card with "editable" flag for the managers view much like the product edits)

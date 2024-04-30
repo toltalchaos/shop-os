@@ -17,16 +17,11 @@ to the managers or potential managers, load up the app and adjust the site setti
 - properly remove sensitive information from being displayed to the screen (order tracking)
 - add background and set colours to other pages
 - add site design options such as branding figures/images
-    - 2 options for site logos - large - small    
-
-- cart/checkout
-    - items availability/invintory is updated
-    - sendgrid email system??? for both orders and updates
-    - manager order management page should have the full list of orders and statuses. for now is just a lookup by ID
-        
-- refine order tracking
-    - this could be a timeline showing events from current with accordions to show historical events.
-        - **display**: timeline with accordion for each value other then the first - **WITH SORTING BY TIME**
+    - 2 options for site logos - large - small
+- items availability/invintory is updated on checkout
+- sendgrid email system??? for both orders and updates
+- manager order management page should have the full list of orders and statuses. for now is just a lookup by ID
+- refine order tracking sorting by time -> emails per-update
 
 - create static files for products, orders, manager accounts, and site settings to make the server files call/write to as needed
     - (RIGHT NOW IS JUST ALL LOCATED IN SERVER.FIREBASECLIENT.JS)

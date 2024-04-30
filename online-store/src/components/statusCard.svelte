@@ -16,10 +16,10 @@
         <!-- <p>Order ID: {status.order_id}</p> -->
         <p>Status: {status.status}</p>
         <p>Comments: {status.comments}</p>
-        <!-- <p>Tracking Number: {status.tracking_number}</p>
+        <p>Tracking Number: {status.tracking_number}</p>
         <p>Shipping Carrier: {status.shipping_carrier}</p>
         <p>Shipping Date: {status.shipping_date}</p>
-        <a href={status.link} target="_blank" rel="noopener noreferrer">Track Order</a> -->
+        <a href={status.link} target="_blank" rel="noopener noreferrer">Track Order</a>
     </div>
 {/each}
 </div>

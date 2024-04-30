@@ -75,10 +75,13 @@ async function create_order(orderData) {
 		console.error('Failed to submit order:', err);
 	}
 }
-async function get_order_details(order_id) {
-	//we want to get the order details of the order that was placed given the order_id
+async function get_order_details(order_id, email) {
+	if(email) {
+		console.log(`getting order ${order_id} details for ${email}`)
+	}else{
+		console.log(`getting order ${order_id} details`);
+	}
 	//the idea is to have an array associated to a given ID that contains all the order details ordered by date
-	console.log('getting order details');
 	return {
 		order_id: 1,
 		customerName: 'John Doe',
@@ -96,7 +99,8 @@ async function get_order_details(order_id) {
 }
 async function set_order_status(orderData) {
 	//we want to update the order status of the order that was placed given the order_id
-	//this will add a new item to the array of orders by the associated ID
+	//this will add a new item to the array of statuses on the order
+	//this should also send an email to the user with the updated status
 	console.log('updating order status', orderData);
 }
 

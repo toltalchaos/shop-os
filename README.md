@@ -14,18 +14,12 @@ to the managers or potential managers, load up the app and adjust the site setti
 
 # TODO:
 
-- properly remove sensitive information from being displayed to the screen (order tracking)
-    - OR require an email for order lookup (email and order number)
 - add background and set colours to other pages
 - add site design options such as branding figures/images
     - 2 options for site logos - large - small
 - items availability/invintory is updated on checkout
 - sendgrid email system??? for both orders and updates
 - manager order management page should have the full list of orders and statuses. for now is just a lookup by ID
-- refine order tracking sorting by time -> emails per-update
-
-- create static files for products, orders, manager accounts, and site settings to make the server files call/write to as needed
-    - (RIGHT NOW IS JUST ALL LOCATED IN SERVER.FIREBASECLIENT.JS)
 
 - init firestore client + .env settings
 

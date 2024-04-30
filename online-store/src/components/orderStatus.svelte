@@ -50,18 +50,18 @@
 				<!-- Add more options here -->
 			</select>
 		</label>
-			<label for="tracking_number">Tracking Number:
+			<!-- <label for="tracking_number">Tracking Number:
 			<input type="text" id="tracking_number" bind:value={newStatusInfo.tracking_number} />
-		</label>
+		</label> -->
 			<label for="shipping_comments">Comments:
 			<textarea id="shipping_comments" bind:value={newStatusInfo.comments} required/>
 		</label>
-			<label for="shipping_carrier">Shipping Carrier:
+			<!-- <label for="shipping_carrier">Shipping Carrier:
 			<input type="text" id="shipping_carrier" bind:value={newStatusInfo.shipping_carrier}  />
-		</label>
-			<label for="shipping_date"> Date:
+		</label> -->
+			<!-- <label for="shipping_date"> Date:
 			<input type="date" id="shipping_date" bind:value={newStatusInfo.shipping_date}  />
-		</label>	
+		</label>	 -->
 			<button type="submit">Update</button>
 		</form>
 		<hr />

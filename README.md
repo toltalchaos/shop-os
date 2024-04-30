@@ -15,6 +15,7 @@ to the managers or potential managers, load up the app and adjust the site setti
 # TODO:
 
 - properly remove sensitive information from being displayed to the screen (order tracking)
+    - OR require an email for order lookup (email and order number)
 - add background and set colours to other pages
 - add site design options such as branding figures/images
     - 2 options for site logos - large - small

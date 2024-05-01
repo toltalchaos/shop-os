@@ -4,6 +4,7 @@
     //https://svelte-email.vercel.app/docs/getting-started/installation
 
     export let orderNumber;
+    export let status;
 </script>
 
 <style>
@@ -11,8 +12,12 @@
 </style>
 
 <Html lang="en">
-    <Heading as="h1">New Order Received</Heading>
-    <Text>Thank you for your order! Your order number is: {orderNumber}</Text>
-    <Text>We will process your order and notify you once it has been shipped.</Text>
+    <Heading as="h1">Order Update!</Heading>
+    <Text>Your order ({orderNumber}) had been updated.</Text>
+    <Text>{#each Object.keys(status) as key}
+        {key}: {status[key]}
+        <br>
+    {/each}
+    </Text>
     <Text>If you have any questions, please feel free to contact us!</Text>
 </Html>

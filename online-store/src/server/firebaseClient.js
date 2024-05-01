@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { updated } from '$app/stores';
 import productData from '../static/socks.json';
-import { manageInvintoryAndCartCount, formatNewOrderEmail, formatStatusUpdateEmail, sanitizeCartData } from './utils';
+import { manageInvintoryAndCartCount, sanitizeCartData } from './utils';
 //site operations
 async function get_site_data() {
 	console.log('getting site data');
@@ -84,7 +84,7 @@ async function create_order(orderInfo) {
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify(formatNewOrderEmail(order))
+			body: JSON.stringify(order)
 		});
 		console.log('order created', order);
 		return order;
@@ -121,7 +121,13 @@ async function set_order_status(orderData) {
 	//we want to update the order status of the order that was placed given the order_id
 	//this will add a new item to the array of statuses on the order
 	//this should also send an email to the user with the updated status
-	emailer(formatStatusUpdateEmail(orderData));
+	await fetch('/emails/orderUpdate', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(orderData)
+	});
 	console.log('updating order status', orderData);
 }
 

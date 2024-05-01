@@ -14,6 +14,7 @@ to the managers or potential managers, load up the app and adjust the site setti
 
 # TODO:
 
+- flesh out emailing system to deliver meaningful data
 - add background and set colours to other pages
 - add site design options such as branding figures/images
     - 2 options for site logos - large - small
@@ -37,7 +38,8 @@ to the managers or potential managers, load up the app and adjust the site setti
     - ENV FILE CREATION
     - GMAIL EMAILER INSTRUCTIONS
         - turn on 2FA
-        - 
+        - get the password
+        - enter account email and app password in .env
     - FIRESTORE SETTINGS
         - MANAGER ACCOUNT
         - TOKENS FOR .ENV

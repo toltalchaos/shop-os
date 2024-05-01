@@ -5,7 +5,7 @@ import nodemailer from 'nodemailer';
 import { render } from 'svelte-email';
 
 const transporter = nodemailer.createTransport({
-	service: 'gmail',
+	service: env.PUBLIC_EMAIL_SERVICE,
 	auth: {
 		user: env.PUBLIC_SENDER_GMAIL,
 		pass: env.PUBLIC_SENDER_APP_PASSWORD
@@ -52,7 +52,7 @@ export async function POST(requestEvent) {
 
 	const mailOptions = {
 		from: env.PUBLIC_SENDER_GMAIL,
-		to: 'braydontol@gmail.com',
+		to: env.PUBLIC_SENDER_GMAIL,
 		subject: 'New Order Recieved!',
 		html: mailHTML
 	};

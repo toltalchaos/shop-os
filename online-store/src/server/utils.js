@@ -19,21 +19,6 @@ function sanitizeCartData(items) {
     });
 }
 
-
-function formatNewOrderEmail(orderData) {
-    //we want to format the order data into an email to send to the user
-    console.log('formatting order email', orderData);
-    return orderData;
-}
-
-function formatStatusUpdateEmail(orderData) {
-    //we want to format the order data into an email to send to the user
-    console.log('formatting status update email', orderData);
-    return orderData;
-}
-
 export {
     manageInvintoryAndCartCount, 
-    formatNewOrderEmail,
-    formatStatusUpdateEmail,
     sanitizeCartData}

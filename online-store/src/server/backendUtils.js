@@ -32,8 +32,16 @@ async function update_site_data(siteData) {
 
 //product operations
 async function get_all_products() {
-	console.log('getting all products');
-	//make call here - if nothing return empty array
+	// console.log('getting all products');
+	// //make call here - if nothing return empty array
+	// const response = await fetch('/', {
+	// 	method: 'GET',
+	// 	headers: {
+	// 		'Content-Type': 'application/json',
+	// 		'entity': 'product'
+	// 	}
+	// });
+	// console.log('product response', response.json());
 	return productData.socks;
 }
 async function update_product(newproductData, origionalproductData, isDelete = false) {

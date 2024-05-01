@@ -21,7 +21,7 @@ to the managers or potential managers, load up the app and adjust the site setti
 - manager order management page should have the full list of orders and statuses. for now is just a lookup by ID
 
 
-- use firestore for required data in the application
+- firestore stuff
     - user account management
     - product data
         - IMAGE storage !!! this is a big one !!!

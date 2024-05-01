@@ -32,16 +32,16 @@ function sendCustomerEmail(emailData) {
 		html: mailHTML
 	};
 
-	// const emaiResponse = new Response (transporter.sendMail(mailOptions, function (error, info) {
-	// 	if (error) {
-	// 		console.log(error, 'error');
-	// 		return String(error);
-	// 	} else {
-	// 		console.log('Email sent: ' + info.response);
-	// 		return String('Email sent: ' + info.response);
-	// 	}
-	// }));
-	// return emaiResponse;
+	const emaiResponse = new Response (transporter.sendMail(mailOptions, function (error, info) {
+		if (error) {
+			console.log(error, 'error');
+			return String(error);
+		} else {
+			console.log('Email sent: ' + info.response);
+			return String('Email sent: ' + info.response);
+		}
+	}));
+	return emaiResponse;
 	return new Response('success', { status: 200, statusText: 'OK' });
 }
 function sendAdminEmail(emailData) {
@@ -57,15 +57,15 @@ function sendAdminEmail(emailData) {
 		html: mailHTML
 	};
 
-	// const emaiResponse = new Response (transporter.sendMail(mailOptions, function (error, info) {
-	// 	if (error) {
-	// 		console.log(error, 'error');
-	// 		return String(error);
-	// 	} else {
-	// 		console.log('Email sent: ' + info.response);
-	// 		return String('Email sent: ' + info.response);
-	// 	}
-	// }));
-	// return emaiResponse;
+	const emaiResponse = new Response (transporter.sendMail(mailOptions, function (error, info) {
+		if (error) {
+			console.log(error, 'error');
+			return String(error);
+		} else {
+			console.log('Email sent: ' + info.response);
+			return String('Email sent: ' + info.response);
+		}
+	}));
+	return emaiResponse;
 	return new Response('success', { status: 200, statusText: 'OK' });
 }

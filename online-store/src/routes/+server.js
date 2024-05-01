@@ -39,7 +39,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
-const firestoreApp = getFirestore(app);
+// const firestoreApp = getFirestore(app);
 const db = getDatabase(app);
 
 export async function POST(requestEvent) {
@@ -51,9 +51,9 @@ export async function POST(requestEvent) {
 			set(ref(db, 'orders/' + order.order_id), order);
 			return new Response('Order created', { status: 200 });
 		case 'site_data':
-			//stuff
+		//stuff
 		case 'product':
-			//stuff
+		//stuff
 		default:
 			return new Response('Invalid entity', { status: 400 });
 	}
@@ -61,21 +61,36 @@ export async function POST(requestEvent) {
 
 export async function GET(requestEvent) {
 	const entity = await requestEvent.request.headers.get('entity');
-    const dbref = ref(db)
+	const dbref = ref(db);
 	switch (entity) {
 		case 'order':
 			const order_id = await requestEvent.request.headers.get('order_id');
 			const email = await requestEvent.request.headers.get('email');
 			const order = await get(child(dbref, 'orders/' + order_id));
-            if(order.exists()){
-                return new Response(JSON.stringify(order.val()), { status: 200 });
-            } else {
-                return new Response('Order not found', { status: 404 });
-            }
+			if (order.exists()) {
+				return new Response(JSON.stringify(order.val()), { status: 200 });
+			} else {
+				return new Response('Order not found', { status: 404 });
+			}
 		case 'site_data':
-			//stuff
+		//stuff
 		case 'product':
-			//stuff
+			const product_id = await requestEvent.request.headers.get('product_id');
+			if (product_id) {
+				const product = await get(child(dbref, 'products/' + product_id));
+				if (product.exists()) {
+					return new Response(JSON.stringify(product.val()), { status: 200 });
+				} else {
+					return new Response('Product not found', { status: 404 });
+				}
+			} else {
+				const products = await get(child(dbref, 'products'));
+				if (products.exists()) {
+					return new Response(JSON.stringify(products.val()), { status: 200 });
+				} else {
+					return new Response('No products found', { status: 404 });
+				}
+			}
 		default:
 			return new Response('Invalid entity', { status: 400 });
 	}

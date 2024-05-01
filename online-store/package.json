@@ -30,6 +30,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"nodemailer": "^6.9.13",
+		"svelte-email": "^0.0.4",
 		"svelte-routing": "^1.11.0"
 	}
 }

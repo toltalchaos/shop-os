@@ -1,7 +1,6 @@
 // @ts-nocheck
 import { updated } from '$app/stores';
 import productData from '../static/socks.json';
-import emailer from './emailer';
 import { manageInvintoryAndCartCount, formatNewOrderEmail, formatStatusUpdateEmail, sanitizeCartData } from './utils';
 //site operations
 async function get_site_data() {
@@ -80,7 +79,13 @@ async function create_order(orderInfo) {
 		}
 		//make call to firestore to make the order here...
 		//email the user the order confirmation...
-		emailer(formatNewOrderEmail(order));
+		await fetch('/emails/newOrder', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(formatNewOrderEmail(order))
+		});
 		console.log('order created', order);
 		return order;
 	} catch (err) {

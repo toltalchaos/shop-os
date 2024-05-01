@@ -50,6 +50,10 @@ export async function POST(requestEvent) {
 			console.log('order to be submitted', order);
 			set(ref(db, 'orders/' + order.order_id), order);
 			return new Response('Order created', { status: 200 });
+		case 'site_data':
+			//stuff
+		case 'product':
+			//stuff
 		default:
 			return new Response('Invalid entity', { status: 400 });
 	}
@@ -68,6 +72,12 @@ export async function GET(requestEvent) {
             } else {
                 return new Response('Order not found', { status: 404 });
             }
+		case 'site_data':
+			//stuff
+		case 'product':
+			//stuff
+		default:
+			return new Response('Invalid entity', { status: 400 });
 	}
 }
 

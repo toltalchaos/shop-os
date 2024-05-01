@@ -51,7 +51,7 @@ export async function POST(requestEvent) {
 
 	const mailOptions = {
 		from: env.PUBLIC_SENDER_GMAIL,
-		to: env.PUBLIC_SENDER_GMAIL,
+		to: emailData.orderData.customerEmail,
 		subject: 'Order Update (order: ' + emailData.order_id + ')',
 		html: mailHTML
 	};

@@ -17,8 +17,6 @@ to the managers or potential managers, load up the app and adjust the site setti
 - add background and set colours to other pages
 - add site design options such as branding figures/images
     - 2 options for site logos - large - small
-- items availability/invintory is updated on checkout
-- sendgrid email system??? for both orders and updates
 - manager order management page should have the full list of orders and statuses. for now is just a lookup by ID
 
 - init firestore client + .env settings
@@ -34,6 +32,15 @@ to the managers or potential managers, load up the app and adjust the site setti
 - Db data versioning/application version tagging for later releases.
     - right now the static data is ever changing shape so it makes sense to keep changing. BUT it should return a field with the version number and there should be a way to update the shape of the storage when the version changes and expectes different data. 
         - expected data shape tied to version number. on update the data shape is managed.
+
+- CREATE DOCUMENTATION ON SETUP
+    - ENV FILE CREATION
+    - GMAIL EMAILER INSTRUCTIONS
+        - turn on 2FA
+        - 
+    - FIRESTORE SETTINGS
+        - MANAGER ACCOUNT
+        - TOKENS FOR .ENV
 
 - data/sales anylitics in the management directories (https://www.npmjs.com/package/victory) would be cool
     - use firebase queries to run analytics and pump the data into visuialization tools/components

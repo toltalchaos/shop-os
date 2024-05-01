@@ -45,7 +45,6 @@
 				totals
 			};
 			let newOrder = await create_order(orderData);
-			console.log('Order submitted:', newOrder);
 			alert('Order submitted successfully!', 'Order ID: ' + newOrder.order_id);
 			//clear cart
 			clearCart();

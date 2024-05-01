@@ -1,7 +1,7 @@
 <script>
 	// @ts-nocheck
 	// Add your script logic here
-	import { update_products } from '../server/firebaseClient';
+	import { update_product } from '../server/firebaseClient';
 	import { writable } from 'svelte/store';
 	import CategoryEditDdl from './categoryEditDDL.svelte';
 	import ItemImageManager from './itemImageManager.svelte';
@@ -32,13 +32,13 @@
 	function handleProductSubmit() {
 		product.category = $productCategoryStore;
 		product.image = [...$itemImageStore];
-		update_products(product, origionalProduct);
+		update_product(product, origionalProduct);
 	}
 
 	function deleteItem() {
 		product.category = $productCategoryStore;
 		product.image = $itemImageStore;
-		update_products(product, true);
+		update_product(product, true);
 	}
 </script>
 

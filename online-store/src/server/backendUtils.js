@@ -1,5 +1,4 @@
 // @ts-nocheck
-import { updated } from '$app/stores';
 import productData from '../static/socks.json';
 import { manageInvintoryAndCartCount, sanitizeCartData } from './utils';
 //site operations
@@ -78,6 +77,16 @@ async function create_order(orderInfo) {
 			update_product(updatedItems[item], sanitizedProducts[item], false);
 		}
 		//make call to firestore to make the order here...
+		//first call to create order
+		await fetch('/', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'entity': 'order'
+			},
+			body: JSON.stringify(order)
+		});
+		//then call to update the product invintory
 		//email the user the order confirmation...
 		await fetch('/emails/newOrder', {
 			method: 'POST',
@@ -86,18 +95,21 @@ async function create_order(orderInfo) {
 			},
 			body: JSON.stringify(order)
 		});
-		console.log('order created', order);
 		return order;
 	} catch (err) {
 		console.error('Failed to submit order:', err);
 	}
 }
-async function get_order_details(order_id, email) {
-	if (email) {
-		console.log(`getting order ${order_id} details for ${email}`);
-	} else {
-		console.log(`getting order ${order_id} details`);
-	}
+async function get_order_details(order_id) {
+		const orderResponse = await fetch('/', {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				'entity': 'order',
+				'order_id': order_id,
+			},
+		});
+		return await orderResponse.json();
 	//the idea is to have an array associated to a given ID that contains all the order details ordered by date
 	return {
 		order_id: 1,
@@ -120,6 +132,14 @@ async function get_order_details(order_id, email) {
 async function set_order_status(orderData) {
 	//we want to update the order status of the order that was placed given the order_id
 	//this will add a new item to the array of statuses on the order
+	await fetch('/', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			'entity': 'order'
+		},
+		body: JSON.stringify(orderData)
+	});
 	//this should also send an email to the user with the updated status
 	await fetch('/emails/orderUpdate', {
 		method: 'POST',

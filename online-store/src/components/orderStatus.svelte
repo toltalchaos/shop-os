@@ -1,6 +1,6 @@
 <script>
-	// @ts-nocheck
-	import { set_order_status } from '../server/firebaseClient';
+		// @ts-nocheck
+	import { set_order_status, get_order_details } from '../server/backendUtils';
 	import StatusCard from './statusCard.svelte';
 	//expecting a full fledged order object including status array
 	export let order = {
@@ -31,6 +31,8 @@
 		newStatusInfo.update_time = new Date().toISOString();
 		order.status.push(newStatusInfo);
 		await set_order_status(order);
+		order = await get_order_details(order.order_id);
+		editable = false;
 	}
 </script>
 

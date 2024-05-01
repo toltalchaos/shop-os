@@ -1,7 +1,7 @@
 <script>
 	// @ts-nocheck
 	// Add your script logic here
-	import { update_product } from '../server/firebaseClient';
+	import { update_product } from '../server/backendUtils';
 	import { writable } from 'svelte/store';
 	import CategoryEditDdl from './categoryEditDDL.svelte';
 	import ItemImageManager from './itemImageManager.svelte';

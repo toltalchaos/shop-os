@@ -1,4 +1,4 @@
-import { get_site_data, get_all_products } from '../server/firebaseClient';
+import { get_site_data, get_all_products } from '../server/backendUtils';
 
 export async function load() {
     const productData = await get_all_products();

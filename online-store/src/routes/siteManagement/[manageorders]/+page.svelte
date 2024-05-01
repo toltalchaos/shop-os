@@ -1,7 +1,7 @@
 <script>
 	// @ts-nocheck
 	import OrderStatus from '../../../components/orderStatus.svelte';
-	import { get_order_details } from '../../../server/firebaseClient';
+	import { get_order_details } from '../../../server/backendUtils';
 	let orderData = null;
 	let orderNumber = '';
 

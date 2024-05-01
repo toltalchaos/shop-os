@@ -1,7 +1,7 @@
 <script>
 	// @ts-nocheck
     import { onMount } from 'svelte';
-    import { get_order_details } from '../../../server/firebaseClient';
+    import { get_order_details } from '../../../server/backendUtils';
     import OrderStatus from '../../../components/orderStatus.svelte';
     import { page } from '$app/stores';
     let orderDetails = null;
@@ -11,11 +11,8 @@
     }
 
     onMount(async () => {
-        if (!orderNum) {
-             await getOrder(1); //todo: remove this. This is just for testing
-        } else {
             await getOrder(orderNum);
-        }
+
     });
 
 

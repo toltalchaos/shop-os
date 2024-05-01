@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { env } from '$env/dynamic/public';
+import { PRIVATE_SENDER_APP_PASSWORD } from '$env/static/private'
 import OrderUpdate from './orderUpdate.svelte';
 import nodemailer from 'nodemailer';
 import { render } from 'svelte-email';
@@ -8,7 +9,7 @@ const transporter = nodemailer.createTransport({
 	service: env.PUBLIC_EMAIL_SERVICE,
 	auth: {
 		user: env.PUBLIC_SENDER_GMAIL,
-		pass: env.PUBLIC_SENDER_APP_PASSWORD
+		pass: PRIVATE_SENDER_APP_PASSWORD
 	}
 });
 

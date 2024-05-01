@@ -14,6 +14,7 @@ to the managers or potential managers, load up the app and adjust the site setti
 
 # TODO:
 
+- after order update reflect the new changes
 - flesh out emailing system to deliver meaningful data
 - add background and set colours to other pages
 - add site design options such as branding figures/images

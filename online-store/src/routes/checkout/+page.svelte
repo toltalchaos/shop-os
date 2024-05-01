@@ -1,6 +1,6 @@
 <script>
 	// @ts-nocheck
-	import { create_order } from '../../server/firebaseClient';
+	import { create_order } from '../../server/backendUtils';
 	import Invoice from '../../components/invoice.svelte';
 	import cartItems from '../../global/cartItems';
 	import { getContext } from 'svelte';
@@ -29,13 +29,15 @@
 	// Handle form submission
 	async function handleSubmit(event) {
 		event.preventDefault();
-		if (!validateForm()) {
+		let isValid = validateForm();
+		console.log('customerName:', customerName);
+		if (!isValid) {
 			alert('Please fill out all required fields.');
 		}
 		if (confirm('Are you sure you want to submit the order? This action cannot be undone.')) {
 			console.log('Submitting order data...');
+			
 			let orderData = {
-				//items includes the existing invintory at this time. this is not helpful for the order it should be a separate collection
 				items,
 				customerName,
 				customerEmail,
@@ -61,6 +63,7 @@
 
 	function validateForm() {
 		// Add your form validation logic here
+		customerName = customerName.replace(/[.#$\[\]]/g, '');
 		return true;
 	}
 

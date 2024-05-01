@@ -1,5 +1,5 @@
 <script>
-    import { authenticate_user } from '../../server/firebaseClient';
+    import { authenticate_user } from '../../server/backendUtils';
 	import { goto } from '$app/navigation';
     let username = '';
     let password = '';

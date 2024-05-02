@@ -19,7 +19,7 @@ to the managers or potential managers, load up the app and adjust the site setti
 
 # TODO:
 
-- USER ACCOUNTS
+- USER ACCOUNT (manager only, i dont believe in keeping user data)
 - product image management
 - flesh out emailing system to deliver meaningful data
 - add background and set colours to other pages

@@ -3,7 +3,6 @@ import productData from '../static/socks.json';
 import { manageInvintoryAndCartCount, sanitizeCartData } from './utils';
 //site operations
 async function get_site_data() {
-	console.log('getting site data');
 	const default_settings = {
 		title: 'SHOP_OS',
 		description: 'Welcome to the future of e-commerce for small business',

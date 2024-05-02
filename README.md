@@ -26,7 +26,6 @@ to the managers or potential managers, load up the app and adjust the site setti
     - product data
         - IMAGE storage !!! this is a big one !!!
         - maybe save images to byte data? or just tell the users to insert a URL to the image?
-    - website data
 
 - Db data versioning/application version tagging for later releases.
     - right now the static data is ever changing shape so it makes sense to keep changing. BUT it should return a field with the version number and there should be a way to update the shape of the storage when the version changes and expectes different data. 

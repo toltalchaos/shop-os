@@ -1,4 +1,5 @@
 // @ts-nocheck
+import { assign } from 'svelte/internal';
 import productData from '../static/socks.json';
 import { manageInvintoryAndCartCount, sanitizeCartData } from './utils';
 //site operations
@@ -33,9 +34,6 @@ async function set_site_data(newSiteData) {
 	});
 	return newSiteData;
 }
-async function update_site_data(siteData) {
-	console.log('updating site data', siteData);
-}
 
 //product operations
 async function get_all_products() {
@@ -65,7 +63,43 @@ async function update_product(newproductData, origionalproductData, isDelete = f
 	console.log('updating product...');
 	console.log('new product data', newproductData);
 	console.log('original product data', origionalproductData);
-	return;
+	if (isDelete) {
+		//delete the product
+		await fetch('/', {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+				'entity': 'product'
+			},
+			body: JSON.stringify(newproductData)
+		});
+	}
+	if (origionalproductData === newproductData) {
+		//update the product
+		await fetch('/', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'entity': 'product'
+			},
+			body: JSON.stringify(newproductData)
+		});
+	}
+	else {
+	//assign the product a new ID
+	let product_id = newproductData.name + Math.random().toString(36).substring(7);
+	newproductData.product_id = product_id;
+	//add the product
+	await fetch('/', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			'entity': 'product'
+		},
+		body: JSON.stringify(newproductData)
+	});
+}
+
 }
 
 //order operations
@@ -183,10 +217,9 @@ export {
 	set_site_data,
 	get_all_products,
 	get_single_product,
+	update_product,
 	create_order,
 	get_order_details,
 	set_order_status,
-	update_site_data,
-	update_product,
 	authenticate_user
 };

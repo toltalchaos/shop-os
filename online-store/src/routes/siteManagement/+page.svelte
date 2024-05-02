@@ -1,7 +1,7 @@
 <script>
 	// @ts-nocheck
 	import ProductCard from '../../components/ProductCard.svelte';
-	import { update_site_data } from '../../server/backendUtils';
+	import { set_site_data } from '../../server/backendUtils';
 	import ManageProductForm from '../../components/manageProductForm.svelte';
 	import allSocks from '../../global/allItems';
 	import { getContext } from 'svelte';
@@ -61,7 +61,7 @@
 				},
 			};
 		});
-		update_site_data($siteData)
+		set_site_data($siteData)
 	}
 
 </script>

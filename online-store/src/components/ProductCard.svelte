@@ -24,11 +24,14 @@
 	}
 
 	function flop(event) {
-		if(!selected){
-			event.target.focus();
-		}else{
-			event.target.blur();}
-		selected = !selected;
+		if (!editable) {
+			if (!selected) {
+				event.target.focus();
+			} else {
+				event.target.blur();
+			}
+			selected = !selected;
+		}
 	}
 </script>
 
@@ -73,7 +76,7 @@
 		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 		z-index: 1;
 		transition-property: transform, z-index;
-  		transition-duration: 0.2s;
+		transition-duration: 0.2s;
 	}
 
 	.product-card h2 {
@@ -104,7 +107,7 @@
 		cursor: not-allowed;
 	}
 
-	.product-card:focus{
+	.product-card:focus {
 		transform: scale(1.1);
 		z-index: 10;
 	}

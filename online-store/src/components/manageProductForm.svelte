@@ -5,6 +5,7 @@
 	import { writable } from 'svelte/store';
 	import CategoryEditDdl from './categoryEditDDL.svelte';
 	import ItemImageManager from './itemImageManager.svelte';
+	import { goto } from '$app/navigation';
 	export let product = null;
 	const origionalProduct = JSON.parse(JSON.stringify(product));
 	let newProduct = false;
@@ -15,6 +16,7 @@
 	if (!product) {
 		newProduct = true;
 		product = {
+			product_id: '',
 			name: '',
 			invintory: 0,
 			price: 0.0,
@@ -31,13 +33,12 @@
 		
 	function handleProductSubmit() {
 		product.category = $productCategoryStore;
-		product.image = [...$itemImageStore];
+		product.image = $itemImageStore;
 		update_product(product, origionalProduct);
+		goto('/siteManagement');
 	}
 
 	function deleteItem() {
-		product.category = $productCategoryStore;
-		product.image = $itemImageStore;
 		update_product(product, true);
 	}
 </script>

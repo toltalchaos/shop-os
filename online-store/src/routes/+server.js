@@ -51,9 +51,13 @@ export async function POST(requestEvent) {
 			set(ref(db, 'orders/' + order.order_id), order);
 			return new Response('Order created', { status: 200 });
 		case 'site_data':
-		//stuff
+			const site_data = await requestEvent.request.json();
+			set(ref(db, 'site_data'), site_data);
+			return new Response('Site data updated', { status: 200 });
 		case 'product':
-		//stuff
+			const product = await requestEvent.request.json();
+			set(ref(db, 'products/' + product.product_id), product);
+			return new Response('Product created', { status: 200 });
 		default:
 			return new Response('Invalid entity', { status: 400 });
 	}
@@ -73,7 +77,12 @@ export async function GET(requestEvent) {
 				return new Response('Order not found', { status: 404 });
 			}
 		case 'site_data':
-		//stuff
+			const site_data = await get(child(dbref, 'site_data'));
+			if (site_data.exists()) {
+				return new Response(JSON.stringify(site_data.val()), { status: 200 });
+			} else {
+				return new Response('Site data not found', { status: 404 });
+			}
 		case 'product':
 			const product_id = await requestEvent.request.headers.get('product_id');
 			if (product_id) {

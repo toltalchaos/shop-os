@@ -32,14 +32,14 @@ export async function load() {
     console.log('loading data')
     let productData = await get(child(dbref, 'products'));
     if (productData.exists()) {
-        productData = JSON.stringify(productData.val()), { status: 200 };
+        productData = Object.values(productData.val());
     } else {
         //defaults
         productData = get_all_products();
     };
     let siteData = await get(child(dbref, 'site_data'));
     if (siteData.exists()) {
-        siteData = JSON.stringify(siteData.val()), { status: 200 };
+        siteData = siteData.val();
     } else {
         //defaults
         siteData = get_site_data();

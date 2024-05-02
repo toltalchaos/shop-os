@@ -19,6 +19,7 @@ to the managers or potential managers, load up the app and adjust the site setti
 
 # TODO:
 
+- sanitize image data for orders
 - USER ACCOUNT (manager only, i dont believe in keeping user data)
 - product image management
 - flesh out emailing system to deliver meaningful data
@@ -44,6 +45,7 @@ to the managers or potential managers, load up the app and adjust the site setti
     - 2 options for site logos - large - small
 
 - Db data versioning/application version tagging for later releases.
+- db version on root of DB
     - right now the static data is ever changing shape so it makes sense to keep changing. BUT it should return a field with the version number and there should be a way to update the shape of the storage when the version changes and expectes different data. 
         - expected data shape tied to version number. on update the data shape is managed.
 

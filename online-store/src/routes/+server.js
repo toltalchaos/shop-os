@@ -47,7 +47,6 @@ export async function POST(requestEvent) {
 	switch (entity) {
 		case 'order':
 			const order = await requestEvent.request.json();
-			console.log('order to be submitted', order);
 			set(ref(db, 'orders/' + order.order_id), order);
 			return new Response('Order created', { status: 200 });
 		case 'site_data':

@@ -52,7 +52,6 @@ async function get_single_product(product_id) {
 		},
 		body: JSON.stringify({ product_id: product_id })
 	});
-	console.log('product response', response.json());
 	return productData.socks[0];
 }
 async function update_product(newproductData, origionalproductData, isDelete = false) {
@@ -60,9 +59,6 @@ async function update_product(newproductData, origionalproductData, isDelete = f
 	//if isDelete is true, then the product will be deleted
 	//get the existing products, look for the product to update, update the product, and then set the products
 	//if there is no product to update, then add the product to the list, and then set the products
-	console.log('updating product...');
-	console.log('new product data', newproductData);
-	console.log('original product data', origionalproductData);
 	if (isDelete) {
 		//delete the product
 		await fetch('/', {
@@ -105,8 +101,6 @@ async function update_product(newproductData, origionalproductData, isDelete = f
 //order operations
 async function create_order(orderInfo) {
 	try {
-		console.log('creating order', orderInfo);
-		//create order - for firestore (ordet_id = orderData.customerName + uuid(10))
 		const newID = orderInfo.customerName + '-' + Math.random().toString(36).substring(7);
 		let order = {
 			order_id: newID,
@@ -165,24 +159,6 @@ async function get_order_details(order_id) {
 			},
 		});
 		return await orderResponse.json();
-	//the idea is to have an array associated to a given ID that contains all the order details ordered by date
-	return {
-		order_id: 1,
-		customerName: 'John Doe',
-		customerEmail: '',
-		status: [
-			{
-				order_id: 1,
-				status: 'order has been submitted',
-				comments: 'comments go here...	',
-				tracking_number: '1234567890',
-				shipping_carrier: 'USPS',
-				shipping_date: '2021-01-01',
-				link: 'https://www.usps.com/1234567890',
-				update_time: '2021-01-01'
-			}
-		]
-	};
 }
 async function set_order_status(orderData) {
 	//we want to update the order status of the order that was placed given the order_id
@@ -203,7 +179,6 @@ async function set_order_status(orderData) {
 		},
 		body: JSON.stringify(orderData)
 	});
-	console.log('updating order status', orderData);
 }
 
 // authenticate user

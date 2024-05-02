@@ -11,17 +11,22 @@ to the managers or potential managers, load up the app and adjust the site setti
 ```
 
 ---
+## BUG LIST
+- shipping and invoice totals not loading properly (NAN)
+- bug on product card focus element when in edit mode
+- bug on "track order" anchor tag in the order card (seems to go nowhere - this might be ok)
+- seller email coming back as [object object] for the new order details
 
 # TODO:
 
+- USER ACCOUNTS
+- product image management
 - flesh out emailing system to deliver meaningful data
 - add background and set colours to other pages
-- add site design options such as branding figures/images
-    - 2 options for site logos - large - small
+
 - manager order management page should have the full list of orders and statuses. for now is just a lookup by ID
 - firestore image management
-- bug on product card focus element when in edit mode
-- product image management
+- ambiguous "DATE" field in order managment
 
 - CREATE DOCUMENTATION ON SETUP
     - ENV FILE CREATION
@@ -32,6 +37,11 @@ to the managers or potential managers, load up the app and adjust the site setti
     - FIRESTORE SETTINGS
         - MANAGER ACCOUNT
         - TOKENS FOR .ENV
+
+
+## future enhancements
+- add site design options such as branding figures/images
+    - 2 options for site logos - large - small
 
 - Db data versioning/application version tagging for later releases.
     - right now the static data is ever changing shape so it makes sense to keep changing. BUT it should return a field with the version number and there should be a way to update the shape of the storage when the version changes and expectes different data. 

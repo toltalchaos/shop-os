@@ -2,6 +2,7 @@
 import { env } from '$env/dynamic/public';
 import { PRIVATE_SENDER_APP_PASSWORD } from '$env/static/private';
 import NewOrder from './newOrder.svelte';
+import NewOrderAdmin from './newOrderAdmin.svelte';
 import nodemailer from 'nodemailer';
 import { render } from 'svelte-email';
 
@@ -34,19 +35,16 @@ function sendCustomerEmail(emailData) {
 
 	const emaiResponse = new Response (transporter.sendMail(mailOptions, function (error, info) {
 		if (error) {
-			console.log(error, 'error');
 			return String(error);
 		} else {
-			console.log('Email sent: ' + info.response);
 			return String('Email sent: ' + info.response);
 		}
 	}));
 	return emaiResponse;
-	return new Response('success', { status: 200, statusText: 'OK' });
 }
 function sendAdminEmail(emailData) {
 	const mailHTML = render({
-		template: NewOrder,
+		template: NewOrderAdmin,
 		props: { orderNumber: emailData.order_id, orderData: emailData.orderData }
 	});
 
@@ -59,13 +57,10 @@ function sendAdminEmail(emailData) {
 
 	const emaiResponse = new Response (transporter.sendMail(mailOptions, function (error, info) {
 		if (error) {
-			console.log(error, 'error');
 			return String(error);
 		} else {
-			console.log('Email sent: ' + info.response);
 			return String('Email sent: ' + info.response);
 		}
 	}));
 	return emaiResponse;
-	return new Response('success', { status: 200, statusText: 'OK' });
 }

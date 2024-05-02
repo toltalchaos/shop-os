@@ -21,10 +21,7 @@ to the managers or potential managers, load up the app and adjust the site setti
 - manager order management page should have the full list of orders and statuses. for now is just a lookup by ID
 - firestore image management
 - bug on product card focus element when in edit mode
-
-- Db data versioning/application version tagging for later releases.
-    - right now the static data is ever changing shape so it makes sense to keep changing. BUT it should return a field with the version number and there should be a way to update the shape of the storage when the version changes and expectes different data. 
-        - expected data shape tied to version number. on update the data shape is managed.
+- product image management
 
 - CREATE DOCUMENTATION ON SETUP
     - ENV FILE CREATION
@@ -35,6 +32,10 @@ to the managers or potential managers, load up the app and adjust the site setti
     - FIRESTORE SETTINGS
         - MANAGER ACCOUNT
         - TOKENS FOR .ENV
+
+- Db data versioning/application version tagging for later releases.
+    - right now the static data is ever changing shape so it makes sense to keep changing. BUT it should return a field with the version number and there should be a way to update the shape of the storage when the version changes and expectes different data. 
+        - expected data shape tied to version number. on update the data shape is managed.
 
 - data/sales anylitics in the management directories (https://www.npmjs.com/package/victory) would be cool
     - use firebase queries to run analytics and pump the data into visuialization tools/components

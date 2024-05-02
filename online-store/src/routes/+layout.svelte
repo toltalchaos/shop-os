@@ -5,7 +5,6 @@
 	import Footer from '../components/footer.svelte';
 	import Header from '../components/header.svelte';
 	import StoreItems from '../global/allItems';
-	export const ssr = false; //https://kit.svelte.dev/docs/page-options#ssr
 	export let data //get the async data from our server file
 
 	let {

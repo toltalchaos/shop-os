@@ -4,7 +4,6 @@ import { manageInvintoryAndCartCount, sanitizeCartData } from './utils';
 //site operations
 async function get_site_data() {
 	console.log('getting site data');
-	//this function to get all the site data and return the required json content to our webpage
 	const default_settings = {
 		title: 'SHOP_OS',
 		description: 'Welcome to the future of e-commerce for small business',
@@ -18,13 +17,22 @@ async function get_site_data() {
 		taxRate: 0.05,
 		contact: { email: 'someEmail' }
 	};
-
-	//make call to firestore here...
 	return default_settings;
 }
 async function set_site_data(newSiteData) {
 	console.log('setting site data', newSiteData);
 	//this function to set all the site data and return the required json content to our webpage
+	//this will be used to update the site data in the database
+	//make call here
+	newSiteData = await fetch('/', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			'entity': 'site_data'
+		},
+		body: JSON.stringify(newSiteData)
+	});
+	return newSiteData;
 }
 async function update_site_data(siteData) {
 	console.log('updating site data', siteData);
@@ -32,17 +40,23 @@ async function update_site_data(siteData) {
 
 //product operations
 async function get_all_products() {
-	// console.log('getting all products');
-	// //make call here - if nothing return empty array
-	// const response = await fetch('/', {
-	// 	method: 'GET',
-	// 	headers: {
-	// 		'Content-Type': 'application/json',
-	// 		'entity': 'product'
-	// 	}
-	// });
-	// console.log('product response', response.json());
+//wireframe nonsense for testing	
 	return productData.socks;
+}
+async function get_single_product(product_id) {
+	//get the product by the product_id
+	console.log('getting product by id', product_id);
+	//make call here - if nothing return empty array
+	const response = await fetch('/', {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+			'entity': 'product'
+		},
+		body: JSON.stringify({ product_id: product_id })
+	});
+	console.log('product response', response.json());
+	return productData.socks[0];
 }
 async function update_product(newproductData, origionalproductData, isDelete = false) {
 	//this function will update the products in the database
@@ -169,6 +183,7 @@ export {
 	get_site_data,
 	set_site_data,
 	get_all_products,
+	get_single_product,
 	create_order,
 	get_order_details,
 	set_order_status,

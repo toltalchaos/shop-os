@@ -19,13 +19,8 @@ to the managers or potential managers, load up the app and adjust the site setti
 - add site design options such as branding figures/images
     - 2 options for site logos - large - small
 - manager order management page should have the full list of orders and statuses. for now is just a lookup by ID
-
-
-- firestore stuff
-    - user account management
-    - product data
-        - IMAGE storage !!! this is a big one !!!
-        - maybe save images to byte data? or just tell the users to insert a URL to the image?
+- firestore image management
+- bug on product card focus element when in edit mode
 
 - Db data versioning/application version tagging for later releases.
     - right now the static data is ever changing shape so it makes sense to keep changing. BUT it should return a field with the version number and there should be a way to update the shape of the storage when the version changes and expectes different data. 

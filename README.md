@@ -47,6 +47,7 @@ To the managers or potential managers, once youve created an environment file/de
 - Include data/sales analytics in the management directories using visualization tools/components
     - [Victory Charts?](https://www.npmjs.com/package/victory)
 - Explore order tracking insights, such as orders by day of the week, featured items vs non-featured, shipped vs non-shipped, and time to fulfillment
+    - python package adjacent to `online store`?
 
 ---
 

@@ -36,6 +36,14 @@ To the managers or potential managers, once youve created an environment file/de
 - Creation of ENV file
 - Gmail emailer instructions (turn on 2FA, get the password, enter account email and app password in .env)
 - Firestore settings (manager account, tokens for .env)
+- deployment 
+    - with firebase, download repo
+    - install firebase tools (NPM)
+    - `firebase login`
+    - `firebase init` 
+        - move files around/fill BUILD output 
+        - `firebase serve`
+    - `firebase deploy`
 
 ## Future Enhancements
 

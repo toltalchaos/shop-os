@@ -30,6 +30,7 @@ To the managers or potential managers, once youve created an environment file/de
 - Implement Firestore image management
 - Address ambiguous "DATE" field in order management
 - sort out hosting [ideally firebase](https://firebase.google.com/docs/hosting/)
+- add 404 routing
 
 ### Documentation on Setup
 
@@ -40,7 +41,9 @@ To the managers or potential managers, once youve created an environment file/de
     - with firebase, download repo
     - install firebase tools (NPM)
     - `firebase login`
-    - `firebase init` 
+    - `firebase init` - git ignore all firebase content.
+        - select the build folder for deployment
+        - SPA setting? - 
         - move files around/fill BUILD output 
         - `firebase serve`
     - `firebase deploy`

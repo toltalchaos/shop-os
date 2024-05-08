@@ -28,18 +28,20 @@ To the managers or potential managers, once youve created an environment file/de
 - add public setting debug mode in ENV to kill emails and DB calls
 - Implement user account functionality (manager only, no user data is stored)
 - Manage product images
-- Enhance emailing system to deliver meaningful data
 - Add background and set colors to other pages
 - Improve manager order management page to display the full list of orders and statuses (currently only a lookup by ID)
 - Address ambiguous "DATE" field in order management
 - sort out hosting [ideally firebase](https://firebase.google.com/docs/hosting/)
 - add 404 routing
+- Implement database data versioning/application version tagging for later releases
+    - version category in DB + release version in some global setting somewhere
+    - check the versions to match, if not match update the DB data to work where needed
 
 ### Documentation on Setup
 
 - Creation of ENV file
-- Gmail emailer instructions (turn on 2FA, get the password, enter account email and app password in .env)
-- Firestore settings (manager account, tokens for .env)
+    - Gmail emailer instructions (turn on 2FA, get the password, enter account email and app password in .env)
+    - Firestore settings (manager account, tokens for .env)
 - deployment 
     - with firebase, download repo
     - install firebase tools (NPM)
@@ -55,13 +57,11 @@ To the managers or potential managers, once youve created an environment file/de
 
 - Add site design options such as branding figures/images (2 options for site logos - large and small)
 - additional payment methods + gateways
-- Implement database data versioning/application version tagging for later releases
-    - version category in DB + release version in some global setting somewhere
-    - check the versions to match, if not match update the DB data to work where needed
 - Include data/sales analytics in the management directories using visualization tools/components
     - [Victory Charts?](https://www.npmjs.com/package/victory)
 - Explore order tracking insights, such as orders by day of the week, featured items vs non-featured, shipped vs non-shipped, and time to fulfillment
     - python package adjacent to `online store`?
+    - spark job with graphic outputs? matplotlib? 
 
 ---
 

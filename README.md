@@ -14,20 +14,23 @@ To the managers or potential managers, once youve created an environment file/de
 
 ## Bug List
 
-- Shipping and invoice totals not loading properly (NAN)
 - Bug on product card focus element when in edit mode
-- Bug on "track order" anchor tag in the order card (seems to go nowhere - this might be ok)
-- Seller email coming back as [object object] for the new order details
+- tax + total calculation to be rounded 0.01 .toFixed(2)
 
 ## TODO:
 
-- Sanitize image data for orders
+- add province to checkout + all outgoing emails and data flows
+- site management contactInfo text area.... this could maybe just go away?
+- improve emails to be more descriptive
+    - manager email to get all the needed data per-item
+    - customer data to get payment info
+- improve user facing info screens (order confirmation - use this as EMAIL template)
+- add public setting debug mode in ENV to kill emails and DB calls
 - Implement user account functionality (manager only, no user data is stored)
 - Manage product images
 - Enhance emailing system to deliver meaningful data
 - Add background and set colors to other pages
 - Improve manager order management page to display the full list of orders and statuses (currently only a lookup by ID)
-- Implement Firestore image management
 - Address ambiguous "DATE" field in order management
 - sort out hosting [ideally firebase](https://firebase.google.com/docs/hosting/)
 - add 404 routing

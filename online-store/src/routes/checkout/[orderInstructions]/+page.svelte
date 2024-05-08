@@ -6,8 +6,53 @@
     import { page } from '$app/stores';
     let orderDetails = null;
     const orderNum = $page.data.orderNum;
+
     async function getOrder(orderNum) {
          orderDetails = await get_order_details(orderNum);
+//  {
+//     "orderData": {
+//         "city": "Edmonton",
+//         "customerEmail": "@gmail.com",
+//         "customerName": "Braydon",
+//         "inPersonPickup": false,
+//         "items": [
+//             {
+//                 "cart_quantity": 1,
+//                 "category": [
+//                     "tall-socks"
+//                 ],
+//                 "description": "These solid color socks are a versatile choice for everyday wear.",
+//                 "featured": false,
+//                 "id": 3,
+//                 "name": "Solid Color Socks",
+//                 "price": 8.99,
+//                 "product_id": "Solid Color Socks8ujlei"
+//             }
+//         ],
+//         "postalCode": "k6K 3b2",
+//         "shippingAddress": "1234 W NW",
+//         "totals": {
+//             "shipping": 10.8,
+//             "subtotal": 8.99,
+//             "tax": 0.7192000000000001,
+//             "taxRate": 0.08,
+//             "total": 20.5092
+//         }
+//     },
+//     "order_id": "Braydon -e3nldg",
+//     "status": [
+//         {
+//             "comments": "order has been submitted",
+//             "link": "",
+//             "order_id": "Braydon -e3nldg",
+//             "shipping_carrier": "",
+//             "shipping_date": "",
+//             "status": "payment pending",
+//             "tracking_number": "",
+//             "update_time": "2024-05-08T03:26:36.845Z"
+//         }
+//     ]
+// }
     }
 
     onMount(async () => {
@@ -32,7 +77,7 @@
     
     <h2>Order Details</h2>
         <p>Order Number: {orderDetails.order_id}</p>
-        <p>Customer Name: {orderDetails.customerName}</p>
+        <p>Customer Name: {orderDetails.orderData.customerName}</p>
         <OrderStatus order={orderDetails} />
     
     {:else}

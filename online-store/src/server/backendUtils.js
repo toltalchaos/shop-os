@@ -1,7 +1,6 @@
 // @ts-nocheck
-import { assign } from 'svelte/internal';
 import productData from '../static/socks.json';
-import { manageInvintoryAndCartCount, sanitizeCartData } from './utils';
+import { manageInvintoryAndCartCount, sanitizeCartData, sanitizeOrderData } from './utils';
 //site operations
 async function get_site_data() {
 	const default_settings = {
@@ -70,7 +69,7 @@ async function update_product(newproductData, origionalproductData, isDelete = f
 			body: JSON.stringify(newproductData)
 		});
 	}
-	if (origionalproductData === newproductData) {
+	if (origionalproductData.product_id === newproductData.product_id) {
 		//update the product
 		await fetch('/', {
 			method: 'POST',
@@ -101,10 +100,14 @@ async function update_product(newproductData, origionalproductData, isDelete = f
 //order operations
 async function create_order(orderInfo) {
 	try {
+		//update the product invintory
+		const updatedItems = manageInvintoryAndCartCount(orderInfo.items);
+		const sanitizedProducts = sanitizeCartData(orderInfo.items);
+		//create the order object
 		const newID = orderInfo.customerName + '-' + Math.random().toString(36).substring(7);
 		let order = {
 			order_id: newID,
-			orderData: { ...orderInfo },
+			orderData: { ...sanitizeOrderData(orderInfo) },
 			status: [
 				{
 					order_id: newID,
@@ -118,9 +121,7 @@ async function create_order(orderInfo) {
 				}
 			]
 		};
-		//update the product invintory
-		const updatedItems = manageInvintoryAndCartCount(orderInfo.items);
-		const sanitizedProducts = sanitizeCartData(orderInfo.items);
+
 
 		for (const item in updatedItems) {
 			update_product(updatedItems[item], sanitizedProducts[item], false);
@@ -158,7 +159,14 @@ async function get_order_details(order_id) {
 				'order_id': order_id,
 			},
 		});
-		return await orderResponse.json();
+		const resp = await orderResponse;
+		if (resp.status === 200) {
+			return await resp.json();
+		}
+		else {
+			return 'Order not found';
+		}
+		
 }
 async function set_order_status(orderData) {
 	//we want to update the order status of the order that was placed given the order_id

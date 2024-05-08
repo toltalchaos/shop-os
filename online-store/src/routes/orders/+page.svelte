@@ -11,7 +11,7 @@ import { get_order_details } from '../../server/backendUtils';
         // and populate the data variable with the order status
         // Example: data = lookupOrderStatus(orderNumber);
         orderData = await get_order_details(orderNumber);
-        if (orderData.orderData.customerEmail !== email) {
+        if (orderData == 'Order not found' || orderData?.orderData?.customerEmail !== email) {
             orderData = null;
             alert('Order not found. Please check the order number and email and try again.');
         }

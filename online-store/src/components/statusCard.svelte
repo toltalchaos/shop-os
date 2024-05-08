@@ -19,7 +19,9 @@
         <p>Tracking Number: {status.tracking_number}</p>
         <p>Shipping Carrier: {status.shipping_carrier}</p>
         <p>Shipping Date: {status.shipping_date}</p>
+        {#if status.link != ""}
         <a href={status.link} target="_blank" rel="noopener noreferrer">Track Order</a>
+        {/if}
     </div>
 {/each}
 </div>

@@ -14,11 +14,13 @@
 		items = value;
 	});
 
+
 	let customerName = '';
 	let customerEmail = '';
 	let shippingAddress = '';
 	let postalCode = '';
 	let city = '';
+	let inPersonPickup = false;
 	let subtotal = items.reduce((acc, item) => acc + item.price * item.cart_quantity, 0);
 	let taxRate = $siteData.taxRate;
 	let tax = subtotal * taxRate;
@@ -41,6 +43,7 @@
 				items,
 				customerName,
 				customerEmail,
+				inPersonPickup,
 				shippingAddress,
 				postalCode,
 				city,
@@ -68,10 +71,11 @@
 	}
 
 	function toggleInPersonPickup() {
-		shipping = (shipping === 0 ? 10 : 0) * (taxRate + 1);
+		shipping = (inPersonPickup ? 10 : 0) * (taxRate + 1);
 		//re-calculate totals
 		total = subtotal + shipping + tax;
 		totals = { subtotal, shipping, tax, taxRate, total };
+		inPersonPickup = !inPersonPickup;
 	}
 </script>
 
@@ -97,8 +101,8 @@
 						id="city"
 						type="city"
 						bind:value={city}
-						required={shipping == 0 ? true : false}
-						disabled={shipping == 0 ? true : false}
+						required= {inPersonPickup}
+						disabled= {inPersonPickup}
 					/></label
 				>
 				<label for="shippingAddress"
@@ -107,8 +111,8 @@
 						id="shippingAddress"
 						type="address"
 						bind:value={shippingAddress}
-						required={shipping == 0 ? true : false}
-						disabled={shipping == 0 ? true : false}
+						required={inPersonPickup}
+						disabled={inPersonPickup}
 					/></label
 				>
 				<label for="postalCode"
@@ -117,8 +121,8 @@
 						id="postalCode"
 						type="zip"
 						bind:value={postalCode}
-						required={shipping == 0 ? true : false}
-						disabled={shipping == 0 ? true : false}
+						required={inPersonPickup}
+						disabled={inPersonPickup}
 					/></label
 				>
 			</div>

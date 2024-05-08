@@ -26,7 +26,12 @@
 	let tax = subtotal * taxRate;
 	let shipping = $siteData.shippingRate * (taxRate + 1); // Default shipping cost is $10
 	let total = subtotal + shipping + tax;
-	let totals = { subtotal, shipping, tax, taxRate, total };
+	//anything being put into the totals object should be fixed to 2 decimal places
+	let totals = { subtotal: subtotal.toFixed(2),
+				 shipping: shipping.toFixed(2),
+				 tax: tax.toFixed(2),
+				 taxRate: taxRate.toFixed(2),
+				 total: total.toFixed(2)};
 
 	// Handle form submission
 	async function handleSubmit(event) {
@@ -71,10 +76,16 @@
 	}
 
 	function toggleInPersonPickup() {
-		shipping = (inPersonPickup ? 10 : 0) * (taxRate + 1);
+		shipping = (inPersonPickup ? $siteData.shippingRate : 0) * (taxRate + 1);
 		//re-calculate totals
 		total = subtotal + shipping + tax;
-		totals = { subtotal, shipping, tax, taxRate, total };
+		//anything being put into the totals object should be fixed to 2 decimal places
+		totals = { subtotal: subtotal.toFixed(2),
+				 shipping: shipping.toFixed(2),
+				 tax: tax.toFixed(2),
+				 taxRate: taxRate.toFixed(2),
+				 total: total.toFixed(2)};
+
 		inPersonPickup = !inPersonPickup;
 	}
 </script>
@@ -101,7 +112,7 @@
 						id="city"
 						type="city"
 						bind:value={city}
-						required= {inPersonPickup}
+						required= {!inPersonPickup}
 						disabled= {inPersonPickup}
 					/></label
 				>
@@ -111,7 +122,7 @@
 						id="shippingAddress"
 						type="address"
 						bind:value={shippingAddress}
-						required={inPersonPickup}
+						required={!inPersonPickup}
 						disabled={inPersonPickup}
 					/></label
 				>
@@ -121,7 +132,7 @@
 						id="postalCode"
 						type="zip"
 						bind:value={postalCode}
-						required={inPersonPickup}
+						required={!inPersonPickup}
 						disabled={inPersonPickup}
 					/></label
 				>

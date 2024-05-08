@@ -27,24 +27,24 @@
         <tr>
           <td>{item.name}</td>
           <td>{item.cart_quantity}</td>
-          <td>{item.price.toFixed(2) * item.cart_quantity}</td>
+          <td>{(item.price * item.cart_quantity).toFixed(2)}</td>
         </tr>
         {/each}
         <tr>
             <td colspan="2">Subtotal:</td>
-          <td>${totals.subtotal.toFixed(2)}</td>
+          <td>${totals.subtotal}</td>
         </tr>
         <tr>
           <td colspan="2">Shipping:</td>
-          <td>${totals.shipping.toFixed(2)}</td>
+          <td>${totals.shipping}</td>
         </tr>
         <tr>
-          <td colspan="2">Tax ({(totals.taxRate * 100).toFixed(0)}%):</td>
-          <td>${totals.tax.toFixed(2)}</td>
+          <td colspan="2">Tax ({(totals.taxRate * 100)}%):</td>
+          <td>${totals.tax}</td>
         </tr>
         <tr>
           <td colspan="2">Total:</td>
-          <td>${totals.total.toFixed(2)}</td>
+          <td>${totals.total}</td>
         </tr>
       </tbody>
     </table>

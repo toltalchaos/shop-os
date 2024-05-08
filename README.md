@@ -15,7 +15,6 @@ To the managers or potential managers, once youve created an environment file/de
 ## Bug List
 
 - Bug on product card focus element when in edit mode
-- tax + total calculation to be rounded 0.01 .toFixed(2)
 
 ## TODO:
 

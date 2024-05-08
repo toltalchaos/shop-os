@@ -36,6 +36,7 @@ To the managers or potential managers, once youve created an environment file/de
     - version category in DB + release version in some global setting somewhere
     - check the versions to match, if not match update the DB data to work where needed
 - update readme to reflect values of data integrity, free use, and open code
+- update footer to reflect the same
 
 ### Documentation on Setup
 
@@ -55,7 +56,8 @@ To the managers or potential managers, once youve created an environment file/de
 
 ## Future Enhancements
 
-- Add site design options such as branding figures/images (2 options for site logos - large and small)
+- more site configuration options -> long term a better site management page
+    - Add site design options such as branding figures/images (2 options for site logos - large and small)
 - additional payment methods + gateways
 - Include data/sales analytics in the management directories using visualization tools/components
     - [Victory Charts?](https://www.npmjs.com/package/victory)

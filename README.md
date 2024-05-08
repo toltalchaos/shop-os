@@ -18,6 +18,13 @@ To the managers or potential managers, once youve created an environment file/de
 
 ## TODO:
 
+- add error handling for all external calls
+    - site data
+    - products
+    - orders
+    - auth
+- add store location to site_data
+    - + aproximate location for pickup
 - add province to checkout + all outgoing emails and data flows
 - site management contactInfo text area.... this could maybe just go away?
 - improve emails to be more descriptive

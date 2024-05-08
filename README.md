@@ -36,6 +36,7 @@ To the managers or potential managers, once youve created an environment file/de
 - Implement database data versioning/application version tagging for later releases
     - version category in DB + release version in some global setting somewhere
     - check the versions to match, if not match update the DB data to work where needed
+- update readme to reflect values of data integrity, free use, and open code
 
 ### Documentation on Setup
 
@@ -62,6 +63,10 @@ To the managers or potential managers, once youve created an environment file/de
 - Explore order tracking insights, such as orders by day of the week, featured items vs non-featured, shipped vs non-shipped, and time to fulfillment
     - python package adjacent to `online store`?
     - spark job with graphic outputs? matplotlib? 
+- integrate a setup wizard?
+    - .sh file to auto deploy for the user? 
+    - secondary site to make changes and deliver a ZIP with the customer site information?
+
 
 ---
 

@@ -23,7 +23,7 @@ To the managers or potential managers, once youve created an environment file/de
     - products
     - orders
     - auth
-- add store location to site_data
+- add store location to site_data (`storeLocation`)
     - + aproximate location for pickup
 - add discount code creation logic
     - one time codes and forever use codes

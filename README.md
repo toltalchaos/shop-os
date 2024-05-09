@@ -25,6 +25,8 @@ To the managers or potential managers, once youve created an environment file/de
     - auth
 - add store location to site_data
     - + aproximate location for pickup
+- add discount code creation logic
+    - one time codes and forever use codes
 - add province to checkout + all outgoing emails and data flows
 - site management contactInfo text area.... this could maybe just go away?
 - improve emails to be more descriptive

@@ -14,6 +14,7 @@ async function get_site_data() {
 		contactInfo: 'stuff',
 		shippingRate: 10,
 		taxRate: 0.05,
+		storeLocation: '1234 Main St, Anytown, USA',
 		contact: { email: 'someEmail' }
 	};
 	return default_settings;

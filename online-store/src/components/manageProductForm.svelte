@@ -39,7 +39,8 @@
 	}
 
 	function deleteItem() {
-		update_product(product, true);
+		update_product(origionalProduct, null, true);
+		goto('/siteManagement');
 	}
 </script>
 
@@ -75,7 +76,7 @@
 	</div>
 	<button type="submit">Submit Product</button>
 	{#if !newProduct}
-	<button type="submit" on:click={deleteItem}>Delete Product</button>
+	<button type="button" on:click={deleteItem}>Delete Product</button>
 	{/if}
 </form>
 

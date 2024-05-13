@@ -20,7 +20,7 @@ import {
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import { getFirestore, addDoc, collection } from 'firebase/firestore';
-import { getDatabase, ref, set, child, get } from 'firebase/database';
+import { getDatabase, ref, set, child, get, remove } from 'firebase/database';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -104,4 +104,22 @@ export async function GET(requestEvent) {
 	}
 }
 
-export async function DELETE(requestEvent) {}
+export async function DELETE(requestEvent) {
+	const entity = await requestEvent.request.headers.get('entity');
+	switch (entity) {
+		case 'order':
+			const order_id = await requestEvent.request.headers.get('order_id');
+			remove(ref(db, 'orders/' + order_id));
+			return new Response('Order deleted', { status: 200 });
+		case 'site_data':
+			remove(ref(db, 'site_data'));
+			return new Response('Site data deleted', { status: 200 });
+		case 'product':
+			const product_id = await requestEvent.request.headers.get('product_id');
+			let resp = remove(ref(db, 'products/' + product_id));
+			console.log(await resp);
+			return new Response('Product deleted', { status: 200 });
+		default:
+			return new Response('Invalid entity', { status: 400 });
+	}
+}

@@ -17,7 +17,17 @@ To the managers or potential managers, once youve created an environment file/de
 - Bug on product card focus element when in edit mode
 
 ## TODO:
-
+- add 404 routing
+- Add background and set colors to other pages
+- add province to checkout + all outgoing emails and data flows
+- site management contactInfo text area.... this could maybe just go away?
+- improve emails to be more descriptive
+    - manager email to get all the needed data per-item
+    - customer data to get payment info
+    - improve user facing info screens (order confirmation - use this as EMAIL template)
+- Address ambiguous "DATE" field in order management
+- Manage product images (Blob or binary for uploads?)
+- Implement user account functionality (manager only, no user data is stored)
 - add error handling for all external calls
     - site data
     - products
@@ -27,25 +37,12 @@ To the managers or potential managers, once youve created an environment file/de
     - + aproximate location for pickup
 - add discount code creation logic
     - one time codes and forever use codes
-- add province to checkout + all outgoing emails and data flows
-- site management contactInfo text area.... this could maybe just go away?
-- improve emails to be more descriptive
-    - manager email to get all the needed data per-item
-    - customer data to get payment info
-- improve user facing info screens (order confirmation - use this as EMAIL template)
-- add public setting debug mode in ENV to kill emails and DB calls
-- Implement user account functionality (manager only, no user data is stored)
-- Manage product images
-- Add background and set colors to other pages
 - Improve manager order management page to display the full list of orders and statuses (currently only a lookup by ID)
-- Address ambiguous "DATE" field in order management
-- sort out hosting [ideally firebase](https://firebase.google.com/docs/hosting/)
-- add 404 routing
 - Implement database data versioning/application version tagging for later releases
     - version category in DB + release version in some global setting somewhere
     - check the versions to match, if not match update the DB data to work where needed
 - update readme to reflect values of data integrity, free use, and open code
-- update footer to reflect the same
+    - update footer to reflect the same
 
 ### Documentation on Setup
 
@@ -62,6 +59,39 @@ To the managers or potential managers, once youve created an environment file/de
         - move files around/fill BUILD output 
         - `firebase serve`
     - `firebase deploy`
+
+
+create RTDB with the following rule modified for the admin
+only allowing reading and writes from the admin and user profile in this app.
+```
+{
+  "rules": {
+    ".read": "auth != null && auth.uid ==='<insertuseridhere>'",
+    ".write": "auth != null && (auth.uid ==='<insertuseridhere>|| auth.uid ==='<insertuseridhere>)'" 
+  }
+}
+```
+
+npm install firebase
+npm install -g firebase-tools
+firebase login
+firebase init
+firebase deploy
+
+
+https://www.youtube.com/watch?v=W-kII4idtfE
+
+* To install Fiebase CLI: npm install -g firebase-tools
+* To login to Firebase CLI: firebase login
+* To enable webframeworks flag: firebase experiments:enable webframeworks
+* To initialize Firebase in your project: firebase init
+* To deploy: firebase deploy
+
+- will need to update to pay-as-you-go plan
+  - details here https://firebase.google.com/pricing?hl=en&authuser=0&_gl=1*1llxviv*_ga*NzczNTk2OTgwLjE3MTI2NzYzMTU.*_ga_CW55HF8NVT*MTcxNTM2NzQ3Ny4yMS4xLjE3MTUzNjc4NDYuNTUuMC4w
+  - set up a $1 budget alert
+
+
 
 ## Future Enhancements
 

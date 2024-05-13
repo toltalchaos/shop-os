@@ -28,7 +28,7 @@ async function set_site_data(newSiteData) {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
-			'entity': 'site_data'
+			entity: 'site_data'
 		},
 		body: JSON.stringify(newSiteData)
 	});
@@ -37,7 +37,7 @@ async function set_site_data(newSiteData) {
 
 //product operations
 async function get_all_products() {
-//wireframe nonsense for testing	
+	//wireframe nonsense for testing
 	return productData.socks;
 }
 async function get_single_product(product_id) {
@@ -48,7 +48,7 @@ async function get_single_product(product_id) {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json',
-			'entity': 'product'
+			entity: 'product'
 		},
 		body: JSON.stringify({ product_id: product_id })
 	});
@@ -60,42 +60,46 @@ async function update_product(newproductData, origionalproductData, isDelete = f
 	//get the existing products, look for the product to update, update the product, and then set the products
 	//if there is no product to update, then add the product to the list, and then set the products
 	if (isDelete) {
+		console.log('deleting product', newproductData);
 		//delete the product
 		await fetch('/', {
 			method: 'DELETE',
 			headers: {
 				'Content-Type': 'application/json',
-				'entity': 'product'
-			},
-			body: JSON.stringify(newproductData)
+				entity: 'product',
+				product_id: newproductData.product_id
+			}
 		});
-	}
-	if (origionalproductData.product_id === newproductData.product_id) {
+	} else if (
+		origionalproductData &&
+		origionalproductData.product_id === newproductData.product_id &&
+		!isDelete
+	) {
+		console.log('updating product', newproductData);
 		//update the product
 		await fetch('/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				'entity': 'product'
+				entity: 'product'
 			},
 			body: JSON.stringify(newproductData)
 		});
+	} else {
+		//assign the product a new ID
+		let product_id = newproductData.name + Math.random().toString(36).substring(7);
+		newproductData.product_id = product_id;
+		//add the product
+		await fetch('/', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				entity: 'product'
+			},
+			body: JSON.stringify(newproductData)
+		});
+		console.log('product added', newproductData);
 	}
-	else {
-	//assign the product a new ID
-	let product_id = newproductData.name + Math.random().toString(36).substring(7);
-	newproductData.product_id = product_id;
-	//add the product
-	await fetch('/', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-			'entity': 'product'
-		},
-		body: JSON.stringify(newproductData)
-	});
-}
-
 }
 
 //order operations
@@ -123,7 +127,6 @@ async function create_order(orderInfo) {
 			]
 		};
 
-
 		for (const item in updatedItems) {
 			update_product(updatedItems[item], sanitizedProducts[item], false);
 		}
@@ -133,7 +136,7 @@ async function create_order(orderInfo) {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				'entity': 'order'
+				entity: 'order'
 			},
 			body: JSON.stringify(order)
 		});
@@ -152,22 +155,20 @@ async function create_order(orderInfo) {
 	}
 }
 async function get_order_details(order_id) {
-		const orderResponse = await fetch('/', {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json',
-				'entity': 'order',
-				'order_id': order_id,
-			},
-		});
-		const resp = await orderResponse;
-		if (resp.status === 200) {
-			return await resp.json();
+	const orderResponse = await fetch('/', {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+			entity: 'order',
+			order_id: order_id
 		}
-		else {
-			return 'Order not found';
-		}
-		
+	});
+	const resp = await orderResponse;
+	if (resp.status === 200) {
+		return await resp.json();
+	} else {
+		return 'Order not found';
+	}
 }
 async function set_order_status(orderData) {
 	//we want to update the order status of the order that was placed given the order_id
@@ -176,7 +177,7 @@ async function set_order_status(orderData) {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
-			'entity': 'order'
+			entity: 'order'
 		},
 		body: JSON.stringify(orderData)
 	});

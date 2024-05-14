@@ -13,6 +13,7 @@
     const shippingAddress = orderData.shippingAddress;
     const postalCode = orderData.postalCode;
     const city = orderData.city;
+    const province = orderData.province;
     const totals = orderData.totals;
 
 </script>
@@ -41,6 +42,7 @@
     <Text>{shippingAddress}</Text>
     <Text>{postalCode}</Text>
     <Text>{city}</Text>
+    <Text>{province}</Text>
     {/if}
 
 

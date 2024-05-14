@@ -11,7 +11,7 @@ async function get_site_data() {
 		secondaryColor: 'cornsilk',
 		tirciaryColor: '#A9A9',
 		textColor: 'brown',
-		contactInfo: 'stuff',
+		// contactInfo: 'stuff',
 		shippingRate: 10,
 		taxRate: 0.05,
 		storeLocation: '1234 Main St, Anytown, USA',

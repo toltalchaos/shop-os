@@ -32,7 +32,7 @@
 	let secondaryColor = $siteData.secondaryColor;
 	let tirciaryColor = $siteData.tirciaryColor;
 	let backgroundColor = $siteData.backgroundColor;
-	let contactInfo = $siteData.contactInfo;
+	// let contactInfo = $siteData.contactInfo;
 	let textColor = $siteData.textColor;
 	let shippingRate = $siteData.shippingRate;
 	let taxRate = $siteData.taxRate;
@@ -54,7 +54,7 @@
 				secondaryColor,
 				tirciaryColor,
 				backgroundColor,
-				contactInfo,
+				// contactInfo,
 				textColor,
 				shippingRate,
 				taxRate,
@@ -102,9 +102,9 @@
 
 		<label for="taxRate">Tax Rate per $1:</label>
 		<input type="number" step="0.01" id="taxRate" bind:value={taxRate} />
-
+<!-- 
 		<label for="contactInfo">Contact Information:</label>
-		<textarea id="contactInfo" bind:value={contactInfo} />
+		<textarea id="contactInfo" bind:value={contactInfo} /> -->
 
 		<button type="submit">Save</button>
 	</form>

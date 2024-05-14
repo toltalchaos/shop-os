@@ -17,8 +17,6 @@ To the managers or potential managers, once youve created an environment file/de
 - Bug on product card focus element when in edit mode
 
 ## TODO:
-- add province to checkout + all outgoing emails and data flows
-- site management contactInfo text area.... this could maybe just go away?
 - improve emails to be more descriptive
     - manager email to get all the needed data per-item
     - customer data to get payment info

@@ -14,12 +14,12 @@
 		items = value;
 	});
 
-
 	let customerName = '';
 	let customerEmail = '';
 	let shippingAddress = '';
 	let postalCode = '';
 	let city = '';
+	let province = '';
 	let inPersonPickup = false;
 	let subtotal = items.reduce((acc, item) => acc + item.price * item.cart_quantity, 0);
 	let taxRate = $siteData.taxRate;
@@ -27,11 +27,13 @@
 	let shipping = $siteData.shippingRate * (taxRate + 1); // Default shipping cost is $10
 	let total = subtotal + shipping + tax;
 	//anything being put into the totals object should be fixed to 2 decimal places
-	let totals = { subtotal: subtotal.toFixed(2),
-				 shipping: shipping.toFixed(2),
-				 tax: tax.toFixed(2),
-				 taxRate: taxRate.toFixed(2),
-				 total: total.toFixed(2)};
+	let totals = {
+		subtotal: subtotal.toFixed(2),
+		shipping: shipping.toFixed(2),
+		tax: tax.toFixed(2),
+		taxRate: taxRate.toFixed(2),
+		total: total.toFixed(2)
+	};
 
 	// Handle form submission
 	async function handleSubmit(event) {
@@ -43,7 +45,7 @@
 		}
 		if (confirm('Are you sure you want to submit the order? This action cannot be undone.')) {
 			console.log('Submitting order data...');
-			
+
 			let orderData = {
 				items,
 				customerName,
@@ -52,6 +54,7 @@
 				shippingAddress,
 				postalCode,
 				city,
+				province,
 				totals
 			};
 			let newOrder = await create_order(orderData);
@@ -62,7 +65,7 @@
 			goto('/checkout/orderInstructions?orderNum=' + newOrder.order_id);
 		}
 	}
-	function clearCart(){
+	function clearCart() {
 		//clear local storage
 		localStorage.setItem('cartItems', JSON.stringify([]));
 		//clear global store
@@ -80,11 +83,13 @@
 		//re-calculate totals
 		total = subtotal + shipping + tax;
 		//anything being put into the totals object should be fixed to 2 decimal places
-		totals = { subtotal: subtotal.toFixed(2),
-				 shipping: shipping.toFixed(2),
-				 tax: tax.toFixed(2),
-				 taxRate: taxRate.toFixed(2),
-				 total: total.toFixed(2)};
+		totals = {
+			subtotal: subtotal.toFixed(2),
+			shipping: shipping.toFixed(2),
+			tax: tax.toFixed(2),
+			taxRate: taxRate.toFixed(2),
+			total: total.toFixed(2)
+		};
 
 		inPersonPickup = !inPersonPickup;
 	}
@@ -112,11 +117,20 @@
 						id="city"
 						type="city"
 						bind:value={city}
-						required= {!inPersonPickup}
-						disabled= {inPersonPickup}
+						required={!inPersonPickup}
+						disabled={inPersonPickup}
 					/></label
 				>
-				<label for="shippingAddress"
+				<label for="province"
+					>Province/State:
+					<input
+						id="province"
+						type="province"
+						bind:value={province}
+						required={!inPersonPickup}
+						disabled={inPersonPickup}
+					/></label
+				><label for="shippingAddress"
 					>Street Address:
 					<input
 						id="shippingAddress"

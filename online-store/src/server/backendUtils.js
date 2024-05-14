@@ -19,7 +19,7 @@ async function get_site_data() {
 	};
 	return default_settings;
 }
-async function set_site_data(newSiteData) {
+async function set_site_data(newSiteData, username, password) {
 	console.log('setting site data', newSiteData);
 	//this function to set all the site data and return the required json content to our webpage
 	//this will be used to update the site data in the database
@@ -28,7 +28,9 @@ async function set_site_data(newSiteData) {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
-			entity: 'site_data'
+			entity: 'site_data',
+			username: username,
+			password: password
 		},
 		body: JSON.stringify(newSiteData)
 	});
@@ -54,7 +56,13 @@ async function get_single_product(product_id) {
 	});
 	return productData.socks[0];
 }
-async function update_product(newproductData, origionalproductData, isDelete = false) {
+async function update_product(
+	newproductData,
+	origionalproductData,
+	isDelete = false,
+	username,
+	password
+) {
 	//this function will update the products in the database
 	//if isDelete is true, then the product will be deleted
 	//get the existing products, look for the product to update, update the product, and then set the products
@@ -67,7 +75,9 @@ async function update_product(newproductData, origionalproductData, isDelete = f
 			headers: {
 				'Content-Type': 'application/json',
 				entity: 'product',
-				product_id: newproductData.product_id
+				product_id: newproductData.product_id,
+				username: username,
+				password: password
 			}
 		});
 	} else if (
@@ -81,7 +91,9 @@ async function update_product(newproductData, origionalproductData, isDelete = f
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				entity: 'product'
+				entity: 'product',
+				username: username,
+				password: password
 			},
 			body: JSON.stringify(newproductData)
 		});
@@ -94,7 +106,9 @@ async function update_product(newproductData, origionalproductData, isDelete = f
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				entity: 'product'
+				entity: 'product',
+				username: username,
+				password: password
 			},
 			body: JSON.stringify(newproductData)
 		});
@@ -170,31 +184,29 @@ async function get_order_details(order_id) {
 		return 'Order not found';
 	}
 }
-async function set_order_status(orderData) {
+async function set_order_status(orderData, username, password) {
 	//we want to update the order status of the order that was placed given the order_id
 	//this will add a new item to the array of statuses on the order
-	await fetch('/', {
+	let resp = await fetch('/', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
-			entity: 'order'
+			entity: 'order',
+			username: username,
+			password: password
 		},
 		body: JSON.stringify(orderData)
 	});
-	//this should also send an email to the user with the updated status
-	await fetch('/emails/orderUpdate', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify(orderData)
-	});
-}
-
-// authenticate user
-async function authenticate_user(user) {
-	console.log('authenticating user');
-	return true;
+	if (resp.status === 200) {
+		//this should also send an email to the user with the updated status
+		await fetch('/emails/orderUpdate', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(orderData)
+		});
+	}
 }
 
 export {

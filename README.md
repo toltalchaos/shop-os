@@ -18,7 +18,6 @@ To the managers or potential managers, once youve created an environment file/de
 
 ## TODO:
 
-- Address ambiguous "DATE" field in order management
 - Manage product images (Blob or binary for uploads?)
 - add error handling for all external calls - any failures prevent or roll back the action
     - site data
@@ -26,12 +25,8 @@ To the managers or potential managers, once youve created an environment file/de
     - orders
     - auth
     - emails
-- add store location to site_data (`storeLocation`)
-    - + aproximate location for pickup
 - add discount code creation logic
     - one time codes and forever use codes
-- Implement user account functionality (manager only, no user data is stored)
-- Improve manager order management page to display the full list of orders and statuses (currently only a lookup by ID)
 - Implement database data versioning/application version tagging for later releases
     - version category in DB + release version in some global setting somewhere
     - check the versions to match, if not match update the DB data to work where needed
@@ -45,7 +40,7 @@ To the managers or potential managers, once youve created an environment file/de
 
 - Creation of ENV file
     - Gmail emailer instructions (turn on 2FA, get the password, enter account email and app password in .env)
-    - Firestore settings (manager account, tokens for .env)
+    - Firestore settings (manager account, shopper account, tokens for .env)
 - deployment 
     - with firebase, download repo
     - install firebase tools (NPM)

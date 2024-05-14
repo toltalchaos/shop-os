@@ -1,5 +1,7 @@
 <script>
 	// @ts-nocheck
+	import { onMount } from 'svelte';
+
 	import OrderStatus from '../../../components/orderStatus.svelte';
 	import { get_order_details } from '../../../server/backendUtils';
 	let orderData = null;
@@ -11,7 +13,16 @@
 		// Example: data = lookupOrderStatus(orderNumber);
 		orderData = await get_order_details(orderNumber);
 	}
-
+	onMount(async () => {
+		if (!localStorage.getItem('username') || !localStorage.getItem('password')) {
+			window.location.href = '/login';
+		}
+		// Check if the user has been logged in for more than an hour
+		if(localStorage.getItem('loginTime') < new Date().getTime() - 3600000){
+			window.location.href = '/login';
+			localStorage.clear();
+		}
+	});
 
 </script>
 

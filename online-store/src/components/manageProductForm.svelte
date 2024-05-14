@@ -30,16 +30,27 @@
 		itemImageStore = writable([product.image]);
 		productCategoryStore = writable([...product.category]);
 	}
-		
+
 	function handleProductSubmit() {
 		product.category = $productCategoryStore;
 		product.image = $itemImageStore;
-		update_product(product, origionalProduct);
+		update_product(
+			product,
+			origionalProduct,
+			localStorage.getItem('username'),
+			localStorage.getItem('password')
+		);
 		goto('/siteManagement');
 	}
 
 	function deleteItem() {
-		update_product(origionalProduct, null, true);
+		update_product(
+			origionalProduct,
+			null,
+			true,
+			localStorage.getItem('username'),
+			localStorage.getItem('password')
+		);
 		goto('/siteManagement');
 	}
 </script>
@@ -76,7 +87,7 @@
 	</div>
 	<button type="submit">Submit Product</button>
 	{#if !newProduct}
-	<button type="button" on:click={deleteItem}>Delete Product</button>
+		<button type="button" on:click={deleteItem}>Delete Product</button>
 	{/if}
 </form>
 
@@ -85,8 +96,8 @@
 		margin-bottom: 2rem;
 		display: flex;
 		flex-direction: column;
-		padding:1rem;
-		gap:1rem;
+		padding: 1rem;
+		gap: 1rem;
 		border: 2px solid black;
 		border-radius: 0.5rem;
 	}

@@ -157,6 +157,7 @@
 					<input type="checkbox" on:click={toggleInPersonPickup} />
 					<span class="slider" />
 				</label> In Person Pickup
+				<aside><p>Store location: {$siteData.storeLocation}</p></aside>
 			</div>
 		</div>
 		<div class="form-row">

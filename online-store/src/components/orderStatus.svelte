@@ -1,5 +1,5 @@
 <script>
-		// @ts-nocheck
+	// @ts-nocheck
 	import { set_order_status, get_order_details } from '../server/backendUtils';
 	import StatusCard from './statusCard.svelte';
 	//expecting a full fledged order object including status array
@@ -30,7 +30,11 @@
 		// Add the new status to the order status array
 		newStatusInfo.update_time = new Date().toISOString();
 		order.status.push(newStatusInfo);
-		await set_order_status(order);
+		await set_order_status(
+			order,
+			localStorage.getItem('username'),
+			localStorage.getItem('password')
+		);
 		order = await get_order_details(order.order_id);
 		editable = false;
 	}
@@ -38,32 +42,37 @@
 
 <div>
 	{#if editable}
-	<h2>Update Status</h2>
+		<h2>Update Status</h2>
 		<form on:submit|preventDefault={handleUpdate}>
-			<label for="status">Status:
-			<select id="status" bind:value={newStatusInfo.status} required>
-				<option value="Update">Select Status</option>
-				<option value="Update (please see comments)">Update - see comment</option>
-				<option value="order placed">Order Placed</option>
-				<option value="order confirmed">Order Confirmed (Awaiting Payment)</option>
-				<option value="order processing">Order Processing</option>
-				<option value="order shipped">Order Shipped</option>
-				<option value="order complete">Order Complete</option>
-				<!-- Add more options here -->
-			</select>
-		</label>
-			<label for="tracking_number">Tracking Number:
-			<input type="text" id="tracking_number" bind:value={newStatusInfo.tracking_number} />
-		</label> 
-			<label for="shipping_comments">Comments:
-			<textarea id="shipping_comments" bind:value={newStatusInfo.comments} required/>
-		</label>
-			<label for="shipping_carrier">Shipping Carrier:
-			<input type="text" id="shipping_carrier" bind:value={newStatusInfo.shipping_carrier}  />
-		</label> 
-			 <label for="shipping_date"> Date:
-			<input type="date" id="shipping_date" bind:value={newStatusInfo.shipping_date}  />
-		</label>
+			<label for="status"
+				>Status:
+				<select id="status" bind:value={newStatusInfo.status} required>
+					<option value="Update">Select Status</option>
+					<option value="Update (please see comments)">Update - see comment</option>
+					<option value="order placed">Order Placed</option>
+					<option value="order confirmed">Order Confirmed (Awaiting Payment)</option>
+					<option value="order processing">Order Processing</option>
+					<option value="order shipped">Order Shipped</option>
+					<option value="order complete">Order Complete</option>
+					<!-- Add more options here -->
+				</select>
+			</label>
+			<label for="tracking_number"
+				>Tracking Number:
+				<input type="text" id="tracking_number" bind:value={newStatusInfo.tracking_number} />
+			</label>
+			<label for="shipping_comments"
+				>Comments:
+				<textarea id="shipping_comments" bind:value={newStatusInfo.comments} required />
+			</label>
+			<label for="shipping_carrier"
+				>Shipping Carrier:
+				<input type="text" id="shipping_carrier" bind:value={newStatusInfo.shipping_carrier} />
+			</label>
+			<label for="shipping_date">
+				Shipping Date:
+				<input type="date" id="shipping_date" bind:value={newStatusInfo.shipping_date} />
+			</label>
 			<button type="submit">Update</button>
 		</form>
 		<hr />
@@ -74,7 +83,7 @@
 </div>
 
 <style>
-	form{
+	form {
 		display: flex;
 		flex-direction: column;
 		align-items: center;

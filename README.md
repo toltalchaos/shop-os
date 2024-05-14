@@ -65,8 +65,8 @@ admin should have full read and write access to everything
 ```
 {
   "rules": {
-    ".read": "auth != null && auth.uid ==='<insertuseridhere>'",
-    ".write": "auth != null && (auth.uid ==='<insertuseridhere>|| auth.uid ==='<insertuseridhere>)'" 
+    ".read": "auth != null && (auth.uid ==='' || auth.uid ==='')",
+    ".write": "auth != null && (auth.uid ==='' || auth.uid ==='')" 
   }
 }
 ```

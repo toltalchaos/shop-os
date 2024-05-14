@@ -218,5 +218,4 @@ export {
 	create_order,
 	get_order_details,
 	set_order_status,
-	authenticate_user
 };

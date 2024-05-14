@@ -10,7 +10,6 @@ import {
 	PRIVATE_FIREBASE_MEASUREMENT_ID
 } from '$env/static/private';
 import { PUBLIC_USER_EMAIL, PUBLIC_USER_PASSWORD } from '$env/static/public';
-import { PUBLIC_USER_EMAIL, PUBLIC_USER_PASSWORD } from '$env/static/public';
 
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, child, get } from 'firebase/database';

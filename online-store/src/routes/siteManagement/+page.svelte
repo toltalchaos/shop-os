@@ -79,6 +79,7 @@
 		<label for="description">Description:</label>
 		<textarea id="description" bind:value={description} />
 
+		<p>the following E-mail is the address the users will be instructed to E-transfer</p>
 		<label for="email">Contact email</label>
 		<input type="email" id="email" bind:value={emailContact} />
 

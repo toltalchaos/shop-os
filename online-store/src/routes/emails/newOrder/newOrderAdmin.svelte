@@ -1,11 +1,12 @@
 <!-- newOrder.svelte -->
 <script>
-    import { Button, Hr, Html, Text, Heading } from 'svelte-email';
+    import { Button, Hr, Html, Text, Heading, Container } from 'svelte-email';
     //https://svelte-email.vercel.app/docs/getting-started/installation
 
     export let orderNumber;
     export let orderData;
-    console.log(orderData);
+    export let senderEmail;
+
     const items = orderData.items;
     const customer = orderData.customerName;
     const email = orderData.customerEmail;
@@ -19,7 +20,13 @@
 </script>
 
 <Html lang="en">
-    <Heading as="h1">New Order Received</Heading>
+    <Container>
+        <Heading as="h1">New Order Received</Heading>
+        <Text>Ta new order recieved! The new order number is: {orderNumber}</Text>
+        <Heading as="h2">Whats next?</Heading>
+        <Text>The customer has been instructed to send an E-transfer with their order number at {senderEmail} for an amount of ${totals.total}. once this has been recieved the shop admin can confirm payment via the order management portal and the updates will be automatically sent!</Text>
+        <Hr />
+    </Container>
     <Text>the new order number is: {orderNumber}</Text>
     <Text>{#each Object.keys(orderData) as key}
         {key}: {JSON.stringify(orderData[key])}

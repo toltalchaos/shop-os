@@ -16,14 +16,14 @@ const transporter = nodemailer.createTransport({
 
 export async function POST(requestEvent) {
 	const emailData = await requestEvent.request.json();
-	sendAdminEmail(emailData);
-	return sendCustomerEmail(emailData);
+	sendAdminEmail(emailData, env.PUBLIC_SENDER_GMAIL);
+	return sendCustomerEmail(emailData, env.PUBLIC_SENDER_GMAIL);
 }
 
-function sendCustomerEmail(emailData) {
+function sendCustomerEmail(emailData, senderEmail) {
 	const mailHTML = render({
 		template: NewOrder,
-		props: { orderNumber: emailData.order_id }
+		props: { orderNumber: emailData.order_id, orderData: emailData.orderData, senderEmail: senderEmail}
 	});
 
 	const mailOptions = {
@@ -42,10 +42,10 @@ function sendCustomerEmail(emailData) {
 	}));
 	return emaiResponse;
 }
-function sendAdminEmail(emailData) {
+function sendAdminEmail(emailData, senderEmail) {
 	const mailHTML = render({
 		template: NewOrderAdmin,
-		props: { orderNumber: emailData.order_id, orderData: emailData.orderData }
+		props: { orderNumber: emailData.order_id, orderData: emailData.orderData, senderEmail: senderEmail }
 	});
 
 	const mailOptions = {

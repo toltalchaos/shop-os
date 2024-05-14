@@ -29,7 +29,6 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const dbref = ref(db);
 const auth = getAuth(app);
-const auth = getAuth(app);
 
 export async function load() {
 	let productData = await signInWithEmailAndPassword(

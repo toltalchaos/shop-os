@@ -9,10 +9,7 @@ import {
 	PRIVATE_FIREBASE_MEASUREMENT_ID
 } from '$env/static/private';
 
-import {
-	PUBLIC_USER_EMAIL,
-	PUBLIC_USER_PASSWORD
-} from '$env/static/public';
+import { PUBLIC_USER_EMAIL, PUBLIC_USER_PASSWORD } from '$env/static/public';
 //here is our internal reference to the database we expect all internal api calls to be made through this server
 //this is the server that will handle all the internal api calls
 //we expect in the headers to recieve what storage entity we want to interact with (products, orders, etc)
@@ -53,11 +50,12 @@ export async function POST(requestEvent) {
 	const entity = await requestEvent.request.headers.get('entity');
 	let username = await requestEvent.request.headers.get('username');
 	let password = await requestEvent.request.headers.get('password');
-	if(!username || !password) {
+	if (!username || !password) {
 		// for non-admin calls we want to authenticate with our user credentials
 		username = PUBLIC_USER_EMAIL;
 		password = PUBLIC_USER_PASSWORD;
 	}
+	try{
 	switch (entity) {
 		case 'order':
 			const order = await requestEvent.request.json();
@@ -99,6 +97,10 @@ export async function POST(requestEvent) {
 				});
 		default:
 			return new Response('Invalid entity', { status: 400 });
+	}}
+	catch (error) {
+		console.log(error);
+		return new Response('ERROR');
 	}
 }
 
@@ -107,46 +109,91 @@ export async function GET(requestEvent) {
 	const dbref = ref(db);
 	let username = await requestEvent.request.headers.get('username');
 	let password = await requestEvent.request.headers.get('password');
-	if(!username || !password) {
+	if (!username || !password) {
 		// for non-admin calls we want to authenticate with our user credentials
 		username = PUBLIC_USER_EMAIL;
 		password = PUBLIC_USER_PASSWORD;
 	}
-	switch (entity) {
-		case 'order':
-			const order_id = await requestEvent.request.headers.get('order_id');
-			const order = await get(child(dbref, 'orders/' + order_id));
-			if (order.exists()) {
-				return new Response(JSON.stringify(order.val()), { status: 200 });
-			} else {
-				return new Response('Order not found', { status: 404 });
-			}
-		case 'site_data':
-			const site_data = await get(child(dbref, 'site_data'));
-			if (site_data.exists()) {
-				return new Response(JSON.stringify(site_data.val()), { status: 200 });
-			} else {
-				return new Response('Site data not found', { status: 404 });
-			}
-		case 'product':
-			const product_id = await requestEvent.request.headers.get('product_id');
-			if (product_id) {
-				const product = await get(child(dbref, 'products/' + product_id));
-				if (product.exists()) {
-					return new Response(JSON.stringify(product.val()), { status: 200 });
+	try {
+		switch (entity) {
+			case 'order':
+				const order_id = await requestEvent.request.headers.get('order_id');
+				const order = await signInWithEmailAndPassword(auth, username, password)
+					.then(async (userCredential) => {
+						let response = await get(child(dbref, 'orders/' + order_id));
+						return response;
+					})
+					.catch((error) => {
+						var errorCode = error.code;
+						var errorMessage = error.message;
+						// Handle Errors here.
+						throw new Error(errorCode + errorMessage);
+					});
+				if (order.exists()) {
+					return new Response(JSON.stringify(order.val()), { status: 200 });
 				} else {
-					return new Response('Product not found', { status: 404 });
+					return new Response('Order not found', { status: 404 });
 				}
-			} else {
-				const products = await get(child(dbref, 'products'));
-				if (products.exists()) {
-					return new Response(JSON.stringify(products.val()), { status: 200 });
+			case 'site_data':
+				const site_data = await signInWithEmailAndPassword(auth, username, password)
+					.then(async (userCredential) => {
+						let response = await get(child(dbref, 'site_data'));
+						return response;
+					})
+					.catch((error) => {
+						var errorCode = error.code;
+						var errorMessage = error.message;
+						// Handle Errors here.
+						throw new Error(errorCode + errorMessage);
+					});
+				if (site_data.exists()) {
+					return new Response(JSON.stringify(site_data.val()), { status: 200 });
 				} else {
-					return new Response('No products found', { status: 404 });
+					return new Response('Site data not found', { status: 404 });
 				}
-			}
-		default:
-			return new Response('Invalid entity', { status: 400 });
+			case 'product':
+				const product_id = await requestEvent.request.headers.get('product_id');
+				if (product_id) {
+					const product = await signInWithEmailAndPassword(auth, username, password)
+						.then(async (userCredential) => {
+							let response = await get(child(dbref, 'products/' + product_id));
+							return response;
+						})
+						.catch((error) => {
+							var errorCode = error.code;
+							var errorMessage = error.message;
+							// Handle Errors here.
+							throw new Error(errorCode + errorMessage);
+						});
+					if (product.exists()) {
+						return new Response(JSON.stringify(product.val()), { status: 200 });
+					} else {
+						return new Response('Product not found', { status: 404 });
+					}
+				} else {
+					const products = await signInWithEmailAndPassword(auth, username, password)
+						.then(async (userCredential) => {
+							let response = await get(child(dbref, 'products'));
+							return response;
+						})
+						.catch((error) => {
+							var errorCode = error.code;
+							var errorMessage = error.message;
+							// Handle Errors here.
+							throw new Error(errorCode + errorMessage);
+						});
+					if (products.exists()) {
+						return new Response(JSON.stringify(products.val()), { status: 200 });
+					} else {
+						return new Response('No products found', { status: 404 });
+					}
+				}
+			default:
+				return new Response('Invalid entity', { status: 400 });
+		}
+	} catch (error) {
+		console.log(error);
+		return new Response('ERROR');
 	}
 }
 
@@ -154,6 +201,7 @@ export async function DELETE(requestEvent) {
 	const entity = await requestEvent.request.headers.get('entity');
 	const username = await requestEvent.request.headers.get('username');
 	const password = await requestEvent.request.headers.get('password');
+	try{
 	switch (entity) {
 		case 'order':
 			const order_id = await requestEvent.request.headers.get('order_id');
@@ -195,5 +243,9 @@ export async function DELETE(requestEvent) {
 				});
 		default:
 			return new Response('Invalid entity', { status: 400 });
+	}}
+	catch (error) {
+		console.log(error);
+		return new Response('ERROR');
 	}
 }

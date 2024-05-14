@@ -60,7 +60,7 @@ export async function POST(requestEvent) {
 		switch (entity) {
 			case 'order':
 				const order = await requestEvent.request.json();
-				await signInWithEmailAndPassword(auth, username, password)
+				return await signInWithEmailAndPassword(auth, username, password)
 					.then(async (userCredential) => {
 						await set(ref(db, 'orders/' + order.order_id), order);
 						return new Response('Order created', { status: 200 });
@@ -73,7 +73,7 @@ export async function POST(requestEvent) {
 					});
 			case 'site_data':
 				const site_data = await requestEvent.request.json();
-				await signInWithEmailAndPassword(auth, username, password)
+				return await signInWithEmailAndPassword(auth, username, password)
 					.then(async (userCredential) => {
 						await set(ref(db, 'site_data'), site_data);
 						return new Response('Site data updated', { status: 200 });
@@ -86,7 +86,7 @@ export async function POST(requestEvent) {
 					});
 			case 'product':
 				const product = await requestEvent.request.json();
-				await signInWithEmailAndPassword(auth, username, password)
+				return await signInWithEmailAndPassword(auth, username, password)
 					.then(async (userCredential) => {
 						await set(ref(db, 'products/' + product.product_id), product);
 						return new Response('Product created', { status: 200 });

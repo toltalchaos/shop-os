@@ -8,6 +8,11 @@ import {
 	PRIVATE_FIREBASE_APP_ID,
 	PRIVATE_FIREBASE_MEASUREMENT_ID
 } from '$env/static/private';
+
+import {
+	PUBLIC_USER_EMAIL,
+	PUBLIC_USER_PASSWORD
+} from '$env/static/public';
 //here is our internal reference to the database we expect all internal api calls to be made through this server
 //this is the server that will handle all the internal api calls
 //we expect in the headers to recieve what storage entity we want to interact with (products, orders, etc)
@@ -46,21 +51,24 @@ const auth = getAuth(app);
 
 export async function POST(requestEvent) {
 	const entity = await requestEvent.request.headers.get('entity');
-	const username = await requestEvent.request.headers.get('username');
-	const password = await requestEvent.request.headers.get('password');
+	let username = await requestEvent.request.headers.get('username');
+	let password = await requestEvent.request.headers.get('password');
+	if(!username || !password) {
+		// for non-admin calls we want to authenticate with our user credentials
+		username = PUBLIC_USER_EMAIL;
+		password = PUBLIC_USER_PASSWORD;
+	}
 	switch (entity) {
 		case 'order':
 			const order = await requestEvent.request.json();
 			signInWithEmailAndPassword(auth, username, password)
 				.then(async (userCredential) => {
-					// Signed in
 					set(ref(db, 'orders/' + order.order_id), order);
 					return new Response('Order created', { status: 200 });
 				})
 				.catch((error) => {
 					var errorCode = error.code;
 					var errorMessage = error.message;
-					// Handle Errors here.
 					throw new Error(errorCode + errorMessage);
 				});
 		case 'site_data':
@@ -97,10 +105,16 @@ export async function POST(requestEvent) {
 export async function GET(requestEvent) {
 	const entity = await requestEvent.request.headers.get('entity');
 	const dbref = ref(db);
+	let username = await requestEvent.request.headers.get('username');
+	let password = await requestEvent.request.headers.get('password');
+	if(!username || !password) {
+		// for non-admin calls we want to authenticate with our user credentials
+		username = PUBLIC_USER_EMAIL;
+		password = PUBLIC_USER_PASSWORD;
+	}
 	switch (entity) {
 		case 'order':
 			const order_id = await requestEvent.request.headers.get('order_id');
-			const email = await requestEvent.request.headers.get('email');
 			const order = await get(child(dbref, 'orders/' + order_id));
 			if (order.exists()) {
 				return new Response(JSON.stringify(order.val()), { status: 200 });

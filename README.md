@@ -16,45 +16,52 @@ To the managers or potential managers, once youve created an environment file/de
 
 - Bug on product card focus element when in edit mode
 
-## TODO:
+## TODO
 
 - Manage product images (Blob or binary for uploads?)
 - add error handling for all external calls - any failures prevent or roll back the action
-    - site data
-    - products
-    - orders
-    - auth
-    - emails
+  - site data
+  - products
+  - orders
+  - auth
+  - emails
 - add discount code creation logic
-    - one time codes and forever use codes
+  - one time codes and forever use codes
 - Implement database data versioning/application version tagging for later releases
-    - version category in DB + release version in some global setting somewhere
-    - check the versions to match, if not match update the DB data to work where needed
+  - version category in DB + release version in some global setting somewhere
+  - check the versions to match, if not match update the DB data to work where needed
 - update readme to reflect values of data integrity, free use, and open code
-    - update footer to reflect the same
-
+  - update footer to reflect the same
 
 - improve emails to be more well formatted
 
 ### Documentation on Setup
 
 - Creation of ENV file
-    - Gmail emailer instructions (turn on 2FA, get the password, enter account email and app password in .env)
-    - Firestore settings (manager account, shopper account, tokens for .env)
-- deployment 
-    - with firebase, download repo
-    - install firebase tools (NPM)
-    - `firebase login`
-    - `firebase init` - git ignore all firebase content.
-        - select the build folder for deployment
-        - SPA setting? - 
-        - move files around/fill BUILD output 
-        - `firebase serve`
-    - `firebase deploy`
-
+  - Gmail emailer instructions (turn on 2FA, get the password, enter account email and app password in .env)
+  - Firestore settings (manager account, shopper account, tokens for .env)
+- deployment
+  - with firebase, download repo
+  - install firebase tools (NPM)
+  - `firebase login`
+  - `firebase init` - git ignore all firebase content.
+    - select the build folder for deployment
+    - SPA setting? -
+    - move files around/fill BUILD output
+    - `firebase serve`
+  - `firebase deploy`
 
 create RTDB with the following rule modified for the admin
 only allowing reading and writes from the admin and user profile in this app.
+
+---
+
+we want the users to be able to GET all the data,
+we want the users to be able to write(create) new orders, and subsequently update the products (but not delete)
+
+we want the admin to only be able to read and write to the site_data portion
+admin should have full read and write access to everything
+
 ```
 {
   "rules": {
@@ -64,41 +71,41 @@ only allowing reading and writes from the admin and user profile in this app.
 }
 ```
 
+---
+
+## deployment
+
 npm install firebase
 npm install -g firebase-tools
 firebase login
 firebase init
 firebase deploy
 
+<https://www.youtube.com/watch?v=W-kII4idtfE>
 
-https://www.youtube.com/watch?v=W-kII4idtfE
-
-* To install Fiebase CLI: npm install -g firebase-tools
-* To login to Firebase CLI: firebase login
-* To enable webframeworks flag: firebase experiments:enable webframeworks
-* To initialize Firebase in your project: firebase init
-* To deploy: firebase deploy
+- To install Fiebase CLI: npm install -g firebase-tools
+- To login to Firebase CLI: firebase login
+- To enable webframeworks flag: firebase experiments:enable webframeworks
+- To initialize Firebase in your project: firebase init
+- To deploy: firebase deploy
 
 - will need to update to pay-as-you-go plan
-  - details here https://firebase.google.com/pricing?hl=en&authuser=0&_gl=1*1llxviv*_ga*NzczNTk2OTgwLjE3MTI2NzYzMTU.*_ga_CW55HF8NVT*MTcxNTM2NzQ3Ny4yMS4xLjE3MTUzNjc4NDYuNTUuMC4w
+  - details here <https://firebase.google.com/pricing?hl=en&authuser=0&_gl=1*1llxviv*_ga*NzczNTk2OTgwLjE3MTI2NzYzMTU.*_ga_CW55HF8NVT*MTcxNTM2NzQ3Ny4yMS4xLjE3MTUzNjc4NDYuNTUuMC4w>
   - set up a $1 budget alert
-
-
 
 ## Future Enhancements
 
 - more site configuration options -> long term a better site management page
-    - Add site design options such as branding figures/images (2 options for site logos - large and small)
+  - Add site design options such as branding figures/images (2 options for site logos - large and small)
 - additional payment methods + gateways
 - Include data/sales analytics in the management directories using visualization tools/components
-    - [Victory Charts?](https://www.npmjs.com/package/victory)
+  - [Victory Charts?](https://www.npmjs.com/package/victory)
 - Explore order tracking insights, such as orders by day of the week, featured items vs non-featured, shipped vs non-shipped, and time to fulfillment
-    - python package adjacent to `online store`?
-    - spark job with graphic outputs? matplotlib? 
+  - python package adjacent to `online store`?
+  - spark job with graphic outputs? matplotlib?
 - integrate a setup wizard?
-    - .sh file to auto deploy for the user? 
-    - secondary site to make changes and deliver a ZIP with the customer site information?
-
+  - .sh file to auto deploy for the user?
+  - secondary site to make changes and deliver a ZIP with the customer site information?
 
 ---
 

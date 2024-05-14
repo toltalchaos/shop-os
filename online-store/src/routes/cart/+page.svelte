@@ -16,7 +16,7 @@
 
 </script>
 
-<div class="cart">
+<div class="cart" style= "background-color: {$siteData.backgroundColor};">
   <h2>Cart Items:</h2>
   {#each items as item}
   <hr>

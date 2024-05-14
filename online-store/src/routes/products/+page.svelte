@@ -29,7 +29,7 @@
   }
 </script>
 
-<div class="container">
+<div class="container" style= "background-color: {$siteData.backgroundColor};">
   <!-- search bar -->
   <CategoryCard bind:products={displayedProducts}/>
   <hr>

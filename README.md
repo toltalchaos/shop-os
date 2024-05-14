@@ -17,8 +17,6 @@ To the managers or potential managers, once youve created an environment file/de
 - Bug on product card focus element when in edit mode
 
 ## TODO:
-- add 404 routing
-- Add background and set colors to other pages
 - add province to checkout + all outgoing emails and data flows
 - site management contactInfo text area.... this could maybe just go away?
 - improve emails to be more descriptive

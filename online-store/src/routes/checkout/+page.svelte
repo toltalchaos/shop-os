@@ -58,11 +58,17 @@
 				totals
 			};
 			let newOrder = await create_order(orderData);
-			alert('Order submitted successfully!', 'Order ID: ' + newOrder.order_id);
-			//clear cart
-			clearCart();
-			//redirect to order payment instructions page
-			goto('/checkout/orderInstructions?orderNum=' + newOrder.order_id);
+			console.log('newOrder:', newOrder);
+			if(newOrder == "ERROR"){
+				console.log('Error submitting order. Please try again later.');
+				alert('Error submitting order. Please try again later.');
+			}else{
+				alert('Order submitted successfully!', 'Order ID: ' + newOrder.order_id);
+				//clear cart
+				clearCart();
+				//redirect to order payment instructions page
+				goto('/checkout/orderInstructions?orderNum=' + newOrder.order_id);
+			}
 		}
 	}
 	function clearCart() {

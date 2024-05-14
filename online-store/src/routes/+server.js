@@ -48,59 +48,58 @@ const auth = getAuth(app);
 
 export async function POST(requestEvent) {
 	const entity = await requestEvent.request.headers.get('entity');
+	console.log('entity', entity);
 	let username = await requestEvent.request.headers.get('username');
 	let password = await requestEvent.request.headers.get('password');
-	if (!username || !password) {
+	if (!username || !password || (username == null) || (password === 'null')) {
 		// for non-admin calls we want to authenticate with our user credentials
 		username = PUBLIC_USER_EMAIL;
 		password = PUBLIC_USER_PASSWORD;
 	}
-	try{
-	switch (entity) {
-		case 'order':
-			const order = await requestEvent.request.json();
-			signInWithEmailAndPassword(auth, username, password)
-				.then(async (userCredential) => {
-					set(ref(db, 'orders/' + order.order_id), order);
-					return new Response('Order created', { status: 200 });
-				})
-				.catch((error) => {
-					var errorCode = error.code;
-					var errorMessage = error.message;
-					throw new Error(errorCode + errorMessage);
-				});
-		case 'site_data':
-			const site_data = await requestEvent.request.json();
-			signInWithEmailAndPassword(auth, username, password)
-				.then(async (userCredential) => {
-					set(ref(db, 'site_data'), site_data);
-					return new Response('Site data updated', { status: 200 });
-				})
-				.catch((error) => {
-					var errorCode = error.code;
-					var errorMessage = error.message;
-					// Handle Errors here.
-					throw new Error(errorCode + errorMessage);
-				});
-		case 'product':
-			const product = await requestEvent.request.json();
-			signInWithEmailAndPassword(auth, username, password)
-				.then(async (userCredential) => {
-					set(ref(db, 'products/' + product.product_id), product);
-					return new Response('Product created', { status: 200 });
-				})
-				.catch((error) => {
-					var errorCode = error.code;
-					var errorMessage = error.message;
-					// Handle Errors here.
-					throw new Error(errorCode + errorMessage);
-				});
-		default:
-			return new Response('Invalid entity', { status: 400 });
-	}}
-	catch (error) {
+	try {
+		switch (entity) {
+			case 'order':
+				const order = await requestEvent.request.json();
+				await signInWithEmailAndPassword(auth, username, password)
+					.then(async (userCredential) => {
+						await set(ref(db, 'orders/' + order.order_id), order);
+						return new Response('Order created', { status: 200 });
+					})
+					.catch((error) => {
+						var errorCode = error.code;
+						var errorMessage = error.message;
+						console.log('HERE',errorCode, errorMessage);
+						throw new Error(errorCode + errorMessage);
+					});
+			case 'site_data':
+				const site_data = await requestEvent.request.json();
+				await signInWithEmailAndPassword(auth, username, password)
+					.then(async (userCredential) => {
+						await set(ref(db, 'site_data'), site_data);
+						return new Response('Site data updated', { status: 200 });
+					})
+					.catch((error) => {
+						var errorCode = error.code;
+						var errorMessage = error.message;
+						// Handle Errors here.
+						throw new Error(errorCode + errorMessage);
+					});
+			case 'product':
+				const product = await requestEvent.request.json();
+				await signInWithEmailAndPassword(auth, username, password)
+					.then(async (userCredential) => {
+						await set(ref(db, 'products/' + product.product_id), product);
+						return new Response('Product created', { status: 200 });
+					})
+					.catch((error) => {
+						throw new Error(error.code + error.message);
+					});
+			default:
+				return new Response('Invalid entity', { status: 400 });
+		}
+	} catch (error) {
 		console.log(error);
-		return new Response('ERROR');
+		return new Response('ERROR', { status: 500 });
 	}
 }
 
@@ -109,7 +108,7 @@ export async function GET(requestEvent) {
 	const dbref = ref(db);
 	let username = await requestEvent.request.headers.get('username');
 	let password = await requestEvent.request.headers.get('password');
-	if (!username || !password) {
+	if (!username || !password || username === 'null' || password === 'null') {
 		// for non-admin calls we want to authenticate with our user credentials
 		username = PUBLIC_USER_EMAIL;
 		password = PUBLIC_USER_PASSWORD;
@@ -201,50 +200,50 @@ export async function DELETE(requestEvent) {
 	const entity = await requestEvent.request.headers.get('entity');
 	const username = await requestEvent.request.headers.get('username');
 	const password = await requestEvent.request.headers.get('password');
-	try{
-	switch (entity) {
-		case 'order':
-			const order_id = await requestEvent.request.headers.get('order_id');
-			signInWithEmailAndPassword(auth, username, password)
-				.then(async (userCredential) => {
-					remove(ref(db, 'orders/' + order_id));
-					return new Response('Order deleted', { status: 200 });
-				})
-				.catch((error) => {
-					var errorCode = error.code;
-					var errorMessage = error.message;
-					// Handle Errors here.
-					throw new Error(errorCode + errorMessage);
-				});
-		case 'site_data':
-			signInWithEmailAndPassword(auth, username, password)
-				.then(async (userCredential) => {
-					remove(ref(db, 'site_data'));
-					return new Response('Site data deleted', { status: 200 });
-				})
-				.catch((error) => {
-					var errorCode = error.code;
-					var errorMessage = error.message;
-					// Handle Errors here.
-					throw new Error(errorCode + errorMessage);
-				});
-		case 'product':
-			const product_id = await requestEvent.request.headers.get('product_id');
-			signInWithEmailAndPassword(auth, username, password)
-				.then(async (userCredential) => {
-					remove(ref(db, 'products/' + product_id));
-					return new Response('Product deleted', { status: 200 });
-				})
-				.catch((error) => {
-					var errorCode = error.code;
-					var errorMessage = error.message;
-					// Handle Errors here.
-					throw new Error(errorCode + errorMessage);
-				});
-		default:
-			return new Response('Invalid entity', { status: 400 });
-	}}
-	catch (error) {
+	try {
+		switch (entity) {
+			case 'order':
+				const order_id = await requestEvent.request.headers.get('order_id');
+				signInWithEmailAndPassword(auth, username, password)
+					.then(async (userCredential) => {
+						remove(ref(db, 'orders/' + order_id));
+						return new Response('Order deleted', { status: 200 });
+					})
+					.catch((error) => {
+						var errorCode = error.code;
+						var errorMessage = error.message;
+						// Handle Errors here.
+						throw new Error(errorCode + errorMessage);
+					});
+			case 'site_data':
+				signInWithEmailAndPassword(auth, username, password)
+					.then(async (userCredential) => {
+						remove(ref(db, 'site_data'));
+						return new Response('Site data deleted', { status: 200 });
+					})
+					.catch((error) => {
+						var errorCode = error.code;
+						var errorMessage = error.message;
+						// Handle Errors here.
+						throw new Error(errorCode + errorMessage);
+					});
+			case 'product':
+				const product_id = await requestEvent.request.headers.get('product_id');
+				signInWithEmailAndPassword(auth, username, password)
+					.then(async (userCredential) => {
+						remove(ref(db, 'products/' + product_id));
+						return new Response('Product deleted', { status: 200 });
+					})
+					.catch((error) => {
+						var errorCode = error.code;
+						var errorMessage = error.message;
+						// Handle Errors here.
+						throw new Error(errorCode + errorMessage);
+					});
+			default:
+				return new Response('Invalid entity', { status: 400 });
+		}
+	} catch (error) {
 		console.log(error);
 		return new Response('ERROR');
 	}

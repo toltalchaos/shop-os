@@ -60,17 +60,18 @@ async function update_product(
 	newproductData,
 	origionalproductData,
 	isDelete = false,
-	username,
-	password
+	username = null,
+	password = null
 ) {
 	//this function will update the products in the database
 	//if isDelete is true, then the product will be deleted
 	//get the existing products, look for the product to update, update the product, and then set the products
 	//if there is no product to update, then add the product to the list, and then set the products
+	let updateResponse = null;
 	if (isDelete) {
 		console.log('deleting product', newproductData);
 		//delete the product
-		await fetch('/', {
+		updateResponse = await fetch('/', {
 			method: 'DELETE',
 			headers: {
 				'Content-Type': 'application/json',
@@ -85,9 +86,8 @@ async function update_product(
 		origionalproductData.product_id === newproductData.product_id &&
 		!isDelete
 	) {
-		console.log('updating product', newproductData);
 		//update the product
-		await fetch('/', {
+		updateResponse = await fetch('/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -102,7 +102,7 @@ async function update_product(
 		let product_id = newproductData.name + Math.random().toString(36).substring(7);
 		newproductData.product_id = product_id;
 		//add the product
-		await fetch('/', {
+		updateResponse = await fetch('/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -113,6 +113,12 @@ async function update_product(
 			body: JSON.stringify(newproductData)
 		});
 		console.log('product added', newproductData);
+	}
+	if (updateResponse.ok === true) {
+		console.log('product updated', newproductData);
+	} else {
+		console.error('Failed to update product:', await updateResponse.text());
+		throw new Error('Failed to update product:', await updateResponse.body);
 	}
 }
 
@@ -142,11 +148,11 @@ async function create_order(orderInfo) {
 		};
 
 		for (const item in updatedItems) {
-			update_product(updatedItems[item], sanitizedProducts[item], false);
+			await update_product(updatedItems[item], sanitizedProducts[item], false);
 		}
 		//make call to firestore to make the order here...
 		//first call to create order
-		await fetch('/', {
+		let resp = await fetch('/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -156,16 +162,19 @@ async function create_order(orderInfo) {
 		});
 		//then call to update the product invintory
 		//email the user the order confirmation...
-		await fetch('/emails/newOrder', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(order)
-		});
-		return order;
+		if (resp.status === 200) {
+			await fetch('/emails/newOrder', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(order)
+			});
+			return order;
+		}
 	} catch (err) {
 		console.error('Failed to submit order:', err);
+		return 'ERROR';
 	}
 }
 async function get_order_details(order_id) {
@@ -217,6 +226,5 @@ export {
 	update_product,
 	create_order,
 	get_order_details,
-	set_order_status,
-	authenticate_user
+	set_order_status
 };

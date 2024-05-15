@@ -5,7 +5,6 @@
 	import { writable } from 'svelte/store';
 	import CategoryEditDdl from './categoryEditDDL.svelte';
 	import ItemImageManager from './itemImageManager.svelte';
-	import { goto } from '$app/navigation';
 	export let product = null;
 	const origionalProduct = JSON.parse(JSON.stringify(product));
 	let newProduct = false;
@@ -40,7 +39,6 @@
 			localStorage.getItem('username'),
 			localStorage.getItem('password')
 		);
-		goto('/siteManagement');
 	}
 
 	function deleteItem() {
@@ -51,7 +49,6 @@
 			localStorage.getItem('username'),
 			localStorage.getItem('password')
 		);
-		goto('/siteManagement');
 	}
 </script>
 

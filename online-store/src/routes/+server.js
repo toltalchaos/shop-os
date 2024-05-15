@@ -289,7 +289,7 @@ export async function DELETE(requestEvent) {
 					});
 			case 'discount':
 				const discount_id = await requestEvent.request.headers.get('discount_id');
-				signInWithEmailAndPassword(auth, username, password)
+				return await signInWithEmailAndPassword(auth, username, password)
 					.then(async (userCredential) => {
 						remove(ref(db, 'discounts/' + discount_id));
 						return new Response('Discount deleted', { status: 200 });
@@ -301,7 +301,7 @@ export async function DELETE(requestEvent) {
 						throw new Error(errorCode + errorMessage);
 					});
 			default:
-				return new Response('Invalid entity', { status: 400 });
+				return new Response('Invalid entity:' + entity, { status: 400 });
 		}
 	} catch (error) {
 		console.log(error);

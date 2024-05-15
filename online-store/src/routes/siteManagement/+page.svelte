@@ -6,6 +6,7 @@
 	import ManageProductForm from '../../components/manageProductForm.svelte';
 	import allSocks from '../../global/allItems';
 	import { getContext } from 'svelte';
+	import SiteDiscounts from './siteDiscounts.svelte';
 	const siteData = getContext('siteData');
 	let products = [];
 	let username = null;
@@ -84,7 +85,6 @@
 	<h1>Site Management</h1>
 	<div class="management-btns">
 		<a href="/siteManagement/manageorders">Manage Orders</a>
-		<a href="/siteManagement/siteDiscounts">Manage Discounts</a>
 	</div>
 	<!-- form to manage basic site settings -->
 	<form on:submit|preventDefault={handleSiteManagmentSubmit} class="site-form">
@@ -129,7 +129,9 @@
 	</form>
 
 	<hr />
-
+	<!-- site discounts component -->
+	<SiteDiscounts {username} {password} />
+	<hr />
 	<!-- form to manage products -->
 	<ManageProductForm />
 	<hr />

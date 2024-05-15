@@ -1,7 +1,7 @@
 <script>
 	// @ts-nocheck
 	import { onMount } from 'svelte';
-	import { get_discounts, set_discount, delete_discount } from '../../../server/backendUtils';
+	import { get_discounts, set_discount, delete_discount } from '../../server/backendUtils';
     import { v4 } from 'uuid';
     // {
     //     discount_id: uuidv4(),
@@ -10,29 +10,45 @@
     //     amount: 10
     // }
 
+	export let username = null;
+	export let password = null;
 	let discounts = null;
 	let activeDiscount = null;
 
 	onMount(async () => {
-		if (!localStorage.getItem('username') || !localStorage.getItem('password')) {
-			window.location.href = '/login';
+		discounts = await get_discounts(username, password);
+		if( discounts != 'ERROR'){
+			console.log('loaded discounts', discounts);
 		}
-		// Check if the user has been logged in for more than an hour
-		if(localStorage.getItem('loginTime') < new Date().getTime() - 3600000){
-			localStorage.clear();
-			window.location.href = '/login';
+		else{
+			//there is a chance this fails when there are no discounts.... we can let it fail silently
+			console.log('error loading discounts');
+			discounts = null;
 		}
-        discounts = await get_discounts(localStorage.getItem('username'), localStorage.getItem('password'));
-        console.log('loaded discounts', discounts);
 	});
 
     async function saveDiscount(event) {
         event.preventDefault();
-        await set_discount(activeDiscount, localStorage.getItem('username'), localStorage.getItem('password'));
+        let resp = await set_discount(activeDiscount, username, password);
+		if( resp != 'ERROR'){
+			alert('Discount saved successfully');
+			discounts = await get_discounts(username, password);
+			activeDiscount = null;
+		}
+		else{
+			alert('Error saving discount');
+		}
         activeDiscount = null;
     }
-    async function deleteDiscount() {
-         await delete_discount(activeDiscount, localStorage.getItem('username'), localStorage.getItem('password'));
+    async function deleteDiscount(discount) {
+        let resp = await delete_discount(discount, username, password);
+		if( resp != 'ERROR'){
+			alert('Discount deleted successfully');
+			discounts = discounts.filter(d => d.discount_id != discount.discount_id);
+		}
+		else{
+			alert('Error deleting discount');
+		}
     }
 
 
@@ -83,7 +99,7 @@
 						}}>Edit</button
 					>
 					<!-- button to edit the discount by setting THIS discount to the activeDiscounts -->
-					<button on:click={deleteDiscount}>Delete</button>
+					<button on:click={() => {deleteDiscount(discount)}}>Delete</button>
 				</div>
 			{/each}
 		{/if}

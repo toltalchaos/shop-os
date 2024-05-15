@@ -221,8 +221,7 @@ async function set_order_status(orderData, username, password) {
 
 //discount operations
 async function get_discounts(username, password) {
-	//get all the discounts
-	console.log('getting discounts');
+
 	//make call here
 	const discounts = await fetch('/', {
 		method: 'GET',
@@ -234,16 +233,13 @@ async function get_discounts(username, password) {
 		}
 	});
 	if (discounts.ok === true) {
-		return discounts;
+		return  Object.values(await discounts.json());
 	} else {
 		console.error('Failed to get discounts:', await discounts.text());
-		throw new Error('ERROR');
+		return 'ERROR';
 	}
 }
 async function set_discount(discountData, username, password) {
-	//set the discount
-	console.log('setting discount', discountData);
-	//make call here
 	const newDiscount = await fetch('/', {
 		method: 'POST',
 		headers: {
@@ -255,10 +251,10 @@ async function set_discount(discountData, username, password) {
 		body: JSON.stringify(discountData)
 	});
 	if (newDiscount.ok === true) {
-		return newDiscount;
+		return await newDiscount.text();
 	} else {
 		console.error('Failed to get discounts:', await newDiscount.text());
-		throw new Error('ERROR');
+		return 'ERROR';
 	}
 }
 async function delete_discount(discountData, username, password) {
@@ -270,16 +266,17 @@ async function delete_discount(discountData, username, password) {
 		headers: {
 			'Content-Type': 'application/json',
 			entity: 'discount',
+			discount_id: discountData.discount_id,
 			username: username,
 			password: password
 		},
 		body: JSON.stringify(discountData)
 	});
 	if (deletedDiscount.ok === true) {
-		return deletedDiscount;
+		return await deletedDiscount.text();
 	} else {
 		console.error('Failed to delete discount:', await deletedDiscount.text());
-		throw new Error('ERROR');
+		return 'ERROR';
 	}
 }
 
@@ -296,7 +293,7 @@ async function lookup_discount(discountCode) {
 		},
 	});
 	if (discount.ok === true) {
-		return await discount.val();
+		return await discount.json();
 	} else {
 		console.error('Failed to get discounts:', await discount.text());
 		throw new Error('ERROR');
@@ -317,5 +314,6 @@ export {
 	set_order_status,
 	get_discounts,
 	set_discount,
-	delete_discount
+	delete_discount,
+	lookup_discount
 };

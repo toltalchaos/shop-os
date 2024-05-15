@@ -57,6 +57,7 @@
 				postalCode,
 				city,
 				province,
+				discount,
 				totals
 			};
 			let newOrder = await create_order(orderData);

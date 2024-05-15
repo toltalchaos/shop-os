@@ -18,15 +18,15 @@ To the managers or potential managers, once youve created an environment file/de
 
 ## TODO
 
-- Manage product images (Blob or binary for uploads?)
+- add discount code creation logic
+  - one time codes and forever use codes
 - add error handling for all external calls - any failures prevent or roll back the action
   - site data
   - products
   - orders
   - auth
   - emails
-- add discount code creation logic
-  - one time codes and forever use codes
+- Manage product images (Blob or binary for uploads?)
 - Implement database data versioning/application version tagging for later releases
   - version category in DB + release version in some global setting somewhere
   - check the versions to match, if not match update the DB data to work where needed

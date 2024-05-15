@@ -74,15 +74,15 @@
 		{#if activeDiscount}
 			<!-- form to edit the current active discount -->
 			<form>
-				<label for="discountName">Discount Name:</label>
-				<input type="text" id="discountName" bind:value={activeDiscount.name} required />
-				<label for="discountType">Discount Type:</label>
+				<label for="discountName">Discount Name:
+				<input type="text" id="discountName" bind:value={activeDiscount.name} required /></label>
+				<label for="discountType">Discount Type:
 				<select id="discountType" bind:value={activeDiscount.type} required>
 					<option value="percentage">Percentage</option>
 					<option value="fixed">Fixed</option>
-				</select>
-				<label for="discountAmount">Discount Amount:</label>
-				<input type="number" id="discountAmount" bind:value={activeDiscount.amount} required />
+				</select></label>
+				<label for="discountAmount">Discount Amount:
+				<input type="number" id="discountAmount" bind:value={activeDiscount.amount} required /></label>
 				<button type="submit" on:click={saveDiscount}>Save</button>
 			</form>
 		{/if}
@@ -105,3 +105,27 @@
 		{/if}
 	</div>
 </div>
+
+<style>
+	.container {
+		max-width: 100%;
+		margin: 0 auto;
+		padding: 1rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.existing-discounts form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+		margin-top: 1rem;
+
+	}
+	.discount {
+		border: 1px solid black;
+		padding: 1rem;
+		margin: 1rem;
+	}
+</style>

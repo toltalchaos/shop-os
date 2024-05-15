@@ -70,11 +70,10 @@
 			window.location.href = '/login';
 		}
 		// Check if the user has been logged in for more than an hour
-		if(localStorage.getItem('loginTime') < new Date().getTime() - 3600000){
+		if (localStorage.getItem('loginTime') < new Date().getTime() - 3600000) {
 			window.location.href = '/login';
 			localStorage.clear();
-		}
-		else {
+		} else {
 			username = localStorage.getItem('username');
 			password = localStorage.getItem('password');
 		}
@@ -83,7 +82,10 @@
 
 <main>
 	<h1>Site Management</h1>
-	<a href="/siteManagement/manageorders">Manage Orders</a>
+	<div class="management-btns">
+		<a href="/siteManagement/manageorders">Manage Orders</a>
+		<a href="/siteManagement/siteDiscounts">Manage Discounts</a>
+	</div>
 	<!-- form to manage basic site settings -->
 	<form on:submit|preventDefault={handleSiteManagmentSubmit} class="site-form">
 		<label for="title">Title:</label>

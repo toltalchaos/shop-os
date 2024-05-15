@@ -19,10 +19,11 @@
 		}
 		// Check if the user has been logged in for more than an hour
 		if(localStorage.getItem('loginTime') < new Date().getTime() - 3600000){
-			window.location.href = '/login';
 			localStorage.clear();
+			window.location.href = '/login';
 		}
-        discounts = await get_discounts();
+        discounts = await get_discounts(localStorage.getItem('username'), localStorage.getItem('password'));
+        console.log('loaded discounts', discounts);
 	});
 
     async function saveDiscount(event) {
@@ -45,6 +46,7 @@
 	<p>Click on the "Delete" button to remove a discount.</p>
 	<!-- button to create a new discount -->
     <button on:click={() => {
+        // create a new discount object to be used as the active discount
         activeDiscount = {
             discount_id: v4().substring(0, 7),
             name: "",

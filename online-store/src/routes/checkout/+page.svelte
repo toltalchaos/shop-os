@@ -1,6 +1,6 @@
 <script>
 	// @ts-nocheck
-	import { create_order } from '../../server/backendUtils';
+	import { create_order, lookup_discount } from '../../server/backendUtils';
 	import Invoice from '../../components/invoice.svelte';
 	import cartItems from '../../global/cartItems';
 	import { getContext } from 'svelte';
@@ -21,6 +21,9 @@
 	let city = '';
 	let province = '';
 	let inPersonPickup = false;
+	let discount_id = '';
+	let discount = null;
+	let discountFlag = false;
 	let subtotal = items.reduce((acc, item) => acc + item.price * item.cart_quantity, 0);
 	let taxRate = $siteData.taxRate;
 	let tax = subtotal * taxRate;
@@ -99,6 +102,30 @@
 
 		inPersonPickup = !inPersonPickup;
 	}
+
+	async function lookupDiscount(){
+		//lookup discount by discount_id
+		discount = await lookup_discount(discount_id);
+		if(discount != 'ERROR'){
+			//apply discount to total
+			if(discount.type == 'percentage'){
+				total = total * (1 - discount.amount);
+			}else if(discount.type == 'fixed'){
+				total = total - discount.amount;
+			}
+			//anything being put into the totals object should be fixed to 2 decimal places
+			totals = {
+				subtotal: subtotal.toFixed(2),
+				shipping: shipping.toFixed(2),
+				tax: tax.toFixed(2),
+				taxRate: taxRate.toFixed(2),
+				total: total.toFixed(2)
+			};
+		}else{
+			alert('Discount not found. Please check the discount code and try again.');
+		}
+	
+	}
 </script>
 
 <div class="checkout-page" style="background-color: {$siteData.backgroundColor};">
@@ -156,6 +183,16 @@
 						disabled={inPersonPickup}
 					/></label
 				>
+			</div>
+			<div class="dicounts">
+				<!-- text input to input a discount_id and an "apply" button to call a discount lookup function -->
+				<label for="discount">Discount Code:
+					<input type="text" id="discount" bind:value={discount_id} />
+					<button type="button" on:click={lookupDiscount}>Apply</button>
+				</label>
+				{#if discount}
+					<p>Discount applied: {discount.name}</p>
+				{/if}
 			</div>
 			<div>
 				<!-- toggle switch  -->

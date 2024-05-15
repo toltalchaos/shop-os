@@ -19,8 +19,8 @@
 		}
 		// Check if the user has been logged in for more than an hour
 		if(localStorage.getItem('loginTime') < new Date().getTime() - 3600000){
-			window.location.href = '/login';
 			localStorage.clear();
+			window.location.href = '/login';
 		}
 	});
 

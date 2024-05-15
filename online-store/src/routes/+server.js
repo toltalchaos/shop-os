@@ -94,6 +94,16 @@ export async function POST(requestEvent) {
 					.catch((error) => {
 						throw new Error(error.code + error.message);
 					});
+			case 'discount':
+				const discount = await requestEvent.request.json();
+				return await signInWithEmailAndPassword(auth, username, password)
+					.then(async (userCredential) => {
+						await set(ref(db, 'discounts/' + discount.discount_id), discount);
+						return new Response('Discount created', { status: 200 });
+					})
+					.catch((error) => {
+						throw new Error(error.code + error.message);
+					});
 			default:
 				return new Response('Invalid entity', { status: 400 });
 		}
@@ -187,6 +197,43 @@ export async function GET(requestEvent) {
 						return new Response('No products found', { status: 404 });
 					}
 				}
+			case 'discount':
+				const discount_id = await requestEvent.request.headers.get('discount_id');
+				if (discount_id) {
+					const discount = await signInWithEmailAndPassword(auth, username, password)
+						.then(async (userCredential) => {
+							let response = await get(child(dbref, 'discounts/' + discount_id));
+							return response;
+						})
+						.catch((error) => {
+							var errorCode = error.code;
+							var errorMessage = error.message;
+							// Handle Errors here.
+							throw new Error(errorCode + errorMessage);
+						});
+					if (discount.exists()) {
+						return new Response(JSON.stringify(discount.val()), { status: 200 });
+					} else {
+						return new Response('Discount not found', { status: 404 });
+					}
+				} else {
+					const discounts = await signInWithEmailAndPassword(auth, username, password)
+						.then(async (userCredential) => {
+							let response = await get(child(dbref, 'discounts'));
+							return response;
+						})
+						.catch((error) => {
+							var errorCode = error.code;
+							var errorMessage = error.message;
+							// Handle Errors here.
+							throw new Error(errorCode + errorMessage);
+						});
+					if (discounts.exists()) {
+						return new Response(JSON.stringify(discounts.val()), { status: 200 });
+					} else {
+						return new Response('No discounts found', { status: 404 });
+					}
+				}
 			default:
 				return new Response('Invalid entity', { status: 400 });
 		}
@@ -233,6 +280,19 @@ export async function DELETE(requestEvent) {
 					.then(async (userCredential) => {
 						remove(ref(db, 'products/' + product_id));
 						return new Response('Product deleted', { status: 200 });
+					})
+					.catch((error) => {
+						var errorCode = error.code;
+						var errorMessage = error.message;
+						// Handle Errors here.
+						throw new Error(errorCode + errorMessage);
+					});
+			case 'discount':
+				const discount_id = await requestEvent.request.headers.get('discount_id');
+				signInWithEmailAndPassword(auth, username, password)
+					.then(async (userCredential) => {
+						remove(ref(db, 'discounts/' + discount_id));
+						return new Response('Discount deleted', { status: 200 });
 					})
 					.catch((error) => {
 						var errorCode = error.code;

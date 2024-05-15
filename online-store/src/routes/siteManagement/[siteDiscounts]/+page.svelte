@@ -2,8 +2,9 @@
 	// @ts-nocheck
 	import { onMount } from 'svelte';
 	import { get_discounts, set_discount, delete_discount } from '../../../server/backendUtils';
+    import { v4 } from 'uuid';
     // {
-    //     discount_id: 1,
+    //     discount_id: uuidv4(),
     //     name: "10% off",
     //     type: "percentage",
     //     amount: 10
@@ -27,10 +28,12 @@
     async function saveDiscount(event) {
         event.preventDefault();
         await set_discount(activeDiscount, localStorage.getItem('username'), localStorage.getItem('password'));
+        activeDiscount = null;
     }
     async function deleteDiscount() {
          await delete_discount(activeDiscount, localStorage.getItem('username'), localStorage.getItem('password'));
     }
+
 
 </script>
 
@@ -41,7 +44,14 @@
 	<p>Click on the "Add Discount" button to create a new discount.</p>
 	<p>Click on the "Delete" button to remove a discount.</p>
 	<!-- button to create a new discount -->
-
+    <button on:click={() => {
+        activeDiscount = {
+            discount_id: v4().substring(0, 7),
+            name: "",
+            type: "",
+            amount: 0
+        }
+    }}>Add New Discount</button>
 	<div class="existing-discounts">
 		{#if activeDiscount}
 			<!-- form to edit the current active discount -->

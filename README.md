@@ -19,7 +19,6 @@ To the managers or potential managers, once youve created an environment file/de
 ## TODO
 
 - add discount code creation logic
-  - one time codes and forever use codes
 - add error handling for all external calls - any failures prevent or roll back the action
   - site data
   - products

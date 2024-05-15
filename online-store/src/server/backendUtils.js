@@ -218,6 +218,94 @@ async function set_order_status(orderData, username, password) {
 	}
 }
 
+
+//discount operations
+async function get_discounts(username, password) {
+	//get all the discounts
+	console.log('getting discounts');
+	//make call here
+	const discounts = await fetch('/', {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+			entity: 'discount',
+			username: username,
+			password: password
+		}
+	});
+	if (discounts.ok === true) {
+		return discounts;
+	} else {
+		console.error('Failed to get discounts:', await discounts.text());
+		throw new Error('ERROR');
+	}
+}
+async function set_discount(discountData, username, password) {
+	//set the discount
+	console.log('setting discount', discountData);
+	//make call here
+	const newDiscount = await fetch('/', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			entity: 'discount',
+			username: username,
+			password: password
+		},
+		body: JSON.stringify(discountData)
+	});
+	if (newDiscount.ok === true) {
+		return newDiscount;
+	} else {
+		console.error('Failed to get discounts:', await newDiscount.text());
+		throw new Error('ERROR');
+	}
+}
+async function delete_discount(discountData, username, password) {
+	//delete the discount
+	console.log('deleting discount', discountData);
+	//make call here
+	const deletedDiscount = await fetch('/', {
+		method: 'DELETE',
+		headers: {
+			'Content-Type': 'application/json',
+			entity: 'discount',
+			username: username,
+			password: password
+		},
+		body: JSON.stringify(discountData)
+	});
+	if (deletedDiscount.ok === true) {
+		return deletedDiscount;
+	} else {
+		console.error('Failed to delete discount:', await deletedDiscount.text());
+		throw new Error('ERROR');
+	}
+}
+
+async function lookup_discount(discountCode) {
+	//lookup the discount
+	console.log('looking up discount', discountCode);
+	//make call here
+	const discount = await fetch('/', {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+			entity: 'discount',
+			discount_id: discountCode
+		},
+	});
+	if (discount.ok === true) {
+		return await discount.val();
+	} else {
+		console.error('Failed to get discounts:', await discount.text());
+		throw new Error('ERROR');
+	}
+}
+
+
+
+
 export {
 	get_site_data,
 	set_site_data,
@@ -226,5 +314,8 @@ export {
 	update_product,
 	create_order,
 	get_order_details,
-	set_order_status
+	set_order_status,
+	get_discounts,
+	set_discount,
+	delete_discount
 };

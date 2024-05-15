@@ -23,7 +23,6 @@
 	let inPersonPickup = false;
 	let discount_id = '';
 	let discount = null;
-	let discountFlag = false;
 	let subtotal = items.reduce((acc, item) => acc + item.price * item.cart_quantity, 0);
 	let taxRate = $siteData.taxRate;
 	let tax = subtotal * taxRate;
@@ -62,10 +61,10 @@
 			};
 			let newOrder = await create_order(orderData);
 			console.log('newOrder:', newOrder);
-			if(newOrder == "ERROR"){
+			if (newOrder == 'ERROR') {
 				console.log('Error submitting order. Please try again later.');
 				alert('Error submitting order. Please try again later.');
-			}else{
+			} else {
 				alert('Order submitted successfully!', 'Order ID: ' + newOrder.order_id);
 				//clear cart
 				clearCart();
@@ -103,35 +102,42 @@
 		inPersonPickup = !inPersonPickup;
 	}
 
-	async function lookupDiscount(){
-		//lookup discount by discount_id
-		discount = await lookup_discount(discount_id);
-		if(discount != 'ERROR'){
-			//apply discount to total
-			if(discount.type == 'percentage'){
-				total = total * (1 - discount.amount);
-			}else if(discount.type == 'fixed'){
-				total = total - discount.amount;
+	async function lookupDiscount() {
+		if (!discount || discount.discount_id != discount_id) {
+			discount = null;
+			//lookup discount by discount_id
+			discount = await lookup_discount(discount_id);
+			console.log('discount:', discount);
+			if (discount != 'ERROR') {
+				//apply discount to total
+				if (discount.type == 'percentage') {
+					total = total * (1 - (discount.amount/100));
+				} else if (discount.type == 'fixed') {
+					total = total - discount.amount;
+				}
+				//anything being put into the totals object should be fixed to 2 decimal places
+				totals = {
+					subtotal: subtotal.toFixed(2),
+					shipping: shipping.toFixed(2),
+					tax: tax.toFixed(2),
+					taxRate: taxRate.toFixed(2),
+					total: total.toFixed(2)
+				};
+			} else {
+				alert('Discount not found. Please check the discount code and try again.');
+				discount = null;
 			}
-			//anything being put into the totals object should be fixed to 2 decimal places
-			totals = {
-				subtotal: subtotal.toFixed(2),
-				shipping: shipping.toFixed(2),
-				tax: tax.toFixed(2),
-				taxRate: taxRate.toFixed(2),
-				total: total.toFixed(2)
-			};
-		}else{
-			alert('Discount not found. Please check the discount code and try again.');
 		}
-	
+		else {
+			alert('Discount already applied.');
+		}
 	}
 </script>
 
 <div class="checkout-page" style="background-color: {$siteData.backgroundColor};">
 	<h2>Checkout</h2>
 
-	<Invoice {items} {totals} />
+	<Invoice {items} {totals} {discount} />
 
 	<form on:submit={handleSubmit}>
 		<div class="form-row">
@@ -186,7 +192,8 @@
 			</div>
 			<div class="dicounts">
 				<!-- text input to input a discount_id and an "apply" button to call a discount lookup function -->
-				<label for="discount">Discount Code:
+				<label for="discount"
+					>Discount Code:
 					<input type="text" id="discount" bind:value={discount_id} />
 					<button type="button" on:click={lookupDiscount}>Apply</button>
 				</label>
@@ -199,7 +206,8 @@
 				<label class="switch">
 					<input type="checkbox" on:click={toggleInPersonPickup} />
 					<span class="slider" />
-				</label> In Person Pickup
+				</label>
+				In Person Pickup
 				<aside><p>Store location: {$siteData.storeLocation}</p></aside>
 			</div>
 		</div>

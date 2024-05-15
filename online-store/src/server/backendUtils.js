@@ -281,8 +281,6 @@ async function delete_discount(discountData, username, password) {
 }
 
 async function lookup_discount(discountCode) {
-	//lookup the discount
-	console.log('looking up discount', discountCode);
 	//make call here
 	const discount = await fetch('/', {
 		method: 'GET',
@@ -296,7 +294,7 @@ async function lookup_discount(discountCode) {
 		return await discount.json();
 	} else {
 		console.error('Failed to get discounts:', await discount.text());
-		throw new Error('ERROR');
+		return 'ERROR';
 	}
 }
 

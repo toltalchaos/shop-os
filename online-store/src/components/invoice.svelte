@@ -3,6 +3,7 @@
 	import { getContext } from 'svelte';
 	const siteData = getContext('siteData');
 	export let items = [];
+	export let discount = null;
 
 	export let totals = {
 		subtotal: 0,
@@ -43,6 +44,12 @@
 				<td colspan="2">Tax ({totals.taxRate * 100}%):</td>
 				<td>${totals.tax}</td>
 			</tr>
+			{#if discount}
+				<tr>
+					<td colspan="2">Discount:</td>
+					<td>{discount.type == 'percentage' ? '' : '$'}{discount ? discount.amount : 0}{discount.type == 'percentage' ? '%' : ''}</td>
+				</tr>
+			{/if}
 			<tr>
 				<td colspan="2">Total:</td>
 				<td>${totals.total}</td>

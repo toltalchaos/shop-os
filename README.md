@@ -15,6 +15,7 @@ To the managers or potential managers, once youve created an environment file/de
 ## Bug List
 
 - Bug on product card focus element when in edit mode
+- discount needs to re-calculate properly after supplying a second discount code
 
 ## TODO
 
@@ -33,6 +34,8 @@ To the managers or potential managers, once youve created an environment file/de
   - update footer to reflect the same
 
 - improve emails to be more well formatted
+
+- figure out deployment and versioning procedure... how do we get non-tech users setup?
 
 ### Documentation on Setup
 

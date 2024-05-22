@@ -1,6 +1,6 @@
 <script>
 	// @ts-nocheck
-    import { onMount } from 'svelte';
+    import { onMount, getContext } from 'svelte';
     import { get_order_details } from '../../../server/backendUtils';
     import OrderStatus from '../../../components/orderStatus.svelte';
     import { page } from '$app/stores';

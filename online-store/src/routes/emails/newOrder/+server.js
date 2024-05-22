@@ -16,8 +16,13 @@ const transporter = nodemailer.createTransport({
 
 export async function POST(requestEvent) {
 	const emailData = await requestEvent.request.json();
-	sendAdminEmail(emailData, env.PUBLIC_SENDER_GMAIL);
-	return sendCustomerEmail(emailData, env.PUBLIC_SENDER_GMAIL);
+	try{
+		sendAdminEmail(emailData, env.PUBLIC_SENDER_GMAIL);
+		return sendCustomerEmail(emailData, env.PUBLIC_SENDER_GMAIL);
+	}
+	catch (error) {
+		return new Response('ERROR', { status: 500 });
+	}
 }
 
 function sendCustomerEmail(emailData, senderEmail) {
@@ -33,14 +38,17 @@ function sendCustomerEmail(emailData, senderEmail) {
 		html: mailHTML
 	};
 
-	const emaiResponse = new Response (transporter.sendMail(mailOptions, function (error, info) {
-		if (error) {
-			return String(error);
-		} else {
-			return String('Email sent: ' + info.response);
-		}
-	}));
-	return emaiResponse;
+
+		const emaiResponse = new Response (transporter.sendMail(mailOptions, function (error, info) {
+			if (error) {
+				throw new Error(error);
+			} else {
+				return String('Email sent: ' + info.response);
+			}
+		}));
+		return emaiResponse;
+	
+	
 }
 function sendAdminEmail(emailData, senderEmail) {
 	const mailHTML = render({
@@ -55,12 +63,15 @@ function sendAdminEmail(emailData, senderEmail) {
 		html: mailHTML
 	};
 
-	const emaiResponse = new Response (transporter.sendMail(mailOptions, function (error, info) {
-		if (error) {
-			return String(error);
-		} else {
-			return String('Email sent: ' + info.response);
-		}
-	}));
-	return emaiResponse;
+	
+		const emaiResponse = new Response (transporter.sendMail(mailOptions, function (error, info) {
+			if (error) {
+				throw new Error(error);
+			} else {
+				return String('Email sent: ' + info.response);
+			}
+		}));
+		return emaiResponse;
+	
+	
 }

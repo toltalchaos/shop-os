@@ -30,30 +30,38 @@
 		productCategoryStore = writable([...product.category]);
 	}
 
-	function handleProductSubmit() {
+	async function handleProductSubmit() {
 		product.category = $productCategoryStore;
 		product.image = $itemImageStore;
-		update_product(
+		let resp = await update_product(
 			product,
 			origionalProduct,
 			false,
 			localStorage.getItem('username'),
 			localStorage.getItem('password')
 		);
-		if (confirm('item successfully updated')) {
-				window.location.reload();
-			}
+		if(resp == 'ERROR'){
+			alert('Error updating product');
+		}else{
+			if (confirm('item successfully updated')) {
+					window.location.reload();
+				}
+		}
 	}
 
-	function deleteItem() {
-		update_product(
+	async function deleteItem() {
+		let resp = update_product(
 			origionalProduct,
 			null,
 			true,
 			localStorage.getItem('username'),
 			localStorage.getItem('password')
 		);
+		if(resp == 'ERROR'){
+			alert('Error deleting product');
+		}else{
 		window.location.reload();
+		}
 	}
 </script>
 

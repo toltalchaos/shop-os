@@ -24,37 +24,31 @@ async function set_site_data(newSiteData, username, password) {
 	//this function to set all the site data and return the required json content to our webpage
 	//this will be used to update the site data in the database
 	//make call here
-	newSiteData = await fetch('/', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-			entity: 'site_data',
-			username: username,
-			password: password
-		},
-		body: JSON.stringify(newSiteData)
-	});
-	return newSiteData;
+	try {
+		newSiteData = await fetch('/', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				entity: 'site_data',
+				username: username,
+				password: password
+			},
+			body: JSON.stringify(newSiteData)
+		});
+		if (newSiteData.ok === true) {
+			return await newSiteData.text();
+		}
+		return newSiteData;
+	} catch (err) {
+		console.error('Failed to submit order:', err);
+		return 'ERROR';
+	}
 }
 
 //product operations
 async function get_all_products() {
 	//wireframe nonsense for testing
 	return productData.items;
-}
-async function get_single_product(product_id) {
-	//get the product by the product_id
-	console.log('getting product by id', product_id);
-	//make call here - if nothing return empty array
-	const response = await fetch('/', {
-		method: 'GET',
-		headers: {
-			'Content-Type': 'application/json',
-			entity: 'product'
-		},
-		body: JSON.stringify({ product_id: product_id })
-	});
-	return productData.socks[0];
 }
 async function update_product(
 	newproductData,
@@ -68,56 +62,60 @@ async function update_product(
 	//get the existing products, look for the product to update, update the product, and then set the products
 	//if there is no product to update, then add the product to the list, and then set the products
 	let updateResponse = null;
-	if (isDelete) {
-		console.log('deleting product', newproductData);
-		//delete the product
-		updateResponse = await fetch('/', {
-			method: 'DELETE',
-			headers: {
-				'Content-Type': 'application/json',
-				entity: 'product',
-				product_id: newproductData.product_id,
-				username: username,
-				password: password
-			}
-		});
-	} else if (
-		origionalproductData &&
-		origionalproductData.product_id === newproductData.product_id &&
-		!isDelete
-	) {
-		//update the product
-		updateResponse = await fetch('/', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				entity: 'product',
-				username: username,
-				password: password
-			},
-			body: JSON.stringify(newproductData)
-		});
-	} else {
-		//assign the product a new ID
-		let product_id = newproductData.name + Math.random().toString(36).substring(7);
-		newproductData.product_id = product_id;
-		//add the product
-		updateResponse = await fetch('/', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				entity: 'product',
-				username: username,
-				password: password
-			},
-			body: JSON.stringify(newproductData)
-		});
-	}
-	if (updateResponse.ok === true) {
-		console.log('product updated', newproductData);
-	} else {
-		console.error('Failed to update product:', await updateResponse.text());
-		throw new Error('Failed to update product:', await updateResponse.body);
+	try {
+		if (isDelete) {
+			console.log('deleting product', newproductData);
+			//delete the product
+			updateResponse = await fetch('/', {
+				method: 'DELETE',
+				headers: {
+					'Content-Type': 'application/json',
+					entity: 'product',
+					product_id: newproductData.product_id,
+					username: username,
+					password: password
+				}
+			});
+		} else if (
+			origionalproductData &&
+			origionalproductData.product_id === newproductData.product_id &&
+			!isDelete
+		) {
+			//update the product
+			updateResponse = await fetch('/', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					entity: 'product',
+					username: username,
+					password: password
+				},
+				body: JSON.stringify(newproductData)
+			});
+		} else {
+			//assign the product a new ID
+			let product_id = newproductData.name + Math.random().toString(36).substring(7);
+			newproductData.product_id = product_id;
+			//add the product
+			updateResponse = await fetch('/', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					entity: 'product',
+					username: username,
+					password: password
+				},
+				body: JSON.stringify(newproductData)
+			});
+		}
+		if (updateResponse.ok) {
+			console.log('product updated', newproductData);
+		} else {
+			throw new Error('Failed to update product:', await updateResponse.text());
+		}
+	} catch (err) {
+		console.error('Failed to submit order:', err);
+		return 'ERROR';
 	}
 }
 
@@ -145,9 +143,11 @@ async function create_order(orderInfo) {
 				}
 			]
 		};
-
 		for (const item in updatedItems) {
-			await update_product(updatedItems[item], sanitizedProducts[item], false);
+			let productUpdate = await update_product(updatedItems[item], sanitizedProducts[item], false);
+			if (productUpdate === 'ERROR') {
+				throw new Error('Failed to update product:', updatedItems[item]);
+			}
 		}
 		//make call to firestore to make the order here...
 		//first call to create order
@@ -161,15 +161,19 @@ async function create_order(orderInfo) {
 		});
 		//then call to update the product invintory
 		//email the user the order confirmation...
-		if (resp.status === 200) {
-			await fetch('/emails/newOrder', {
+		if (resp.ok === true) {
+			let email = await fetch('/emails/newOrder', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
 				},
 				body: JSON.stringify(order)
 			});
-			return order;
+			if (email.ok === true) {
+				return order;
+			} else {
+				throw new Error('Failed to send order confirmation email:', await email.text());
+			}
 		}
 	} catch (err) {
 		console.error('Failed to submit order:', err);
@@ -186,7 +190,7 @@ async function get_order_details(order_id) {
 		}
 	});
 	const resp = await orderResponse;
-	if (resp.status === 200) {
+	if (resp.ok === true) {
 		return await resp.json();
 	} else {
 		return 'Order not found';
@@ -195,32 +199,40 @@ async function get_order_details(order_id) {
 async function set_order_status(orderData, username, password) {
 	//we want to update the order status of the order that was placed given the order_id
 	//this will add a new item to the array of statuses on the order
-	let resp = await fetch('/', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-			entity: 'order',
-			username: username,
-			password: password
-		},
-		body: JSON.stringify(orderData)
-	});
-	if (resp.status === 200) {
-		//this should also send an email to the user with the updated status
-		await fetch('/emails/orderUpdate', {
+	try {
+		let resp = await fetch('/', {
 			method: 'POST',
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				entity: 'order',
+				username: username,
+				password: password
 			},
 			body: JSON.stringify(orderData)
 		});
+		if (resp.ok === true) {
+			//this should also send an email to the user with the updated status
+			let email = await fetch('/emails/orderUpdate', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(orderData)
+			});
+			if (email.ok !== true) {
+				throw new Error('Failed to send order update email:', await resp.text());
+			}
+		} else {
+			throw new Error('Failed to update order:', await resp.text());
+		}
+	} catch (err) {
+		console.error('Failed to submit order:', err);
+		return 'ERROR';
 	}
 }
 
-
 //discount operations
 async function get_discounts(username, password) {
-
 	//make call here
 	const discounts = await fetch('/', {
 		method: 'GET',
@@ -232,7 +244,7 @@ async function get_discounts(username, password) {
 		}
 	});
 	if (discounts.ok === true) {
-		return  Object.values(await discounts.json());
+		return Object.values(await discounts.json());
 	} else {
 		console.error('Failed to get discounts:', await discounts.text());
 		return 'ERROR';
@@ -257,9 +269,6 @@ async function set_discount(discountData, username, password) {
 	}
 }
 async function delete_discount(discountData, username, password) {
-	//delete the discount
-	console.log('deleting discount', discountData);
-	//make call here
 	const deletedDiscount = await fetch('/', {
 		method: 'DELETE',
 		headers: {
@@ -287,7 +296,7 @@ async function lookup_discount(discountCode) {
 			'Content-Type': 'application/json',
 			entity: 'discount',
 			discount_id: discountCode
-		},
+		}
 	});
 	if (discount.ok === true) {
 		return await discount.json();
@@ -297,14 +306,10 @@ async function lookup_discount(discountCode) {
 	}
 }
 
-
-
-
 export {
 	get_site_data,
 	set_site_data,
 	get_all_products,
-	get_single_product,
 	update_product,
 	create_order,
 	get_order_details,

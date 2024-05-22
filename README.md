@@ -19,12 +19,15 @@ To the managers or potential managers, once youve created an environment file/de
 
 ## TODO
 
-- add error handling for all external calls - any failures prevent or roll back the action
-  - site data
-  - products
-  - orders
-  - auth
-  - emails
+- site management page
+  - header background colour description on site management page
+  - shipping rate description
+  - contact email description (emailer??)
+- checkout page functionality, numbers
+- order confirmation page 
+  - use email and order number to see updates
+  - background colour
+- email templates to better use the data in a product-like component
 - Manage product images (Blob or binary for uploads?)
 - Implement database data versioning/application version tagging for later releases
   - version category in DB + release version in some global setting somewhere

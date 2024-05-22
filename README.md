@@ -18,7 +18,9 @@ To the managers or potential managers, once youve created an environment file/de
 - discount needs to re-calculate properly after supplying a second discount code
 
 ## TODO
-
+- validation on checkout
+  - make sure theres actually an order.
+  
 - checkout page functionality, numbers
 - email templates to better use the data in a product-like component
 - Manage product images (Blob or binary for uploads?)

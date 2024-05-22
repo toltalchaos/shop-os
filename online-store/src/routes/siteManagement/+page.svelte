@@ -104,7 +104,7 @@
 		<label for="backgroundColor">Background Color(header background):</label>
 		<input type="color" id="primaryColor" bind:value={backgroundColor} />
 
-		<label for="primaryColor">Primary Color(header background):</label>
+		<label for="primaryColor">Primary Color(feature colour for buttons and heading cards):</label>
 		<input type="color" id="primaryColor" bind:value={primaryColor} />
 
 		<label for="secondaryColor">Secondary Color (main-banner background):</label>
@@ -116,16 +116,16 @@
 		<label for="textColor">Text Color:</label>
 		<input type="color" id="textColor" bind:value={textColor} />
 
-		<label for="shippingRate">Shipping Rate:</label>
+		<label for="shippingRate">Shipping Rate (standard flat rate shipping in a $ amount to be calculated at checkout):</label>
 		<input type="number" step="0.01" id="shippingRate" bind:value={shippingRate} />
 
-		<label for="taxRate">Tax Rate per $1:</label>
+		<label for="taxRate">Tax Rate, per $1:</label>
 		<input type="number" step="0.01" id="taxRate" bind:value={taxRate} />
 		<!-- 
 		<label for="contactInfo">Contact Information:</label>
 		<textarea id="contactInfo" bind:value={contactInfo} /> -->
 
-		<button type="submit">Save</button>
+		<button type="submit">Save Site Settings</button>
 	</form>
 
 	<hr />

@@ -4,6 +4,7 @@
     import { get_order_details } from '../../../server/backendUtils';
     import OrderStatus from '../../../components/orderStatus.svelte';
     import { page } from '$app/stores';
+    const siteData = getContext('siteData');
     let orderDetails = null;
     const orderNum = $page.data.orderNum;
 
@@ -63,7 +64,7 @@
 
 </script>
 
-<div class="container">
+<div class="container" style= "background-color: {$siteData.backgroundColor};">
     {#if orderDetails}
     <h1>Order Instructions</h1>
     <h3>Order Number: {orderDetails.order_id}</h3>
@@ -72,7 +73,7 @@
         can update your order accordingly!
     </p>
     <p>
-        when you want to check the status of your order, please use the order number to check the status of your order. in the "orders" section at the top of the page.
+        when you want to check the status of your order, please use the order number and email address to check the status of your order. in the <a href="/orders">"orders"</a> section at the top of the page.
     </p>
     
     <h2>Order Details</h2>

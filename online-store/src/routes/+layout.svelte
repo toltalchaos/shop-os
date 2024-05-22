@@ -41,7 +41,7 @@
 	StoreItems.update((items) => [...items, ...data.productData]);
 </script>
 
-<div>
+<div style= "background-color: {$siteDataWritable.backgroundColor};">
 	<Header />
 	<slot />
 	<Footer />

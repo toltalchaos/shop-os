@@ -39,16 +39,6 @@ To the managers or potential managers, once youve created an environment file/de
 - Creation of ENV file
   - Gmail emailer instructions (turn on 2FA, get the password, enter account email and app password in .env)
   - Firestore settings (manager account, shopper account, tokens for .env)
-- deployment
-  - with firebase, download repo
-  - install firebase tools (NPM)
-  - `firebase login`
-  - `firebase init` - git ignore all firebase content.
-    - select the build folder for deployment
-    - SPA setting? -
-    - move files around/fill BUILD output
-    - `firebase serve`
-  - `firebase deploy`
 
 create RTDB with the following rule modified for the admin
 only allowing reading and writes from the admin and user profile in this app.

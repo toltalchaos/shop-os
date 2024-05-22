@@ -17,10 +17,7 @@
 
 	onMount(async () => {
 		discounts = await get_discounts(username, password);
-		if( discounts != 'ERROR'){
-			console.log('loaded discounts', discounts);
-		}
-		else{
+		if( discounts == 'ERROR'){
 			//there is a chance this fails when there are no discounts.... we can let it fail silently
 			console.log('error loading discounts');
 			discounts = null;

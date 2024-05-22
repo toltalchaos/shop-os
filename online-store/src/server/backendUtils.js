@@ -40,7 +40,7 @@ async function set_site_data(newSiteData, username, password) {
 //product operations
 async function get_all_products() {
 	//wireframe nonsense for testing
-	return productData.socks;
+	return productData.items;
 }
 async function get_single_product(product_id) {
 	//get the product by the product_id
@@ -112,7 +112,6 @@ async function update_product(
 			},
 			body: JSON.stringify(newproductData)
 		});
-		console.log('product added', newproductData);
 	}
 	if (updateResponse.ok === true) {
 		console.log('product updated', newproductData);

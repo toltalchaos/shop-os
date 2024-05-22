@@ -19,7 +19,6 @@ To the managers or potential managers, once youve created an environment file/de
 
 ## TODO
 
-- test product item deletion and creation to ensure the page refresh
 - add error handling for all external calls - any failures prevent or roll back the action
   - site data
   - products

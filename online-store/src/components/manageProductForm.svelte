@@ -15,7 +15,7 @@
 	if (!product) {
 		newProduct = true;
 		product = {
-			product_id: '',
+			product_id: null,
 			name: '',
 			invintory: 0,
 			price: 0.0,
@@ -36,9 +36,13 @@
 		update_product(
 			product,
 			origionalProduct,
+			false,
 			localStorage.getItem('username'),
 			localStorage.getItem('password')
 		);
+		if (confirm('item successfully updated')) {
+				window.location.reload();
+			}
 	}
 
 	function deleteItem() {
@@ -49,6 +53,7 @@
 			localStorage.getItem('username'),
 			localStorage.getItem('password')
 		);
+		window.location.reload();
 	}
 </script>
 

@@ -32,14 +32,14 @@ For now, we have decided to move forward with a very DIY approach to ownership w
 
 - mobile styling (looks like navdeck is angry, cart style also angry)
 
+- email templates to better use the data in a product-like component
+
 - order instructions needs more information about the order (items...)
 
 - validation on checkout
   - make sure theres actually an order.
 
 - refine database rules to lock off read and write functionality per-user per-endpoint
-
-- email templates to better use the data in a product-like component
 
 - Manage product images (Blob or binary for uploads?) - maybe this just doesnt exist in V1.
 

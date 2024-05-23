@@ -88,7 +88,7 @@
 			{#each discounts as discount}
 				<div class="discount">
 					<h2>{discount.name}</h2>
-					<h4>{discount.discount_id}</h4>
+					<h4>"{discount.discount_id}" is the discount code</h4>
 					<p>Discount Type: {discount.type}</p>
 					<p>Discount Amount: {discount.amount}</p>
 					<button

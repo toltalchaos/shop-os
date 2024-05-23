@@ -43,9 +43,9 @@
 		newimagefile = null;
 	}
 
-	function addNewImage(image) {
+	function addNewImage(imageUrl) {
 		imageArray.update((value) => {
-			value.push(image);
+			value.push(imageUrl);
 			value = [...new Set(value)];
 			return value;
 		});

@@ -1,65 +1,63 @@
 # Online Store Framework
 
-Welcome to the future of e-commerce, where your store comes to life with ease. Our Open Source E-commerce software is the perfect solution for those who want to break free from big vendors and enjoy the simplicity of a drag-and-drop setup. Established in 2024 and with contributions from our community (see contributions page), we’re not just a platform; we’re a community-driven journey towards an accessible online marketplace for all. No matter your tech skills, we make sure you’re not just keeping up—you’re setting the pace. Dive into our user-friendly manual and watch your store spring into action today!
+Welcome to the future of e-commerce, where your store comes to life with ease. Our Open Source E-commerce software is the perfect solution for those who want to break free from big vendors and enjoy the simplicity of a drag-and-drop setup. Established in 2024 and with contributions from our community (see contributions page), we’re not just a platform; we’re a passionate team on a journey towards an accessible online marketplace for all. No matter your tech skills, we make sure you’re not just keeping up—you’re setting the pace. Dive into our user-friendly manual and watch your store spring into action today!
 
-**Version: v0.0.0-beta-1 (Work in Progress)**
+---
 
-## DIY Ownership Option Model
+## our core beliefs, a message to owners
 
-For now, we have decided to move forward with a very DIY ownership option model where the "manager" is in charge of curating all of the orders and order statuses, as well as receiving payment through e-transfer. This way, the app can remain free for anybody to use. Additional payment gateways may be added in later releases.
+we believe in user data integrity and keeping the keys to the kingdom in the hands of small business owners. with this application the shop owner will have full control of everything from patches and tweaks to data storage and customer facing appearance.
 
-To the managers or potential managers, once youve created an environment file/deployed to a host load up the app and adjust the site settings. The defaults might be funky, but ideally, it's a single form to get it branded the way you want.
+for now there are quite a few steps to get the application deployed and live for the users. there should be (in the near future) a complete tutorial available and the details documented below in this document.
+
+## **Version: v0.0.0-beta (Work in Progress)**
+
+## Ownership Model
+
+For now, we have decided to move forward with a very DIY approach to ownership where the "manager" or whoever is set up to send and recieve emails or status updates with customer communication is in charge of curating all of the orders and order statuses, as well as receiving payment through e-transfer. This way, the app can remain free for anybody to use. Additional payment gateways may be added in later releases.
 
 ---
 
 ## Bug List
 
-- Bug on product card focus element when in edit mode
-- discount needs to re-calculate properly after supplying a second discount code
+    - Bug on product card focus element when in edit mode
+    - discount needs to re-calculate properly after supplying a second discount code
 
-## TODO
+## TODO (things to refine before next release)
+
 - validation on checkout
   - make sure theres actually an order.
+
+- refine database rules to lock off read and write functionality per-user per-endpoint
   
-- checkout page functionality, numbers
+- checkout page functionality
+  - number calculations on changing fields
+
 - email templates to better use the data in a product-like component
+
 - Manage product images (Blob or binary for uploads?)
-- Implement database data versioning/application version tagging for later releases
-  - version category in DB + release version in some global setting somewhere
-  - check the versions to match, if not match update the DB data to work where needed
-- update readme to reflect values of data integrity, free use, and open code
-  - update footer to reflect the same
 
-- improve emails to be more well formatted
+### branching and versioning strategy
 
-- figure out deployment and versioning procedure... how do we get non-tech users setup?
+when a new version is released please check out that "tag" instead of checking out `main` as `main` will be used to collect all the most current changes, many of which will be buggy and not work as intended or may have serious security flaws. when the kinks are all worked out there will be a release made and that release should be available for public consumption forever! so if someone updates and they dont like the new behaviour they may re-update back to the previous version. but as a rule **MAIN is experimental**
 
 ### Documentation on Setup
 
+- pulling code
+- installing Node.js
 - Creation of ENV file
   - Gmail emailer instructions (turn on 2FA, get the password, enter account email and app password in .env)
   - Firestore settings (manager account, shopper account, tokens for .env)
-
-create RTDB with the following rule modified for the admin
-only allowing reading and writes from the admin and user profile in this app.
+- firebase user account, and a manager account
+- RTDB creation + rules
 
 ---
-
-we want the users to be able to GET all the data,
-we want the users to be able to write(create) new orders, and subsequently update the products (but not delete)
-
-we want the admin to only be able to read and write to the site_data portion
-admin should have full read and write access to everything
-
-```
-{
-  "rules": {
-    ".read": "auth != null && (auth.uid ==='' || auth.uid ==='')",
-    ".write": "auth != null && (auth.uid ==='' || auth.uid ==='')" 
-  }
-}
-```
-
+    {
+      "rules": {
+        ".read": "auth != null && (auth.uid ==='<userID>' || auth.uid ==='<userID>')",
+        ".write": "auth != null && (auth.uid ==='userID' || auth.uid ==='userID')" 
+      }
+    }
 ---
 
 ## deployment
@@ -82,8 +80,10 @@ firebase deploy
   - details here <https://firebase.google.com/pricing?hl=en&authuser=0&_gl=1*1llxviv*_ga*NzczNTk2OTgwLjE3MTI2NzYzMTU.*_ga_CW55HF8NVT*MTcxNTM2NzQ3Ny4yMS4xLjE3MTUzNjc4NDYuNTUuMC4w>
   - set up a $1 budget alert
 
-## Future Enhancements
+## Future Enhancements (idea dumping ground)
 
+- figure out deployment and versioning procedure... how do we get non-tech users setup?..... can we make an .EXE file that will run the user through a setup wizard?.....
+- versioning -> field in DB to manage DB schema shape...
 - more site configuration options -> long term a better site management page
   - Add site design options such as branding figures/images (2 options for site logos - large and small)
 - additional payment methods + gateways
@@ -96,15 +96,11 @@ firebase deploy
   - .sh file to auto deploy for the user?
   - secondary site to make changes and deliver a ZIP with the customer site information?
 
----
-
-# Setup
+## Developer Setup
 
 For now, developers can refer to the readme in "online-store". Eventually, a full setup guide will be provided here for non-developers.
 
----
-
-# User Flow
+## User Flow
 
 1. Home page: View featured items
 2. Navigate to products
@@ -114,15 +110,15 @@ For now, developers can refer to the readme in "online-store". Eventually, a ful
 6. Proceed to checkout
 7. View invoice and fill out the form
 8. Submit the order
-9. Order number is generated and order is saved
-10. Navigate to orders
-11. Input order number
-12. View order status
+9. Order number is generated and order is saved, user is re-directed to the order confirmation page
+10. user recieves an email about the new order
+11. Navigate to orders
+12. Input order number and email
+13. View order status
 
 # Management Flow
 
 - Managers are the only ones with logins (through Firebase/static)
 - They can edit the values on the management page
+- create modify or delete discount codes
 - Use the order editor to update orders
-
-I hope this revised version is more readable and better formatted for your needs. Let me know if you need any further assistance!

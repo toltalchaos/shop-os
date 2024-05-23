@@ -25,6 +25,7 @@ For now, we have decided to move forward with a very DIY approach to ownership w
     - Bug on product card focus element when in edit mode
     - discount needs to re-calculate properly after supplying a second discount code
     - error loading discounts
+    - product item pricing.... $15 -> 14.99?????
 
 ## TODO (things to refine before next release)
 

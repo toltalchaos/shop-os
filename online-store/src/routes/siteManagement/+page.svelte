@@ -101,16 +101,16 @@
 		<label for="storeLocation">Store Location:</label>
 		<input type="text" id="storeLocation" bind:value={storeLocation} />
 
-		<label for="backgroundColor">Background Color(header background):</label>
+		<label for="backgroundColor">Background Color:</label>
 		<input type="color" id="primaryColor" bind:value={backgroundColor} />
 
-		<label for="primaryColor">Primary Color(feature colour for buttons and heading cards):</label>
+		<label for="primaryColor">Primary Color(header background):</label>
 		<input type="color" id="primaryColor" bind:value={primaryColor} />
 
-		<label for="secondaryColor">Secondary Color (main-banner background):</label>
+		<label for="secondaryColor">Secondary Color (banners + cards):</label>
 		<input type="color" id="secondaryColor" bind:value={secondaryColor} />
 
-		<label for="tirciaryColor">TirciaryColor Color (product card background):</label>
+		<label for="tirciaryColor">TirciaryColor Color (buttons):</label>
 		<input type="color" id="tirciaryColor" bind:value={tirciaryColor} />
 
 		<label for="textColor">Text Color:</label>

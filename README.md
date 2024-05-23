@@ -22,13 +22,12 @@ For now, we have decided to move forward with a very DIY approach to ownership w
 
 ## Bug List
 
-    - Bug on product card focus element when in edit mode
+    - product card focus element when in edit mode
     - discount needs to re-calculate properly after supplying a second discount code
     - multiple image carousel timing
     - checkout page functionality
       - number calculations on changing fields
-    - bug on multiple images (uploaded) displaying in edit pannel
-    
+    - multiple images (uploaded) displaying in edit pannel
 
 ## TODO (things to refine before next release)
 

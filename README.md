@@ -27,6 +27,8 @@ For now, we have decided to move forward with a very DIY approach to ownership w
     - multiple image carousel timing
     - checkout page functionality
       - number calculations on changing fields
+    - bug on multiple images (uploaded) displaying in edit pannel
+    
 
 ## TODO (things to refine before next release)
 

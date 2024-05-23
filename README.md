@@ -24,6 +24,7 @@ For now, we have decided to move forward with a very DIY approach to ownership w
 
     - Bug on product card focus element when in edit mode
     - discount needs to re-calculate properly after supplying a second discount code
+    - error loading discounts
 
 ## TODO (things to refine before next release)
 
@@ -48,7 +49,7 @@ when a new version is released please check out that "tag" instead of checking o
 - pulling code
 - installing Node.js
 - Creation of ENV file
-  - Gmail emailer instructions (turn on 2FA, get the password, enter account email and app password in .env)
+  - Gmail emailer instructions (turn on 2FA, get the app password, enter account email and app password in .env)
   - Firestore settings (manager account, shopper account, tokens for .env)
 - firebase user account, and a manager account
 - RTDB creation + rules
@@ -64,23 +65,26 @@ when a new version is released please check out that "tag" instead of checking o
 
 ## deployment
 
-npm install firebase
-npm install -g firebase-tools
-firebase login
-firebase init
-firebase deploy
-
-<https://www.youtube.com/watch?v=W-kII4idtfE>
-
-- To install Fiebase CLI: npm install -g firebase-tools
-- To login to Firebase CLI: firebase login
-- To enable webframeworks flag: firebase experiments:enable webframeworks
-- To initialize Firebase in your project: firebase init
-- To deploy: firebase deploy
-
 - will need to update to pay-as-you-go plan
   - details here <https://firebase.google.com/pricing?hl=en&authuser=0&_gl=1*1llxviv*_ga*NzczNTk2OTgwLjE3MTI2NzYzMTU.*_ga_CW55HF8NVT*MTcxNTM2NzQ3Ny4yMS4xLjE3MTUzNjc4NDYuNTUuMC4w>
   - set up a $1 budget alert
+```
+  npm install firebase
+  npm install -g firebase-tools
+  firebase login
+  firebase experiments:enable webframeworks
+  firebase init
+  firebase deploy
+```
+
+<https://www.youtube.com/watch?v=W-kII4idtfE>
+
+- To install Fiebase CLI: `npm install -g firebase-tools`
+- To login to Firebase CLI: `firebase login`
+- To enable webframeworks flag: `firebase experiments:enable webframeworks`
+- To initialize Firebase in your project: `firebase init`
+- To deploy: `firebase deploy`
+
 
 ## Future Enhancements (idea dumping ground)
 

@@ -10,7 +10,7 @@ we believe in user data integrity and keeping the keys to the kingdom in the han
 
 for now there are quite a few steps to get the application deployed and live for the users. there should be (in the near future) a complete tutorial available and the details documented below in this document.
 
-This project is licensed under the MIT license, which allows anyone to use, modify, and distribute the software for any purpose, including commercial use, without any restrictions or fees.
+This project is licensed under the MIT license, which allows anyone to use, modify, and distribute the software for any purpose, including commercial use, **without any restrictions or fees.**
 
 ## **Version: v0.0.0-beta (Work in Progress)**
 

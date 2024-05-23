@@ -41,8 +41,6 @@ For now, we have decided to move forward with a very DIY approach to ownership w
 
 - refine database rules to lock off read and write functionality per-user per-endpoint
 
-- Manage product images (Blob or binary for uploads?) - maybe this just doesnt exist in V1.
-
 ### branching and versioning strategy
 
 when a new version is released please check out that "tag" instead of checking out `main` as `main` will be used to collect all the most current changes, many of which will be buggy and not work as intended or may have serious security flaws. when the kinks are all worked out there will be a release made and that release should be available for public consumption forever! so if someone updates and they dont like the new behaviour they may re-update back to the previous version. but as a rule **MAIN is experimental**

@@ -25,23 +25,23 @@ For now, we have decided to move forward with a very DIY approach to ownership w
     - Bug on product card focus element when in edit mode
     - discount needs to re-calculate properly after supplying a second discount code
     - error loading discounts
-    - product item pricing.... $15 -> 14.99?????
+    - product item pricing.... $15 -> 14.99?????.. could be user error but needs a checkover
+    - multiple image carousel timing
+    - checkout page functionality
+      - number calculations on changing fields
 
 ## TODO (things to refine before next release)
 
-- mobile styling (looks like navdeck is angry)
+- mobile styling (looks like navdeck is angry, cart style also angry)
 
 - validation on checkout
   - make sure theres actually an order.
 
 - refine database rules to lock off read and write functionality per-user per-endpoint
-  
-- checkout page functionality
-  - number calculations on changing fields
 
 - email templates to better use the data in a product-like component
 
-- Manage product images (Blob or binary for uploads?)
+- Manage product images (Blob or binary for uploads?) - maybe this just doesnt exist in V1.
 
 ### branching and versioning strategy
 
@@ -87,6 +87,8 @@ when a new version is released please check out that "tag" instead of checking o
 - To enable webframeworks flag: `firebase experiments:enable webframeworks`
 - To initialize Firebase in your project: `firebase init`
 - To deploy: `firebase deploy`
+
+- firebase console allows you to add a custom domain
 
 
 ## Future Enhancements (idea dumping ground)

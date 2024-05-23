@@ -84,6 +84,7 @@ firebase deploy
 
 ## Future Enhancements (idea dumping ground)
 
+- implement a better order tracking system (some kind of gridview?)
 - figure out deployment and versioning procedure... how do we get non-tech users setup?..... can we make an .EXE file that will run the user through a setup wizard?.....
 - versioning -> field in DB to manage DB schema shape...
 - more site configuration options -> long term a better site management page

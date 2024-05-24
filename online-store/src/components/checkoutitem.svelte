@@ -29,7 +29,6 @@
 </script>
 
 <div class="checkout-item" style="background-color: {$siteData.secondaryColor}; ">
-	<hr />
 	<div class="checkout-item-image">
 		<img src={product.image} alt={product.name} />
 	</div>
@@ -55,6 +54,11 @@
 		margin: 1rem;
 		padding: 1rem;
 		border-radius: 2rem;
+	}
+	@media (max-width: 750px) {
+		.checkout-item {
+			flex-direction: column;
+		}
 	}
 
 	.checkout-item-image {

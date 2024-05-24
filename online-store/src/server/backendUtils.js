@@ -108,9 +108,7 @@ async function update_product(
 				body: JSON.stringify(newproductData)
 			});
 		}
-		if (updateResponse.ok) {
-			console.log('product updated', newproductData);
-		} else {
+		if (!updateResponse.ok) {
 			throw new Error('Failed to update product:', await updateResponse.text());
 		}
 	} catch (err) {

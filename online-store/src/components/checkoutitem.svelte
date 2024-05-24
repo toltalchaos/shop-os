@@ -9,7 +9,7 @@
 
 	// Remove the product from the cart on button click
 	function removeFromCart() {
-		cartItems.update((items) => items.filter((item) => item.id !== product.id));
+		cartItems.update((items) => items.filter((item) => item.product_id !== product.product_id));
 	}
 
 	function adjustQuantity(adjquantity) {

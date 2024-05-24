@@ -26,7 +26,7 @@
 		};
 	} else {
 		//if there is a product being passed in, set the value of the writable stores to the value of the product
-		itemImageStore = writable([product.image]);
+		itemImageStore = writable([...product.image]);
 		productCategoryStore = writable([...product.category]);
 	}
 

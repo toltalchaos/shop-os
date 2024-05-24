@@ -29,6 +29,7 @@
 	onDestroy(() => {
 		stopCarousel();
 	});
+
 	
 </script>
 

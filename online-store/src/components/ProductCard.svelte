@@ -16,7 +16,7 @@
 	// Add the product to the cart on button click
 	function addToCart(event) {
 		flop(event);
-		const isDuplicate = $cartItems.some((item) => item.id === product.id);
+		const isDuplicate = $cartItems.some((item) => item.product_id === product.product_id);
 		if (!isDuplicate) {
 			product.cart_quantity = 1;
 			cartItems.update((items) => [...items, product]);
@@ -54,14 +54,16 @@
 	{:else if product.invintory > 0}
 		<button
 			style="color: {$siteData.textColor}; background-color: {$siteData.tirciaryColor};"
-			class:disabled={$cartItems.some((item) => item.id === product.id)}
+			disabled={$cartItems.some((item) => item.product_id === product.product_id)}
 			on:click={addToCart}
 		>
-			{$cartItems.some((item) => item.id === product.id) ? 'Already in Cart' : 'Add to Cart'}
+			{$cartItems.some((item) => item.product_id === product.product_id) ? 'Already in Cart' : 'Add to Cart'}
 		</button>
 	{:else}
 		<p style="color: {$siteData.textColor};">Out of Stock</p>
 	{/if}
+
+
 </div>
 
 <style>
@@ -102,13 +104,13 @@
 		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 	}
 
-	.product-card button.disabled {
-		background-color: #ccc;
-		cursor: not-allowed;
-	}
-
 	.product-card:focus {
 		transform: scale(1.1);
 		z-index: 10;
+	}
+
+	button:disabled {
+		background-color: gray;
+		cursor: not-allowed;
 	}
 </style>

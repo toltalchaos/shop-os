@@ -22,12 +22,11 @@ For now, we have decided to move forward with a very DIY approach to ownership w
 
 ## Bug List
 
-    - product card focus element when in edit mode
     - discount needs to re-calculate properly after supplying a second discount code
     - multiple image carousel timing
+      - should have its own display card carousel with pre-rendered images that wither hide and display OR Z-index
     - checkout page functionality
       - number calculations on changing fields
-    - multiple images (uploaded) displaying in edit pannel
 
 ## TODO (things to refine before next release)
 
@@ -92,6 +91,8 @@ when a new version is released please check out that "tag" instead of checking o
 
 ## Future Enhancements (idea dumping ground)
 
+- product items should have "options"
+  - something like "size" or "colour" should be available to create and select from.. then those should have individual invintory counts...
 - implement a better order tracking system (some kind of gridview?)
 - figure out deployment and versioning procedure... how do we get non-tech users setup?..... can we make an .EXE file that will run the user through a setup wizard?.....
 - versioning -> field in DB to manage DB schema shape...

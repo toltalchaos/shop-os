@@ -42,16 +42,18 @@ when a new version is released please check out that "tag" instead of checking o
 
 ### Documentation on Setup
 
-- cd online-store
+- `cd online-store`
 - requirements
-  - business-associated gmail account
+  - business-associated gmail account + firebase app init
+  - users/auth 
+    - user and manager
+  - RTDB + rules
 - pulling code
 - installing Node.js
 - Creation of ENV file
   - Gmail emailer instructions (turn on 2FA, get the app password, enter account email and app password in .env)
   - Firestore settings (manager account, shopper account, tokens for .env)
-- firebase user account, and a manager account
-- RTDB creation + rules
+
 
 ---
     {
@@ -98,6 +100,7 @@ when a new version is released please check out that "tag" instead of checking o
 - more site configuration options -> long term a better site management page
   - Add site design options such as branding figures/images (2 options for site logos - large and small)
 - additional payment methods + gateways
+  - Paypal <https://developer.paypal.com/sdk/js/>
 - Include data/sales analytics in the management directories using visualization tools/components
   - [Victory Charts?](https://www.npmjs.com/package/victory)
 - Explore order tracking insights, such as orders by day of the week, featured items vs non-featured, shipped vs non-shipped, and time to fulfillment

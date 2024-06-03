@@ -16,19 +16,20 @@ const transporter = nodemailer.createTransport({
 
 export async function POST(requestEvent) {
 	const emailData = await requestEvent.request.json();
+	const {order, paymentEmail} = emailData;
 	try{
-		sendAdminEmail(emailData, env.PUBLIC_SENDER_GMAIL);
-		return sendCustomerEmail(emailData, env.PUBLIC_SENDER_GMAIL);
+		sendAdminEmail(order, paymentEmail);
+		return sendCustomerEmail(order, paymentEmail);
 	}
 	catch (error) {
 		return new Response('ERROR', { status: 500 });
 	}
 }
 
-function sendCustomerEmail(emailData, senderEmail) {
+function sendCustomerEmail(emailData, paymentEmail) {
 	const mailHTML = render({
 		template: NewOrder,
-		props: { orderNumber: emailData.order_id, orderData: emailData.orderData, senderEmail: senderEmail}
+		props: { orderNumber: emailData.order_id, orderData: emailData.orderData, paymentEmail: paymentEmail}
 	});
 
 	const mailOptions = {
@@ -50,10 +51,10 @@ function sendCustomerEmail(emailData, senderEmail) {
 	
 	
 }
-function sendAdminEmail(emailData, senderEmail) {
+function sendAdminEmail(emailData, paymentEmail) {
 	const mailHTML = render({
 		template: NewOrderAdmin,
-		props: { orderNumber: emailData.order_id, orderData: emailData.orderData, senderEmail: senderEmail }
+		props: { orderNumber: emailData.order_id, orderData: emailData.orderData, paymentEmail: paymentEmail }
 	});
 
 	const mailOptions = {

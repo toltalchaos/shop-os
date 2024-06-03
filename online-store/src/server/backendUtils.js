@@ -118,13 +118,16 @@ async function update_product(
 }
 
 //order operations
-async function create_order(orderInfo) {
+async function create_order(orderInfo, paymentEmail) {
 	try {
 		//update the product inventory
 		const updatedItems = manageinventoryAndCartCount(orderInfo.items);
 		const sanitizedProducts = sanitizeCartData(orderInfo.items);
 		//create the order object
-		const newID = orderInfo.customerName + '-' + Math.random().toString(36).substring(7);
+		const newID =
+			orderInfo.customerName.replace(/[.#$\[\]\s]/g, '').toUpperCase() +
+			'-' +
+			Math.random().toString(36).substring(7);
 		let order = {
 			order_id: newID,
 			orderData: { ...sanitizeOrderData(orderInfo) },
@@ -165,7 +168,7 @@ async function create_order(orderInfo) {
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify(order)
+				body: JSON.stringify({ order, paymentEmail })
 			});
 			if (email.ok === true) {
 				return order;

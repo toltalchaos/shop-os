@@ -69,7 +69,7 @@
     <h1>Order Instructions</h1>
     <h3>Order Number: {orderDetails.order_id}</h3>
     <p>
-        below is a copy of your order, please use your order number ("{orderDetails.order_id}") as a comment for the e-transfer so we
+        below is a copy of your order, please use your order number ("{orderDetails.order_id}") as a comment for the e-transfer to {$siteData.contact.paymentEmail} so we
         can update your order accordingly!
     </p>
     <p>

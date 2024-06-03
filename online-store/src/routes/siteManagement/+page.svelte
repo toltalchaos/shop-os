@@ -41,6 +41,7 @@
 	let shippingRate = $siteData.shippingRate;
 	let taxRate = $siteData.taxRate;
 	let emailContact = $siteData.contact.email;
+	let paymentEmail = $siteData.contact.paymentEmail;
 	let storeLocation = $siteData.storeLocation;
 
 	function handleSiteManagmentSubmit() {
@@ -58,7 +59,8 @@
 				shippingRate,
 				taxRate,
 				contact: {
-					email: emailContact
+					email: emailContact,
+					paymentEmail: paymentEmail
 				},
 				storeLocation
 			};
@@ -94,9 +96,13 @@
 		<label for="description">Description:</label>
 		<textarea id="description" bind:value={description} />
 
-		<p>the following E-mail is the address the users will be instructed to E-transfer</p>
+		<p>the following E-mail is for contact purposes and can be the same as payment or the automatic emailing system if you wish </p>
 		<label for="email">Contact email</label>
 		<input type="email" id="email" bind:value={emailContact} />
+
+		<p>the following E-mail is the address the users will be instructed to E-transfer</p>
+		<label for="paymentEmail">Payment email</label>
+		<input type="email" id="paymentEmail" bind:value={paymentEmail} />
 
 		<label for="storeLocation">Store Location:</label>
 		<input type="text" id="storeLocation" bind:value={storeLocation} placeholder="Anytown, Canada"/>

@@ -20,17 +20,11 @@ For now, we have decided to move forward with a very DIY approach to ownership w
 
 ---
 
-## Bug List
-
-
 ## TODO (things to refine before next release)
 
 - email templates to better use the data in a product-like component
 
 - order instructions needs more information about the order (items...)
-
-- validation on checkout
-  - make sure theres actually an order.
 
 - refine database rules to lock off read and write functionality per-user per-endpoint
 
@@ -40,6 +34,8 @@ when a new version is released please check out that "tag" instead of checking o
 
 ### Documentation on Setup
 
+- requirements
+  - business-associated gmail account
 - pulling code
 - installing Node.js
 - Creation of ENV file

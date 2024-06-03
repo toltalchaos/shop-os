@@ -6,7 +6,7 @@
 
     export let orderNumber;
     export let orderData;
-    export let senderEmail;
+    export let paymentEmail;
     const items = orderData.items;
     const customer = orderData.customerName;
     const email = orderData.customerEmail;
@@ -26,7 +26,7 @@
         <Heading as="h1">New Order Received</Heading>
         <Text>Thank you for your order! Your order number is: {orderNumber}</Text>
         <Heading as="h2">Whats next?</Heading>
-        <Text>E-transfer us with your order number at {senderEmail} so we can confirm payment and send you updates accordingly!</Text>
+        <Text>E-transfer us with your order number at {paymentEmail} so we can confirm payment and send you updates accordingly!</Text>
         <Hr />
         <Text>Please check the "orders" tab with your order number and email for the most up-to-date information on your order!</Text>
         <Text>If you have any questions or if the following information is incorrect, please feel free to contact us!</Text>

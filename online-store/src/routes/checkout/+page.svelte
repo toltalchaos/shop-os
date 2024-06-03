@@ -16,10 +16,10 @@
 
 	let customerName = '';
 	let customerEmail = '';
-	let shippingAddress = '';
-	let postalCode = '';
-	let city = '';
-	let province = '';
+	let shippingAddress = null;
+	let postalCode = null;
+	let city = null;
+	let province = null;
 	let inPersonPickup = false;
 	let discount_id = '';
 	let discount = null;
@@ -29,13 +29,7 @@
 	let shipping = $siteData.shippingRate * (taxRate + 1); // Default shipping cost is $10
 	let total = subtotal + shipping + tax;
 	//anything being put into the totals object should be fixed to 2 decimal places
-	let totals = {
-		subtotal: subtotal.toFixed(2),
-		shipping: shipping.toFixed(2),
-		tax: tax.toFixed(2),
-		taxRate: taxRate.toFixed(2),
-		total: total.toFixed(2)
-	};
+	let totals = calculateTotals();
 
 	// Handle form submission
 	async function handleSubmit(event) {
@@ -43,34 +37,35 @@
 		let isValid = validateForm();
 		console.log('customerName:', customerName);
 		if (!isValid) {
-			alert('Please fill out all required fields.');
-		}
-		if (confirm('Are you sure you want to submit the order? This action cannot be undone.')) {
-			console.log('Submitting order data...');
+			alert('Please fill out all required fields accurately before submitting the order.');
+		} else {
+			if (confirm('Are you sure you want to submit the order? This action cannot be undone.')) {
+				console.log('Submitting order data...');
 
-			let orderData = {
-				items,
-				customerName,
-				customerEmail,
-				inPersonPickup,
-				shippingAddress,
-				postalCode,
-				city,
-				province,
-				discount,
-				totals
-			};
-			let newOrder = await create_order(orderData);
-			console.log('newOrder:', newOrder);
-			if (newOrder == 'ERROR') {
-				console.log('Error submitting order. Please try again later.');
-				alert('Error submitting order. Please try again later.');
-			} else {
-				alert('Order submitted successfully!', 'Order ID: ' + newOrder.order_id);
-				//clear cart
-				clearCart();
-				//redirect to order payment instructions page
-				goto('/checkout/orderInstructions?orderNum=' + newOrder.order_id);
+				let orderData = {
+					items,
+					customerName,
+					customerEmail,
+					inPersonPickup,
+					shippingAddress,
+					postalCode,
+					city,
+					province,
+					discount,
+					totals
+				};
+				let newOrder = await create_order(orderData, $siteData.contact.paymentEmail);
+				console.log('newOrder:', newOrder);
+				if (newOrder == 'ERROR') {
+					console.log('Error submitting order. Please try again later.');
+					alert('Error submitting order. Please try again later.');
+				} else {
+					alert('Order submitted successfully!', 'Order ID: ' + newOrder.order_id);
+					//clear cart
+					clearCart();
+					//redirect to order payment instructions page
+					goto('/checkout/orderInstructions?orderNum=' + newOrder.order_id);
+				}
 			}
 		}
 	}
@@ -80,10 +75,16 @@
 		//clear global store
 		cartItems.update((items) => []);
 	}
-
 	function validateForm() {
-		// Add your form validation logic here
 		customerName = customerName.replace(/[.#$\[\]]/g, '');
+		if (
+			items.length == 0 ||
+			!customerName ||
+			!customerEmail ||
+			(!inPersonPickup && (!shippingAddress || !postalCode || !city || !province))
+		) {
+			return false;
+		}
 		return true;
 	}
 
@@ -92,13 +93,7 @@
 		//re-calculate totals
 		total = subtotal + shipping + tax;
 		//anything being put into the totals object should be fixed to 2 decimal places
-		totals = {
-			subtotal: subtotal.toFixed(2),
-			shipping: shipping.toFixed(2),
-			tax: tax.toFixed(2),
-			taxRate: taxRate.toFixed(2),
-			total: total.toFixed(2)
-		};
+		totals = calculateTotals();
 
 		inPersonPickup = !inPersonPickup;
 	}
@@ -111,26 +106,30 @@
 			if (discount != 'ERROR') {
 				//apply discount to total
 				if (discount.type == 'percentage') {
-					total = (subtotal + shipping + tax) * (1 - (discount.amount/100));
+					total = (subtotal + shipping + tax) * (1 - discount.amount / 100);
 				} else if (discount.type == 'fixed') {
-					total = (subtotal + shipping + tax) - discount.amount;
+					total = subtotal + shipping + tax - discount.amount;
 				}
 				//anything being put into the totals object should be fixed to 2 decimal places
-				totals = {
-					subtotal: subtotal.toFixed(2),
-					shipping: shipping.toFixed(2),
-					tax: tax.toFixed(2),
-					taxRate: taxRate.toFixed(2),
-					total: total.toFixed(2)
-				};
+				totals = calculateTotals();
 			} else {
 				alert('Discount not found. Please check the discount code and try again.');
 				discount = null;
 			}
-		}
-		else {
+		} else {
 			alert('Discount already applied.');
 		}
+	}
+
+	function calculateTotals() {
+		return {
+			discount: discount,
+			subtotal: subtotal.toFixed(2),
+			shipping: shipping.toFixed(2),
+			tax: tax.toFixed(2),
+			taxRate: taxRate.toFixed(2),
+			total: total.toFixed(2)
+		};
 	}
 </script>
 

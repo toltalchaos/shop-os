@@ -5,7 +5,7 @@
 
     export let orderNumber;
     export let orderData;
-    export let senderEmail;
+    export let paymentEmail;
 
     const items = orderData.items;
     const customer = orderData.customerName;
@@ -24,7 +24,7 @@
         <Heading as="h1">New Order Received</Heading>
         <Text>Ta new order recieved! The new order number is: {orderNumber}</Text>
         <Heading as="h2">Whats next?</Heading>
-        <Text>The customer has been instructed to send an E-transfer with their order number at {senderEmail} for an amount of ${totals.total}. once this has been recieved the shop admin can confirm payment via the order management portal and the updates will be automatically sent!</Text>
+        <Text>The customer has been instructed to send an E-transfer with their order number at {paymentEmail} for an amount of ${totals.total}. once this has been recieved the shop admin can confirm payment via the order management portal and the updates will be automatically sent!</Text>
         <Hr />
     </Container>
     <Text>the new order number is: {orderNumber}</Text>

@@ -24,13 +24,15 @@
 	}
 
 	function flop(event) {
-		if (!editable) {
-			if (!selected) {
-				event.target.focus();
-			} else {
-				event.target.blur();
+		if (event.target.tagName !== 'IMG'){
+			if (!editable) {
+				if (!selected) {
+					event.target.focus();
+				} else {
+					event.target.blur();
+				}
+				selected = !selected;
 			}
-			selected = !selected;
 		}
 	}
 </script>
@@ -42,7 +44,7 @@
 	on:keydown={flop}
 	tabindex="-1"
 >
-	<ImgCarousel images={product.image} interval="5000" />
+	<ImgCarousel images={product.image} />
 	<h2>{product.name}</h2>
 	<p style="color: {$siteData.textColor};">${product.price}</p>
 	{#if selected}

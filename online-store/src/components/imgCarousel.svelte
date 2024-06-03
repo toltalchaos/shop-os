@@ -8,27 +8,12 @@
 	if (!Array.isArray(images)) {
 		images = [images];
 	}
-	export let interval = 3000; // 3 seconds
 	let currentIndex = 0;
 	let timer;
 
-	function startCarousel() {
-		timer = setInterval(() => {
-			currentIndex = (currentIndex + 1) % images.length;
-		}, interval);
+	function nextImage() {
+		currentIndex = (currentIndex + 1) % images.length;
 	}
-
-	function stopCarousel() {
-		clearInterval(timer);
-	}
-
-	onMount(() => {
-		startCarousel();
-	});
-
-	onDestroy(() => {
-		stopCarousel();
-	});
 
 	
 </script>
@@ -36,43 +21,39 @@
 <div>
 	<!-- would like to add functionality to click through the images -->
 	{#if Array.isArray(images) && images.length > 1}
-		<img
-			src={images[currentIndex]}
-			alt="rotating Carousel product images"
-			class="carousel-image"
-			style="animation-duration: {interval}ms;"
-		/>
+		{#each images as image, index}
+				<img
+				on:click={nextImage} on:keydown={nextImage}
+					src={image}
+					alt="rotating Carousel product images"
+					class="carousel-image {index === currentIndex ? 'active' : 'inactive'}"
+				/>
+		{/each}
 	{:else}
 		<img src={Array.isArray(images) ? images[0] : images} alt="product images" />
 	{/if}
 </div>
 
 <style>
-	/* would be nice to provide sliders for this... but its fine for now */
-	@keyframes fadeOut {
-		0% {
-			opacity: 1;
-		}
-		95% {
-			opacity: 1;
-		}
-		98% {
-			opacity: 0.8;
-		}
-		100% {
-			opacity: 0;
-		}
+	.inactive {
+		transition: opacity 0.3s ease-in-out;
+		opacity: 0;
 	}
-
+	.active{
+		transition: opacity 0.3s ease-in-out;
+		opacity: 1;
+	}
 	.carousel-image {
+		position: absolute;
 		width: 100%;
 		height: 100%;
 		object-fit: contain;
-		animation: fadeOut 5s ease-in-out infinite;
+		transition: opacity 0.3s ease-in-out;
 	}
 	div {
-		width: 100%;
-		height: 100%;
+		height: 10rem;
+		width: 10rem;
+		position: relative;
 		display: flex;
 		justify-content: center;
 		align-items: center;

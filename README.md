@@ -23,8 +23,6 @@ For now, we have decided to move forward with a very DIY approach to ownership w
 ## Bug List
 
     - discount needs to re-calculate properly after supplying a second discount code
-    - multiple image carousel timing
-      - should have its own display card carousel with pre-rendered images that wither hide and display OR Z-index
     - checkout page functionality
       - number calculations on changing fields
 

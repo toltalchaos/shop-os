@@ -1,6 +1,8 @@
 <script>
 	// @ts-nocheck
 	import cartItems from '../global/cartItems';
+	import ImgCarousel from './imgCarousel.svelte';
+
 	import { getContext } from 'svelte';
 	const siteData = getContext('siteData');
 	export let product;
@@ -30,7 +32,7 @@
 
 <div class="checkout-item" style="background-color: {$siteData.secondaryColor}; ">
 	<div class="checkout-item-image">
-		<img src={product.image} alt={product.name} />
+		<ImgCarousel images={product.image} />
 	</div>
 	<div class="checkout-item-details">
 		<h2>{product.name}</h2>

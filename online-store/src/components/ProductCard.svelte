@@ -24,14 +24,15 @@
 	}
 
 	function flop(event) {
-		if (event.target.tagName !== 'IMG'){
-			if (!editable) {
-				if (!selected) {
-					event.target.focus();
-				} else {
+		if (!editable) {
+			if (!selected) {
+				event.target.focus();
+				selected = true;
+			} else {
+				if(event.target.tagName !== 'IMG'){
 					event.target.blur();
+					selected = false;
 				}
-				selected = !selected;
 			}
 		}
 	}
@@ -53,19 +54,19 @@
 	{#if editable}
 		<!-- Form code here -->
 		<ManageProductForm {product} />
-	{:else if product.invintory > 0}
+	{:else if product.inventory > 0}
 		<button
 			style="color: {$siteData.textColor}; background-color: {$siteData.tirciaryColor};"
 			disabled={$cartItems.some((item) => item.product_id === product.product_id)}
 			on:click={addToCart}
 		>
-			{$cartItems.some((item) => item.product_id === product.product_id) ? 'Already in Cart' : 'Add to Cart'}
+			{$cartItems.some((item) => item.product_id === product.product_id)
+				? 'Already in Cart'
+				: 'Add to Cart'}
 		</button>
 	{:else}
 		<p style="color: {$siteData.textColor};">Out of Stock</p>
 	{/if}
-
-
 </div>
 
 <style>

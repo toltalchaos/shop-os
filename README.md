@@ -22,8 +22,8 @@ For now, we have decided to move forward with a very DIY approach to ownership w
 
 ## Bug List
 
-    - discount needs to re-calculate properly after supplying a second discount code
     - checkout page functionality
+      - discount needs to re-calculate properly after supplying a second discount code
       - number calculations on changing fields
 
 ## TODO (things to refine before next release)

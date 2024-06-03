@@ -1,6 +1,6 @@
 // @ts-nocheck
 import productData from '../static/socks.json';
-import { manageInvintoryAndCartCount, sanitizeCartData, sanitizeOrderData } from './utils';
+import { manageinventoryAndCartCount, sanitizeCartData, sanitizeOrderData } from './utils';
 //site operations
 async function get_site_data() {
 	const default_settings = {
@@ -120,8 +120,8 @@ async function update_product(
 //order operations
 async function create_order(orderInfo) {
 	try {
-		//update the product invintory
-		const updatedItems = manageInvintoryAndCartCount(orderInfo.items);
+		//update the product inventory
+		const updatedItems = manageinventoryAndCartCount(orderInfo.items);
 		const sanitizedProducts = sanitizeCartData(orderInfo.items);
 		//create the order object
 		const newID = orderInfo.customerName + '-' + Math.random().toString(36).substring(7);
@@ -157,7 +157,7 @@ async function create_order(orderInfo) {
 			},
 			body: JSON.stringify(order)
 		});
-		//then call to update the product invintory
+		//then call to update the product inventory
 		//email the user the order confirmation...
 		if (resp.ok === true) {
 			let email = await fetch('/emails/newOrder', {

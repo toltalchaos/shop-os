@@ -99,7 +99,7 @@
 		<input type="email" id="email" bind:value={emailContact} />
 
 		<label for="storeLocation">Store Location:</label>
-		<input type="text" id="storeLocation" bind:value={storeLocation} />
+		<input type="text" id="storeLocation" bind:value={storeLocation} placeholder="Anytown, Canada"/>
 
 		<label for="backgroundColor">Background Color:</label>
 		<input type="color" id="primaryColor" bind:value={backgroundColor} />

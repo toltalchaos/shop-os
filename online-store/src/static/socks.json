@@ -8,7 +8,7 @@
 			"featured": false,
 			"category": ["tall-socks"],
 			"description": "this demo item is just a placeholder and will be replaced when you add a real item in the management area.",
-			"invintory": 4
+			"inventory": 4
 		}
 	]
 }

@@ -17,7 +17,7 @@
 		product = {
 			product_id: null,
 			name: '',
-			invintory: 0,
+			inventory: 0,
 			price: 0.0,
 			image: [],
 			description: '',
@@ -77,8 +77,8 @@
 		<input type="number" id="productPrice" step="0.01" bind:value={product.price} />
 	</div>
 	<div>
-		<label for="productInvintory">Product Invintory:</label>
-		<input type="number" id="productInvintory" bind:value={product.invintory} />
+		<label for="productinventory">Product inventory:</label>
+		<input type="number" id="productinventory" bind:value={product.inventory} />
 	</div>
 	<div>
 		<ItemImageManager bind:imageArray={itemImageStore} />

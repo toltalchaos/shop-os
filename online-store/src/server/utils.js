@@ -1,10 +1,10 @@
 // @ts-nocheck
 
-function manageInvintoryAndCartCount(incomingItems) {
+function manageinventoryAndCartCount(incomingItems) {
 	//intakes the order data and returns the items with updated inventory
 	const outgoingItems = incomingItems.map((item) => {
 		const newItem = { ...item }; // create a new object with the same properties as item
-		newItem.invintory = newItem.invintory - item.cart_quantity;
+		newItem.inventory = newItem.inventory - item.cart_quantity;
 		return newItem;
 	});
 	return sanitizeCartData(outgoingItems);
@@ -20,14 +20,14 @@ function sanitizeCartData(items) {
 }
 
 function sanitizeOrderData(orderData) {
-	//removes the image data, invintory info stock data from the order
+	//removes the image data, inventory info stock data from the order
 	orderData.items = orderData.items.map((item) => {
 		let newItem = { ...item };// create a new object with the same properties as item
 		delete newItem.image;
-		delete newItem.invintory;
+		delete newItem.inventory;
 		return newItem;
 	});
     return orderData;
 }
 
-export { manageInvintoryAndCartCount, sanitizeCartData, sanitizeOrderData };
+export { manageinventoryAndCartCount, sanitizeCartData, sanitizeOrderData };

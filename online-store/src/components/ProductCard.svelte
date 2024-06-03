@@ -12,7 +12,6 @@
 
 	//add functionality to make the selected card larger by seeing if it has "focus"?
 	let selected = false;
-
 	// Add the product to the cart on button click
 	function addToCart(event) {
 		flop(event);

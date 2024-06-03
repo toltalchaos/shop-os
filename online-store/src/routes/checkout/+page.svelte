@@ -108,13 +108,12 @@
 			discount = null;
 			//lookup discount by discount_id
 			discount = await lookup_discount(discount_id);
-			console.log('discount:', discount);
 			if (discount != 'ERROR') {
 				//apply discount to total
 				if (discount.type == 'percentage') {
-					total = total * (1 - (discount.amount/100));
+					total = (subtotal + shipping + tax) * (1 - (discount.amount/100));
 				} else if (discount.type == 'fixed') {
-					total = total - discount.amount;
+					total = (subtotal + shipping + tax) - discount.amount;
 				}
 				//anything being put into the totals object should be fixed to 2 decimal places
 				totals = {

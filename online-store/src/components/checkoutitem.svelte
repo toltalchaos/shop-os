@@ -41,7 +41,7 @@
 	<div class="checkout-item-details">
 		<h2>Quantity</h2>
 		<p>{cart_quantity}</p>
-		<button on:click={() => adjustQuantity(1)} disabled={cart_quantity == product.invintory}>Add</button>
+		<button on:click={() => adjustQuantity(1)} disabled={cart_quantity == product.inventory}>Add</button>
 		<button on:click={() => adjustQuantity(-1)}>Remove</button>
 	</div>
 	<div class="checkout-item-remove">

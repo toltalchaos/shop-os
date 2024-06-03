@@ -11,6 +11,12 @@
 	let currentIndex = 0;
 	let timer;
 
+	onMount(() => {
+		timer = setInterval(() => {
+			nextImage();
+		}, 5000);
+	});
+
 	function nextImage() {
 		currentIndex = (currentIndex + 1) % images.length;
 	}

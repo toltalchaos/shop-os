@@ -24,6 +24,12 @@ For now, we have decided to move forward with a very DIY approach to ownership w
 
 - site management submission buttons need more feedback
 
+- checkout :TOTAL: could use better visual, doesnt need to be an input box
+
+- focus on product cards
+  - loosing focus should eliminate description
+  - focusing should increase image size
+
 - email templates to better use the data in a product-like component
 
 - order instructions needs more information about the order (items...)
@@ -83,6 +89,7 @@ when a new version is released please check out that "tag" instead of checking o
 
 ## Future Enhancements (idea dumping ground)
 
+- bulk actions for product/order management
 - product items should have "options".... this might need a relational DB.... firebase DOES offer this now though so it might be good for server functions...????
   - something like "size" or "colour" should be available to create and select from.. then those should have individual inventory counts...
 - implement a better order tracking system (some kind of gridview?)

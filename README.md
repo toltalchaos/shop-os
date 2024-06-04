@@ -1,5 +1,7 @@
 # Online Store Framework
 
+## demo [shop-os.web.app](https://shop-os.web.app/)
+
 Welcome to the future of e-commerce, where your store comes to life with ease. Our Open Source E-commerce software is the perfect solution for those who want to break free from big vendors and enjoy the simplicity of a drag-and-drop setup. Established in 2024 and with contributions from our community (see contributions page), we’re not just a platform; we’re a passionate team on a journey towards an accessible online marketplace for all. No matter your tech skills, we make sure you’re not just keeping up—you’re setting the pace. Dive into our user-friendly manual and watch your store spring into action today!
 
 ---
@@ -23,7 +25,6 @@ For now, we have decided to move forward with a very DIY approach to ownership w
 ## TODO (things to refine before next release)
 
 - focus on product cards
-  - loosing focus should eliminate description
   - focusing should increase image size
 
 - email templates to better use the data in a product-like component

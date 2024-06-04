@@ -115,4 +115,23 @@
 		background-color: gray;
 		cursor: not-allowed;
 	}
+
+	button:hover {
+		cursor: pointer;
+	}
+	button:active {
+		animation: button-click 0.3s;
+	}
+
+	@keyframes button-click {
+		0% {
+			transform: scale(1);
+		}
+		50% {
+			transform: scale(0.9);
+		}
+		100% {
+			transform: scale(1);
+		}
+	}
 </style>

@@ -45,6 +45,7 @@
 	let storeLocation = $siteData.storeLocation;
 
 	function handleSiteManagmentSubmit() {
+		
 		// Update the siteData context with the new values
 		siteData.update((data) => {
 			return {
@@ -65,7 +66,12 @@
 				storeLocation
 			};
 		});
-		set_site_data($siteData, username, password);
+		let resp = set_site_data($siteData, username, password);
+		if (resp == 'ERROR') {
+			alert('Error saving site settings');
+			return;
+		}
+		alert('Site settings saved');
 	}
 
 	onMount(async () => {
@@ -174,4 +180,7 @@
 		gap: 2rem;
 		margin-top: 2rem;
 	}
+
+
+
 </style>

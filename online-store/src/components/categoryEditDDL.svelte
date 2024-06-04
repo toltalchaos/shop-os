@@ -46,6 +46,7 @@
 	function addNewCategory(event) {
 		addCategory(newCategoryInput);
 		productsByCategory[newCategoryInput] = [];
+		newCategoryInput = '';
 	}
 </script>
 

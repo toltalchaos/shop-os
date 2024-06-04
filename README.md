@@ -22,10 +22,6 @@ For now, we have decided to move forward with a very DIY approach to ownership w
 
 ## TODO (things to refine before next release)
 
-- site management submission buttons need more feedback
-
-- checkout :TOTAL: could use better visual, doesnt need to be an input box
-
 - focus on product cards
   - loosing focus should eliminate description
   - focusing should increase image size

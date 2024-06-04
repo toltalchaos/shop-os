@@ -19,13 +19,15 @@
 			removeFromCart();
 		} else {
 			cart_quantity += adjquantity;
-      // Update the quantity of the product in the cart
-      cartItems.update((items) => items.map((item) => {
-      if(item.id === product.id){
-        item.cart_quantity = cart_quantity;
-      }
-      return item;
-    }));
+			// Update the quantity of the product in the cart
+			cartItems.update((items) =>
+				items.map((item) => {
+					if (item.id === product.id) {
+						item.cart_quantity = cart_quantity;
+					}
+					return item;
+				})
+			);
 		}
 	}
 </script>
@@ -41,8 +43,15 @@
 	<div class="checkout-item-details">
 		<h2>Quantity</h2>
 		<p>{cart_quantity}</p>
-		<button on:click={() => adjustQuantity(1)} disabled={cart_quantity == product.inventory}>Add</button>
-		<button on:click={() => adjustQuantity(-1)}>Remove</button>
+		<button
+			style="color: {$siteData.textColor}; background-color: {$siteData.tirciaryColor};"
+			on:click={() => adjustQuantity(1)}
+			disabled={cart_quantity == product.inventory}>Add</button
+		>
+		<button
+			style="color: {$siteData.textColor}; background-color: {$siteData.tirciaryColor};"
+			on:click={() => adjustQuantity(-1)}>Remove</button
+		>
 	</div>
 	<div class="checkout-item-remove">
 		<button on:click={removeFromCart}>Remove</button>
@@ -68,11 +77,6 @@
 		margin-right: 1rem;
 	}
 
-	.checkout-item-image img {
-		width: 100%;
-		height: auto;
-	}
-
 	.checkout-item-details {
 		flex-grow: 1;
 	}
@@ -85,12 +89,20 @@
 	.checkout-item-remove {
 		width: 5rem;
 	}
+	button {
+		font-size: 1.2rem;
+		padding: 0.5rem 1rem;
+		border: none;
+		border-radius: 1rem;
+		cursor: pointer;
+		transition: background-color 0.2s ease-in-out;
+	}
 
 	.checkout-item-remove button {
 		font-size: 1rem;
 		padding: 0.5rem;
-		background-color: #fff;
-		color: #333;
+		background-color: #300f0f;
+		color: #d70505;
 		border: 1px solid;
 		border-radius: 0.5rem;
 		cursor: pointer;

@@ -80,7 +80,7 @@
 				</select></label>
 				<label for="discountAmount">Discount Amount:
 				<input type="number" id="discountAmount" bind:value={activeDiscount.amount} required /></label>
-				<button type="submit" on:click={saveDiscount}>Save</button>
+				<button type="button" on:click={saveDiscount}>Save</button>
 			</form>
 		{/if}
 

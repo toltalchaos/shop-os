@@ -54,4 +54,22 @@
 		padding: 0;
 		font-family: Arial, sans-serif;
 	}
+	:global(button) {
+		cursor: pointer;
+	}
+	:global(button):active{
+	
+		animation: button-click 0.3s;
+	}
+	@keyframes button-click {
+		0% {
+			transform: scale(1);
+		}
+		50% {
+			transform: scale(0.9);
+		}
+		100% {
+			transform: scale(1);
+		}
+	}
 </style>

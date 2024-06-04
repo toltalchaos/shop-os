@@ -34,7 +34,7 @@
   <CategoryCard bind:products={displayedProducts}/>
   <hr>
   <h3>All Products</h3>
-  <input type="text" placeholder="Search all products" on:input={handleSearch} />
+  <input type="text" placeholder="Search all products" class="search-bar" on:input={handleSearch} />
   <div class="product-list">
     {#each displayedProducts as product} 
     <ProductCard product={product} />
@@ -53,6 +53,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
   }
 
   .product-list {
@@ -62,5 +63,13 @@
     align-items: center;
     gap: 2rem;
     margin-top: 2rem;
+  }
+
+  .search-bar {
+    width: 50%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid black;
+    border-radius: 0.5rem;
   }
 </style>

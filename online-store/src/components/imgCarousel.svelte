@@ -3,6 +3,7 @@
 	import { onMount, onDestroy } from 'svelte';
 
 	export let images;
+	export let selected = false;
 	
 	// Convert single item to array in the case that there is only one image
 	if (!Array.isArray(images)) {
@@ -24,7 +25,6 @@
 	
 </script>
 
-<div>
 	<!-- would like to add functionality to click through the images -->
 	{#if Array.isArray(images) && images.length > 1}
 		{#each images as image, index}
@@ -38,7 +38,7 @@
 	{:else}
 		<img src={Array.isArray(images) ? images[0] : images} alt="product images" />
 	{/if}
-</div>
+
 
 <style>
 	.inactive {
@@ -55,14 +55,6 @@
 		height: 100%;
 		object-fit: contain;
 		transition: opacity 0.3s ease-in-out;
-	}
-	div {
-		height: 15rem;
-		width: min(15rem, 40vw);
-		position: relative;
-		display: flex;
-		justify-content: center;
-		align-items: center;
 	}
 
 	img {

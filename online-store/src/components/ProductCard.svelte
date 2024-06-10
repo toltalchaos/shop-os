@@ -44,12 +44,12 @@
 	on:keydown={flop}
 	tabindex="-1"
 >
+<div class="carousel">
 	<ImgCarousel images={product.image} />
+</div>
 	<h2>{product.name}</h2>
 	<p style="color: {$siteData.textColor};">${product.price}</p>
-	{#if selected}
-		<p style="color: {$siteData.textColor};">{product.description}</p>
-	{/if}
+		<p class="description" style="color: {$siteData.textColor};">{product.description}</p>
 	{#if editable}
 		<!-- Form code here -->
 		<ManageProductForm {product} />
@@ -82,6 +82,17 @@
 		transition-property: transform, z-index;
 		transition-duration: 0.2s;
 	}
+	.description {
+		display: none;
+	}
+	.carousel {
+		height: 15rem;
+		width: min(15rem, 40vw);
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 
 	.product-card h2 {
 		font-size: 1.5rem;
@@ -107,8 +118,16 @@
 	}
 
 	.product-card:focus {
-		transform: scale(1.1);
+		transform: scale(1.5);
 		z-index: 10;
+		
+	}
+	.product-card:focus .description {
+		display: block;
+	}
+	.product-card:focus .carousel {
+		height: 20rem;
+		width: min(20rem, 60vw);
 	}
 
 	button:disabled {

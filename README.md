@@ -24,9 +24,6 @@ For now, we have decided to move forward with a very DIY approach to ownership w
 
 ## TODO (things to refine before next release)
 
-- focus on product cards
-  - focusing should increase image size
-
 - email templates to better use the data in a product-like component
 
 - order instructions needs more information about the order (items...)

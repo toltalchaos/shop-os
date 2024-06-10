@@ -28,7 +28,7 @@
 				event.target.focus();
 				selected = true;
 			} else {
-				if(event.target.tagName !== 'IMG'){
+				if (event.target.tagName !== 'IMG') {
 					event.target.blur();
 					selected = false;
 				}
@@ -38,20 +38,19 @@
 </script>
 
 <div
-	class="product-card"
+	class={editable? "product-card-edit" : "product-card"}
 	style="background-color: {$siteData.secondaryColor}; "
 	on:click={flop}
 	on:keydown={flop}
 	tabindex="-1"
 >
-<div class="carousel">
-	<ImgCarousel images={product.image} />
-</div>
+	<div class="carousel">
+		<ImgCarousel images={product.image} />
+	</div>
 	<h2>{product.name}</h2>
 	<p style="color: {$siteData.textColor};">${product.price}</p>
-		<p class="description" style="color: {$siteData.textColor};">{product.description}</p>
+	<p class="description" style="color: {$siteData.textColor};">{product.description}</p>
 	{#if editable}
-		<!-- Form code here -->
 		<ManageProductForm {product} />
 	{:else if product.inventory > 0}
 		<button
@@ -69,6 +68,15 @@
 </div>
 
 <style>
+	.product-card-edit {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-evenly;
+		padding: 1rem;
+		border-radius: 1rem;
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	}
 	.product-card {
 		display: flex;
 		flex-direction: column;
@@ -98,8 +106,16 @@
 		font-size: 1.5rem;
 		margin-bottom: 1rem;
 	}
+	.product-card-edit h2 {
+		font-size: 1.5rem;
+		margin-bottom: 1rem;
+	}
 
 	.product-card p {
+		font-size: 1.2rem;
+		margin-bottom: 1rem;
+	}
+	.product-card-edit p {
 		font-size: 1.2rem;
 		margin-bottom: 1rem;
 	}
@@ -112,15 +128,24 @@
 		cursor: pointer;
 		transition: background-color 0.2s ease-in-out;
 	}
+	.product-card-edit button {
+		font-size: 1.2rem;
+		padding: 0.5rem 1rem;
+		border: none;
+		border-radius: 1rem;
+		cursor: pointer;
+		transition: background-color 0.2s ease-in-out;
+	}
 
 	.product-card button:hover {
 		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 	}
-
+	.product-card-edit button:hover {
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+	}
 	.product-card:focus {
 		transform: scale(1.5);
 		z-index: 10;
-		
 	}
 	.product-card:focus .description {
 		display: block;

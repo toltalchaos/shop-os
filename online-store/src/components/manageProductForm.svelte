@@ -5,6 +5,7 @@
 	import { writable } from 'svelte/store';
 	import CategoryEditDdl from './categoryEditDDL.svelte';
 	import ItemImageManager from './itemImageManager.svelte';
+	let selected = false;
 	export let product = null;
 	const origionalProduct = JSON.parse(JSON.stringify(product));
 	let newProduct = false;
@@ -65,7 +66,11 @@
 	}
 </script>
 
-<h2>Products</h2>
+<h2>Product Details</h2>
+{#if selected}
+<button on:click={()=>{selected = !selected}}>Click to collapse</button>
+<br/>
+
 <form on:submit|preventDefault={handleProductSubmit} class="new-product-form">
 	<div>
 		<label for="productName">Product Name:</label>
@@ -100,6 +105,9 @@
 		<button type="button" on:click={deleteItem}>Delete Product</button>
 	{/if}
 </form>
+{:else}
+<button on:click={()=>{selected = !selected}}>Click to edit</button>
+{/if}
 
 <style>
 	.new-product-form {

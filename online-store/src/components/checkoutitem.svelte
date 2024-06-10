@@ -73,8 +73,12 @@
 	}
 
 	.checkout-item-image {
-		width: 10rem;
-		margin-right: 1rem;
+		height: 15rem;
+		width: min(15rem, 40vw);
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
 	.checkout-item-details {

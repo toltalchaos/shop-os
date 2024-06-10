@@ -66,11 +66,11 @@
 	}
 </script>
 
-<h2>Product Details</h2>
 {#if selected}
 <button on:click={()=>{selected = !selected}}>Click to collapse</button>
 <br/>
 
+<h2>Product Details</h2>
 <form on:submit|preventDefault={handleProductSubmit} class="new-product-form">
 	<div>
 		<label for="productName">Product Name:</label>

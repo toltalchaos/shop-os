@@ -49,16 +49,13 @@
 		opacity: 1;
 	}
 	.carousel-image {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		object-fit: contain;
 		transition: opacity 0.3s ease-in-out;
 	}
 
 	img {
-		max-width: 100%;
-		max-height: 100%;
+		position: absolute;
+		width: 100%;
+		height: 100%;
 		object-fit: contain;
 	}
 </style>

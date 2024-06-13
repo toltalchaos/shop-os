@@ -83,11 +83,11 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		max-width: 90vw;
+		overflow: hidden;
+		max-width: 30rem;
 		padding: 1rem;
 		border-radius: 1rem;
 		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-		z-index: 1;
 		transition-property: transform, z-index;
 		transition-duration: 0.2s;
 	}
@@ -95,8 +95,10 @@
 		display: none;
 	}
 	.carousel {
-		min-height: 20vh;
-		width: min(30rem, 40vw);
+		min-height: 15rem;
+		max-height: 80vw;
+		min-width: 15rem;
+		max-width: 80vw;
 		position: relative;
 		display: flex;
 		justify-content: center;
@@ -147,13 +149,15 @@
 	.product-card:focus {
 		position: absolute;
 		transform: scale(1.4);
+		max-width: 60vw;
 		z-index: 2;
 	}
 	.product-card:focus .description {
 		display: block;
 	}
 	.product-card:focus .carousel {
-		height: 20rem;
+		min-height: 50vh;
+		min-width: 80vw;
 	}
 
 	button:disabled {

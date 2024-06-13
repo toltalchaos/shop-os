@@ -83,7 +83,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		overflow: scroll;
+		overflow: auto;
 		padding: 1rem;
 		border-radius: 1rem;
 		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
@@ -147,11 +147,12 @@
 	}
 	.product-card:focus {
 		position: fixed;
+		padding-top: 10vh;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%) scale(1.4);
-		max-width: 60%;
-		max-height: 70vh;
+		max-width: 60vw;
+		max-height: 60vh;
 		z-index: 2;
 	}
 	.product-card:focus .description {

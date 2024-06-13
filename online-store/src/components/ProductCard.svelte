@@ -95,8 +95,8 @@
 		display: none;
 	}
 	.carousel {
-		min-height: 5rem;
-		width: min(15rem, 40vw);
+		min-height: 20vh;
+		width: min(30rem, 40vw);
 		position: relative;
 		display: flex;
 		justify-content: center;
@@ -145,14 +145,15 @@
 		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 	}
 	.product-card:focus {
+		position: absolute;
 		transform: scale(1.4);
+		z-index: 2;
 	}
 	.product-card:focus .description {
 		display: block;
 	}
 	.product-card:focus .carousel {
 		height: 20rem;
-		min-width: 60vw;
 	}
 
 	button:disabled {

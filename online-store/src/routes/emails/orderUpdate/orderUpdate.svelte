@@ -13,7 +13,7 @@
 
 <Html lang="en">
     <Heading as="h1">Order Update!</Heading>
-    <Text>Your order ({orderNumber}) had been updated.</Text>
+    <Text>Your order ({orderNumber}) has been updated.</Text>
     <Text>{#each Object.keys(status) as key}
         {key}: {status[key]}
         <br>

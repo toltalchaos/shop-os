@@ -1,6 +1,7 @@
 <script>
 	// @ts-nocheck
 	import { onMount } from 'svelte';
+	import { env } from '$env/dynamic/public';
 	import ProductCard from '../../components/ProductCard.svelte';
 	import { set_site_data } from '../../server/backendUtils';
 	import ManageProductForm from '../../components/manageProductForm.svelte';
@@ -45,7 +46,6 @@
 	let storeLocation = $siteData.storeLocation;
 
 	function handleSiteManagmentSubmit() {
-		
 		// Update the siteData context with the new values
 		siteData.update((data) => {
 			return {
@@ -102,16 +102,13 @@
 		<label for="description">Description:</label>
 		<textarea id="description" bind:value={description} />
 
-		<p>the following E-mail is for contact purposes and can be the same as payment or the automatic emailing system if you wish </p>
-		<label for="email">Contact email</label>
-		<input type="email" id="email" bind:value={emailContact} />
-
-		<p>the following E-mail is the address the users will be instructed to E-transfer</p>
-		<label for="paymentEmail">Payment email</label>
-		<input type="email" id="paymentEmail" bind:value={paymentEmail} />
-
 		<label for="storeLocation">Store Location:</label>
-		<input type="text" id="storeLocation" bind:value={storeLocation} placeholder="Anytown, Canada"/>
+		<input
+			type="text"
+			id="storeLocation"
+			bind:value={storeLocation}
+			placeholder="Anytown, Canada"
+		/>
 
 		<label for="backgroundColor">Background Color:</label>
 		<input type="color" id="primaryColor" bind:value={backgroundColor} />
@@ -128,7 +125,9 @@
 		<label for="textColor">Text Color:</label>
 		<input type="color" id="textColor" bind:value={textColor} />
 
-		<label for="shippingRate">Shipping Rate (standard flat rate shipping in a $ amount to be calculated at checkout):</label>
+		<label for="shippingRate"
+			>Shipping Rate (standard flat rate shipping in a $ amount to be calculated at checkout):</label
+		>
 		<input type="number" step="0.01" id="shippingRate" bind:value={shippingRate} />
 
 		<label for="taxRate">Tax Rate, per $1:</label>
@@ -137,6 +136,16 @@
 		<label for="contactInfo">Contact Information:</label>
 		<textarea id="contactInfo" bind:value={contactInfo} /> -->
 
+		<p>
+			the following E-mail is for contact purposes and can be the same as payment or the automatic
+			emailing system if you wish. currently the automatic emailing system is sending emails from {env.PUBLIC_SENDER_GMAIL}
+		</p>
+		<label for="email">Contact email
+		<input type="email" id="email" bind:value={emailContact} /></label>
+
+		<p>the following E-mail is the address the users will be instructed to E-transfer</p>
+		<label for="paymentEmail">Payment email
+		<input type="email" id="paymentEmail" bind:value={paymentEmail} /></label>
 		<button type="submit">Save Site Settings</button>
 	</form>
 
@@ -180,7 +189,4 @@
 		gap: 2rem;
 		margin-top: 2rem;
 	}
-
-
-
 </style>

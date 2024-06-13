@@ -3,8 +3,7 @@
 	import { onMount, onDestroy } from 'svelte';
 
 	export let images;
-	export let selected = false;
-	
+		
 	// Convert single item to array in the case that there is only one image
 	if (!Array.isArray(images)) {
 		images = [images];

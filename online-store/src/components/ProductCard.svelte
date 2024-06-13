@@ -74,6 +74,7 @@
 		align-items: center;
 		justify-content: space-evenly;
 		padding: 1rem;
+		max-width: 90vw;
 		border-radius: 1rem;
 		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 	}
@@ -82,7 +83,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		max-width: 300px;
+		max-width: 90vw;
 		padding: 1rem;
 		border-radius: 1rem;
 		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
@@ -94,7 +95,7 @@
 		display: none;
 	}
 	.carousel {
-		height: 15rem;
+		min-height: 5rem;
 		width: min(15rem, 40vw);
 		position: relative;
 		display: flex;
@@ -144,15 +145,14 @@
 		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 	}
 	.product-card:focus {
-		transform: scale(1.5);
-		z-index: 10;
+		transform: scale(1.4);
 	}
 	.product-card:focus .description {
 		display: block;
 	}
 	.product-card:focus .carousel {
 		height: 20rem;
-		width: min(20rem, 60vw);
+		min-width: 60vw;
 	}
 
 	button:disabled {

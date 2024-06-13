@@ -146,10 +146,12 @@
 		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 	}
 	.product-card:focus {
-		position: sticky;
-		transform: scale(1.4);
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%) scale(1.4);
 		max-width: 60%;
-		max-height: 90%;
+		max-height: 70vh;
 		z-index: 2;
 	}
 	.product-card:focus .description {

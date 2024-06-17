@@ -154,6 +154,7 @@
 	<SiteDiscounts {username} {password} />
 	<hr />
 	<!-- form to manage products -->
+	 <h2>Add New Product</h2>
 	<ManageProductForm />
 	<hr />
 	<!-- search bar -->

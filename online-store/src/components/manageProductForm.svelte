@@ -106,7 +106,7 @@
 	{/if}
 </form>
 {:else}
-<button on:click={()=>{selected = !selected}}>Click to edit</button>
+<button on:click={()=>{selected = !selected}}>Click to expand</button>
 {/if}
 
 <style>

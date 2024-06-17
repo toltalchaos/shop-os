@@ -24,7 +24,6 @@ For now, we have decided to move forward with a very DIY approach to ownership w
 
 ## TODO (things to refine before next release)
 
-- put a file size limit on the image upload.
 - refine database rules to lock off read and write functionality per-user per-endpoint
 
 ### branching and versioning strategy

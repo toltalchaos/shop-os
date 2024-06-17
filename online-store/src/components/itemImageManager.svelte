@@ -29,8 +29,11 @@
 		let fileObject = newimagefile[0] // this will be the file object
 		//https://www.freeconvert.com/jpg-to-webp/download
 		console.log("image byte size", fileObject.size) //273.72kb -> 142.5kb
-		if (fileObject.size > 250000) {
-			alert('Image file size is too large. Please upload an image file less than 250kb. You can use free online tools to compress the image size. the purpose of this is to reduce the image size for faster loading of the website. and reduce cost of storage.');
+		if (fileObject.size > 300000) {
+			alert(`Image file size is too large. Please upload an image file less than 300kb.
+			You can use free online tools to compress the image file size.
+			The purpose of this is to reduce the image size for faster loading of the website and reduce cost of storage.
+			Consider cropping, resizing, compressing, and converting to .webp format.`);
 			return;
 		}
 		if (!validateFileType(fileObject)) {

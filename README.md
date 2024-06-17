@@ -28,6 +28,7 @@ when a new version is released please check out that "tag" instead of checking o
 
 ## TODO (things to refine before next release)
 
+- better refine product card behaviour (clicking text other then img and button should "flop")
 - document deployment strategy 
   - can any of the steps be eliminated or condensed with code?
 

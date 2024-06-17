@@ -1,26 +1,22 @@
-# Online Store Framework
+# FREE Online Store Framework
 
 ## demo [shop-os.web.app](https://shop-os.web.app/)
 
-Welcome to the future of e-commerce, where your store comes to life with ease. Our Open Source E-commerce software is the perfect solution for those who want to break free from big vendors and enjoy the simplicity of a drag-and-drop setup. Established in 2024 and with contributions from our community (see contributions page), we’re not just a platform; we’re a passionate team on a journey towards an accessible online marketplace for all. No matter your tech skills, we make sure you’re not just keeping up—you’re setting the pace. Dive into our user-friendly manual and watch your store spring into action today!
+Welcome to the future of e-commerce, where your store comes to life with ease. This Open Source E-commerce software is the perfect solution for those who want to break free from big vendors and enjoy the simplicity of a drag-and-drop setup. Established in 2024 By Braydon Tol. No matter your tech skills, i want to make sure you’re not just keeping up—you’re setting the pace for your business. Dive into this (hopefully) user-friendly manual and watch your store spring into action today!
 
 ---
 
-## our core beliefs, a message to owners
+## Core Beliefs (a message to owners)
 
-we believe in user data integrity and keeping the keys to the kingdom in the hands of small business owners. with this application the shop owner will have full control of everything from patches and tweaks to data storage and customer facing appearance.
+I believe in user data integrity and keeping the keys to the kingdom in the hands of small business owners. with this application the shop owner will have full control of everything from patches and tweaks to data storage and customer facing appearance.
 
 for now there are quite a few steps to get the application deployed and live for the users. there should be (in the near future) a complete tutorial available and the details documented below in this document.
+
+For now, we have decided to move forward with a very DIY approach to ownership where the "manager" or whoever is set up to send and recieve emails or status updates with customer communication is in charge of curating all of the orders and order statuses, as well as receiving payment through e-transfer. This way, the app can remain free for anybody to use. Additional payment gateways may be added in later releases.
 
 This project is licensed under the MIT license, which allows anyone to use, modify, and distribute the software for any purpose, including commercial use, **without any restrictions or fees.**
 
 ## **Version: v0.0.0-beta (Work in Progress)**
-
-## Ownership Model
-
-For now, we have decided to move forward with a very DIY approach to ownership where the "manager" or whoever is set up to send and recieve emails or status updates with customer communication is in charge of curating all of the orders and order statuses, as well as receiving payment through e-transfer. This way, the app can remain free for anybody to use. Additional payment gateways may be added in later releases.
-
----
 
 ### branching and versioning strategy
 
@@ -44,7 +40,6 @@ when a new version is released please check out that "tag" instead of checking o
     - manager
     - shopper user
   - RTDB + rules
-
 
 ---
     {
@@ -71,9 +66,11 @@ when a new version is released please check out that "tag" instead of checking o
 
 - firebase console allows you to add a custom domain if a person so wishes. this can be done retroactively
 
-## Developer Setup
+### Updates
 
-For now, developers can refer to the readme in "online-store". Eventually, a full setup guide will be provided here for non-developers.
+- pulling latest
+- check .env hasnt been updated
+- re-deploy
 
 ## Future Enhancements (idea dumping ground)
 

@@ -22,27 +22,27 @@ For now, we have decided to move forward with a very DIY approach to ownership w
 
 ---
 
-## TODO (things to refine before next release)
-
-- document deployment strategy
-
 ### branching and versioning strategy
 
 when a new version is released please check out that "tag" instead of checking out `main` as `main` will be used to collect all the most current changes, many of which will be buggy and not work as intended or may have serious security flaws. when the kinks are all worked out there will be a release made and that release should be available for public consumption forever! so if someone updates and they dont like the new behaviour they may re-update back to the previous version. but as a rule **MAIN is experimental**
 
-### Documentation on Setup
+## TODO (things to refine before next release)
 
-- `cd online-store`
-- requirements
-  - business-associated gmail account + firebase app init
-  - users/auth 
-    - user and manager
+- document deployment strategy 
+  - can any of the steps be eliminated or condensed with code?
+
+## Documentation on Deployment
+
+- pull latest
+- create .env
+  - set up emailer
+    - Gmail emailer instructions (turn on 2FA, get the app password, enter account email and app password in .env)
+  - set up firebase acct
+    - Firestore settings (manager account, shopper account, tokens for .env)
+  - set up accounts
+    - manager
+    - shopper user
   - RTDB + rules
-- pulling code
-- installing Node.js
-- Creation of ENV file
-  - Gmail emailer instructions (turn on 2FA, get the app password, enter account email and app password in .env)
-  - Firestore settings (manager account, shopper account, tokens for .env)
 
 
 ---
@@ -54,30 +54,25 @@ when a new version is released please check out that "tag" instead of checking o
     }
 ---
 
-## deployment
-
 - will need to update to pay-as-you-go plan
   - details here <https://firebase.google.com/pricing?hl=en&authuser=0&_gl=1*1llxviv*_ga*NzczNTk2OTgwLjE3MTI2NzYzMTU.*_ga_CW55HF8NVT*MTcxNTM2NzQ3Ny4yMS4xLjE3MTUzNjc4NDYuNTUuMC4w>
   - set up a $1 budget alert
-```
-  npm install firebase
-  npm install -g firebase-tools
-  firebase login
-  firebase experiments:enable webframeworks
-  firebase init
-  firebase deploy
-```
 
 <https://www.youtube.com/watch?v=W-kII4idtfE>
 
+- install node.js
+- install assets `npm install`
 - To install Fiebase CLI: `npm install -g firebase-tools`
 - To login to Firebase CLI: `firebase login`
 - To enable webframeworks flag: `firebase experiments:enable webframeworks`
 - To initialize Firebase in your project: `firebase init`
 - To deploy: `firebase deploy`
 
-- firebase console allows you to add a custom domain
+- firebase console allows you to add a custom domain if a person so wishes. this can be done retroactively
 
+## Developer Setup
+
+For now, developers can refer to the readme in "online-store". Eventually, a full setup guide will be provided here for non-developers.
 
 ## Future Enhancements (idea dumping ground)
 
@@ -99,30 +94,3 @@ when a new version is released please check out that "tag" instead of checking o
 - integrate a setup wizard?
   - .sh file to auto deploy for the user?
   - secondary site to make changes and deliver a ZIP with the customer site information?
-
-## Developer Setup
-
-For now, developers can refer to the readme in "online-store". Eventually, a full setup guide will be provided here for non-developers.
-
-## User Flow
-
-1. Home page: View featured items
-2. Navigate to products
-3. View products and add them to the cart
-4. Navigate to the cart
-5. Adjust item quantities and cart contents
-6. Proceed to checkout
-7. View invoice and fill out the form
-8. Submit the order
-9. Order number is generated and order is saved, user is re-directed to the order confirmation page
-10. user recieves an email about the new order
-11. Navigate to orders
-12. Input order number and email
-13. View order status
-
-# Management Flow
-
-- Managers are the only ones with logins (through Firebase/static)
-- They can edit the values on the management page
-- create modify or delete discount codes
-- Use the order editor to update orders

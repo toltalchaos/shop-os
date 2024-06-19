@@ -23,14 +23,19 @@
 	}
 
 	function flop(event) {
-		if (!editable) {
-			if (!selected) {
+		console.log("clicked", event.target);
+		if (!editable) { // if the card is not editable
+			if (!selected) { // if the card is not selected
 				event.target.focus();
 				selected = true;
-			} else {
-				if (event.target.tagName !== 'IMG') {
-					event.target.blur();
+			} else { // if the card is selected
+				if (event.target.tagName !== 'IMG') { // if the target is not an image
+					event.target.blur(); //currently getting the child component and blurring it...
 					selected = false;
+					//if the target does not have a classname of "product-card" then blur its parent element
+					if (!event.target.classList.contains('product-card')) {
+						event.target.parentElement.blur();
+					}
 				}
 			}
 		}

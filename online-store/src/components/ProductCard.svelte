@@ -23,7 +23,6 @@
 	}
 
 	function flop(event) {
-		console.log("clicked", event.target);
 		if (!editable) { // if the card is not editable
 			if (!selected) { // if the card is not selected
 				event.target.focus();

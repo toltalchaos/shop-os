@@ -16,7 +16,7 @@ For now, we have decided to move forward with a very DIY approach to ownership w
 
 This project is licensed under the MIT license, which allows anyone to use, modify, and distribute the software for any purpose, including commercial use, **without any restrictions or fees.**
 
-## **Version: v0.0.0-beta (Work in Progress)**
+## **Version: v1.0.0**
 
 ### branching and versioning strategy
 
@@ -29,7 +29,7 @@ when a new version is released please check out that "tag" instead of checking o
 
 ## Documentation on Deployment
 
-- pull latest
+- pull latest/download specific release tag
 - create .env
   - set up emailer
     - Gmail emailer instructions (turn on 2FA, get the app password, enter account email and app password in .env)

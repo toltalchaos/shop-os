@@ -54,7 +54,7 @@
 		>
 	</div>
 	<div class="checkout-item-remove">
-		<button on:click={removeFromCart}>Remove</button>
+		<button on:click={removeFromCart}>Delete</button>
 	</div>
 </div>
 

@@ -24,6 +24,10 @@ when a new version is released please check out that "tag" instead of checking o
 
 ## TODO (things to refine before next release)
 
+- implement logic for payment transfers + order status creation changes..
+  - [SRIPE DOCS](https://docs.stripe.com/connect/design-an-integration?connect-onboarding-surface=api&connect-dashboard-type=none&connect-economic-model=buy-rate&connect-loss-liability-owner=platform&connect-charge-type=direct)
+  - [GOODLE PAY](https://developers.google.com/pay/api/web/overview)
+  - [Paypal](https://developer.paypal.com/sdk/js/)
 - document deployment strategy 
   - can any of the steps be eliminated or condensed with code?
 
@@ -80,9 +84,7 @@ when a new version is released please check out that "tag" instead of checking o
 - figure out deployment and versioning procedure... how do we get non-tech users setup?..... can we make an .EXE file that will run the user through a setup wizard?.....
 - versioning -> field in DB to manage DB schema shape...
 - more site configuration options -> long term a better site management page
-  - Add site design options such as branding figures/images (2 options for site logos - large and small)
-- additional payment methods + gateways
-  - Paypal <https://developer.paypal.com/sdk/js/>
+  - Add site design options such as branding figures/images (2 options for site logos - large and small)  
 - Include data/sales analytics in the management directories using visualization tools/components
   - [Victory Charts?](https://www.npmjs.com/package/victory)
 - Explore order tracking insights, such as orders by day of the week, featured items vs non-featured, shipped vs non-shipped, and time to fulfillment

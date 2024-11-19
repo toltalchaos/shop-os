@@ -7,7 +7,6 @@
 	import { writable } from 'svelte/store';
 	import { goto } from '$app/navigation';
 	import AccordionItem from '../../components/accordionItem.svelte';
-	let chosenPayment = writable('etransfer');
 
 	const siteData = getContext('siteData');
 	let items = [];

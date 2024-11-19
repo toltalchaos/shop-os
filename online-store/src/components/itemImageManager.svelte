@@ -28,8 +28,8 @@
 		event.preventDefault();
 		let fileObject = newimagefile[0] // this will be the file object
 		//https://www.freeconvert.com/jpg-to-webp/download
-		if (fileObject.size > 300000) {
-			alert(`Image file size is too large. Please upload an image file less than 300kb.
+		if (fileObject.size > 1000000) {
+			alert(`Image file size is too large. Please upload an image file less than 1000kb.
 			You can use free online tools to compress the image file size.
 			The purpose of this is to reduce the image size for faster loading of the website and reduce cost of storage.
 			Consider cropping, resizing, compressing, and converting to .webp format.`);

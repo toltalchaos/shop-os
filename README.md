@@ -16,7 +16,7 @@ For now, we have decided to move forward with a very DIY approach to ownership w
 
 This project is licensed under the MIT license, which allows anyone to use, modify, and distribute the software for any purpose, including commercial use, **without any restrictions or fees.**
 
-## **Version: v1.0.0**
+## **Version: v1.1.0-beta (WIP)**
 
 ### branching and versioning strategy
 

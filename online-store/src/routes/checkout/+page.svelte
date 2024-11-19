@@ -4,7 +4,10 @@
 	import Invoice from '../../components/invoice.svelte';
 	import cartItems from '../../global/cartItems';
 	import { getContext } from 'svelte';
+	import { writable } from 'svelte/store';
 	import { goto } from '$app/navigation';
+	import AccordionItem from '../../components/accordionItem.svelte';
+	let chosenPayment = writable('etransfer');
 
 	const siteData = getContext('siteData');
 	let items = [];
@@ -32,7 +35,7 @@
 	let totals = calculateTotals();
 
 	// Handle form submission
-	async function handleSubmit(event) {
+	async function handleEtransferSubmit(event) {
 		event.preventDefault();
 		let isValid = validateForm();
 		console.log('customerName:', customerName);
@@ -131,91 +134,104 @@
 			total: total.toFixed(2)
 		};
 	}
+
+
 </script>
 
 <div class="checkout-page" style="background-color: {$siteData.backgroundColor};">
 	<h2>Checkout</h2>
 
 	<Invoice {items} {totals} {discount} />
-
-	<form on:submit={handleSubmit}>
-		<div class="form-row">
-			<label for="customerName">Name:</label>
-			<input type="text" id="customerName" bind:value={customerName} required />
+	<AccordionItem open>
+		<div slot="head">E-transfer Payment</div>
+		<div slot="details">
+			<form on:submit={handleEtransferSubmit}>
+				<div class="form-row">
+					<label for="customerName">Name:</label>
+					<input type="text" id="customerName" bind:value={customerName} required />
+				</div>
+				<div class="form-row">
+					<label for="customerEmail">Email:</label>
+					<input type="email" id="customerEmail" bind:value={customerEmail} required />
+				</div>
+				<div class="form-row">
+					<div class="shipping-info">
+						<label for="city"
+							>City:
+							<input
+								id="city"
+								type="city"
+								bind:value={city}
+								required={!inPersonPickup}
+								disabled={inPersonPickup}
+							/></label
+						>
+						<label for="province"
+							>Province/State:
+							<input
+								id="province"
+								type="province"
+								bind:value={province}
+								required={!inPersonPickup}
+								disabled={inPersonPickup}
+							/></label
+						><label for="shippingAddress"
+							>Street Address:
+							<input
+								id="shippingAddress"
+								type="address"
+								bind:value={shippingAddress}
+								required={!inPersonPickup}
+								disabled={inPersonPickup}
+							/></label
+						>
+						<label for="postalCode"
+							>Postal Code (ZIP code):
+							<input
+								id="postalCode"
+								type="zip"
+								bind:value={postalCode}
+								required={!inPersonPickup}
+								disabled={inPersonPickup}
+							/></label
+						>
+					</div>
+					<div class="dicounts">
+						<!-- text input to input a discount_id and an "apply" button to call a discount lookup function -->
+						<label for="discount"
+							>Discount Code:
+							<input type="text" id="discount" bind:value={discount_id} />
+							<button type="button" on:click={lookupDiscount}>Apply</button>
+						</label>
+						{#if discount}
+							<p>Discount applied: {discount.name}</p>
+						{/if}
+					</div>
+					<div>
+						<!-- toggle switch  -->
+						<label class="switch">
+							<input type="checkbox" on:click={toggleInPersonPickup} />
+							<span class="slider" />
+						</label>
+						In Person Pickup
+						<aside><p>Store location: {$siteData.storeLocation}</p></aside>
+					</div>
+				</div>
+				<div class="form-row">
+					<label for="total">Total:</label>
+					<input type="text" id="total" value={total.toFixed(2)} disabled />
+				</div>
+				<button type="submit">Order Now</button>
+			</form>
 		</div>
-		<div class="form-row">
-			<label for="customerEmail">Email:</label>
-			<input type="email" id="customerEmail" bind:value={customerEmail} required />
+	</AccordionItem>
+	<AccordionItem>
+		<div slot="head">Credit Card Payment</div>
+		<div slot="details">
+			<p>Coming soon...</p>
 		</div>
-		<div class="form-row">
-			<div class="shipping-info">
-				<label for="city"
-					>City:
-					<input
-						id="city"
-						type="city"
-						bind:value={city}
-						required={!inPersonPickup}
-						disabled={inPersonPickup}
-					/></label
-				>
-				<label for="province"
-					>Province/State:
-					<input
-						id="province"
-						type="province"
-						bind:value={province}
-						required={!inPersonPickup}
-						disabled={inPersonPickup}
-					/></label
-				><label for="shippingAddress"
-					>Street Address:
-					<input
-						id="shippingAddress"
-						type="address"
-						bind:value={shippingAddress}
-						required={!inPersonPickup}
-						disabled={inPersonPickup}
-					/></label
-				>
-				<label for="postalCode"
-					>Postal Code (ZIP code):
-					<input
-						id="postalCode"
-						type="zip"
-						bind:value={postalCode}
-						required={!inPersonPickup}
-						disabled={inPersonPickup}
-					/></label
-				>
-			</div>
-			<div class="dicounts">
-				<!-- text input to input a discount_id and an "apply" button to call a discount lookup function -->
-				<label for="discount"
-					>Discount Code:
-					<input type="text" id="discount" bind:value={discount_id} />
-					<button type="button" on:click={lookupDiscount}>Apply</button>
-				</label>
-				{#if discount}
-					<p>Discount applied: {discount.name}</p>
-				{/if}
-			</div>
-			<div>
-				<!-- toggle switch  -->
-				<label class="switch">
-					<input type="checkbox" on:click={toggleInPersonPickup} />
-					<span class="slider" />
-				</label>
-				In Person Pickup
-				<aside><p>Store location: {$siteData.storeLocation}</p></aside>
-			</div>
-		</div>
-		<div class="form-row">
-			<label for="total">Total:</label>
-			<input type="text" id="total" value={total.toFixed(2)} disabled />
-		</div>
-		<button type="submit">Order Now</button>
-	</form>
+	</AccordionItem>
+	
 </div>
 
 <style>

@@ -26,7 +26,7 @@ when a new version is released please check out that "tag" instead of checking o
 
 - implement logic for payment transfers + order status creation changes..
   - [SRIPE DOCS](https://docs.stripe.com/connect/design-an-integration?connect-onboarding-surface=api&connect-dashboard-type=none&connect-economic-model=buy-rate&connect-loss-liability-owner=platform&connect-charge-type=direct)
-  - [GOODLE PAY](https://developers.google.com/pay/api/web/overview)
+  - [GOOGLE PAY](https://developers.google.com/pay/api/web/overview)
   - [Paypal](https://developer.paypal.com/sdk/js/)
 - document deployment strategy 
   - can any of the steps be eliminated or condensed with code?

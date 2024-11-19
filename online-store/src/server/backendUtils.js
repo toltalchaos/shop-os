@@ -288,7 +288,6 @@ async function delete_discount(discountData, username, password) {
 		return 'ERROR';
 	}
 }
-
 async function lookup_discount(discountCode) {
 	//make call here
 	const discount = await fetch('/', {

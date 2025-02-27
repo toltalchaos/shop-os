@@ -4,7 +4,6 @@
 	import Invoice from '../../components/invoice.svelte';
 	import cartItems from '../../global/cartItems';
 	import { getContext } from 'svelte';
-	import { writable } from 'svelte/store';
 	import { goto } from '$app/navigation';
 	import AccordionItem from '../../components/accordionItem.svelte';
 
@@ -31,15 +30,14 @@
 	let shipping = $siteData.shippingRate * (taxRate + 1); // Default shipping cost is $10
 	let total = subtotal + shipping + tax;
 	//anything being put into the totals object should be fixed to 2 decimal places
-	let totals = calculateTotals();
+	let totals = formatTotals();
 
 	// Handle form submission
 	async function handleEtransferSubmit(event) {
 		event.preventDefault();
 		let isValid = validateForm();
-		console.log('customerName:', customerName);
 		if (!isValid) {
-			alert('Please fill out all required fields accurately before submitting the order.');
+			console.log('Form is not valid.');
 		} else {
 			if (confirm('Are you sure you want to submit the order? This action cannot be undone.')) {
 				console.log('Submitting order data...');
@@ -79,12 +77,16 @@
 	}
 	function validateForm() {
 		customerName = customerName.replace(/[.#$\[\]]/g, '');
+		if (items.length < 1) {
+			alert('Please add items to your cart before submitting an order.');
+			return false;
+		}
 		if (
-			items.length == 0 ||
 			!customerName ||
 			!customerEmail ||
 			(!inPersonPickup && (!shippingAddress || !postalCode || !city || !province))
 		) {
+			alert('Please fill out all required fields accurately before submitting the order.');
 			return false;
 		}
 		return true;
@@ -95,7 +97,7 @@
 		//re-calculate totals
 		total = subtotal + shipping + tax;
 		//anything being put into the totals object should be fixed to 2 decimal places
-		totals = calculateTotals();
+		totals = formatTotals();
 
 		inPersonPickup = !inPersonPickup;
 	}
@@ -105,7 +107,7 @@
 			discount = null;
 			//lookup discount by discount_id
 			discount = await lookup_discount(discount_id);
-			if (discount != 'ERROR') {
+			if (discount != 'ERROR' && discount_id != '') {
 				//apply discount to total
 				if (discount.type == 'percentage') {
 					total = (subtotal + shipping + tax) * (1 - discount.amount / 100);
@@ -113,7 +115,7 @@
 					total = subtotal + shipping + tax - discount.amount;
 				}
 				//anything being put into the totals object should be fixed to 2 decimal places
-				totals = calculateTotals();
+				totals = formatTotals();
 			} else {
 				alert('Discount not found. Please check the discount code and try again.');
 				discount = null;
@@ -123,7 +125,7 @@
 		}
 	}
 
-	function calculateTotals() {
+	function formatTotals() {
 		return {
 			discount: discount,
 			subtotal: subtotal.toFixed(2),
@@ -141,9 +143,9 @@
 	<h2>Checkout</h2>
 
 	<Invoice {items} {totals} {discount} />
-	<AccordionItem open>
-		<div slot="head">E-transfer Payment</div>
-		<div slot="details">
+	<AccordionItem open >
+		<div slot="head" >E-transfer Payment</div>
+		<div slot="details" >
 			<form on:submit={handleEtransferSubmit}>
 				<div class="form-row">
 					<label for="customerName">Name:</label>

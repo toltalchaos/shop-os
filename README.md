@@ -37,18 +37,16 @@ when a new version is released please check out that "tag" instead of checking o
 - create .env
   - set up emailer
     - Gmail emailer instructions (turn on 2FA, get the app password, enter account email and app password in .env)
+    - [more info on setup here](https://youtu.be/n8fVC5UFRjA?si=EMKlVPzWEET-4yiU)
   - set up firebase acct
     - Firestore settings (manager account, shopper account, tokens for .env)
-  - set up accounts
-    - manager
-    - shopper user
   - RTDB + rules
 
 ---
     {
       "rules": {
-        ".read": "auth != null && (auth.uid ==='<userID>' || auth.uid ==='<userID>')",
-        ".write": "auth != null && (auth.uid ==='userID' || auth.uid ==='userID')" 
+        ".read": "auth != null && (auth.uid ==='<shopperUserID>' || auth.uid ==='<AdminUserID>')",
+        ".write": "auth != null && (auth.uid ==='<shopperUserID>'|| auth.uid ==='<AdminUserID>')" 
       }
     }
 ---

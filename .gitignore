@@ -2,3 +2,4 @@ online-store/.firebaserc
 online-store/database.rules.json
 online-store/firebase-debug.log
 .firebase/
+firebase-debug.log

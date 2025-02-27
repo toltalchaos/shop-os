@@ -65,6 +65,7 @@ when a new version is released please check out that "tag" instead of checking o
 - To login to Firebase CLI: `firebase login`
 - To enable webframeworks flag: `firebase experiments:enable webframeworks`
 - To initialize Firebase in your project: `firebase init`
+  - Detected an existing SvelteKit codebase in the current directory, should we use this? `Yes`
 - To deploy: `firebase deploy`
 
 - firebase console allows you to add a custom domain if a person so wishes. this can be done retroactively

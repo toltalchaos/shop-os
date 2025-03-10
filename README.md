@@ -64,9 +64,19 @@ when a new version is released please check out that "tag" instead of checking o
 - To enable webframeworks flag: `firebase experiments:enable webframeworks`
 - To initialize Firebase in your project: `firebase init`
   - Detected an existing SvelteKit codebase in the current directory, should we use this? `Yes`
+  - once this step is completed you will want to add the following fields to the `firebase.json` file
+```json 
+
+"frameworksBackend": {
+      "maxInstances": 1,
+      "invoker": "public"
+    }
+```
 - To deploy: `firebase deploy`
 
 - firebase console allows you to add a custom domain if a person so wishes. this can be done retroactively
+
+- [help on firebase deployment for sveltekit here](https://gist.github.com/coehne/caf0b3934455d842dfbfe1f4c1544348)
 
 ### Updates
 

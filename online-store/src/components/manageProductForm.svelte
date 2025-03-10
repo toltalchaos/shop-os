@@ -27,13 +27,17 @@
 		};
 	} else {
 		//if there is a product being passed in, set the value of the writable stores to the value of the product
-		itemImageStore = writable([...product.image]);
+		if(product.image){
+
+			itemImageStore = writable([...product.image]);
+		}
 		productCategoryStore = writable([...product.category]);
 	}
 
 	async function handleProductSubmit() {
 		product.category = $productCategoryStore;
 		product.image = $itemImageStore;
+
 		let resp = await update_product(
 			product,
 			origionalProduct,
